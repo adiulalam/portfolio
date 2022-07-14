@@ -31,7 +31,7 @@ const NavBar = ({ children }) => {
 
   useEffect(() => {
     if (isMaxScreenSm !== null) dispatch(setDrawer(isMaxScreenSm ? 0 : 300));
-  }, [isMaxScreenSm]);
+  }, [isMaxScreenSm]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className={classes.root}>

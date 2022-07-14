@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(10),
     height: "100vh",
     width: "100%",
-    backgroundImage: `url(${content.profilePic2})`,
+    backgroundImage: `url(${content.background})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     position: "relative",
