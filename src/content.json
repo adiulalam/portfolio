@@ -19,6 +19,8 @@
       "title": "YouTube Clone",
       "description": "This is an implementation of Google's YouTube responsive UI/UX, and backend features as a Restful API using the MERN stack.",
       "time": "2020",
+      "repo": "https://github.com/smfils1/youtube-clone",
+      "application": "https://smfils1-youtube-clone.herokuapp.com/",
       "details": [
         "Google login",
         "Video uploading, streaming, commenting, and rating",
@@ -36,17 +38,14 @@
         "Material UI"
       ],
       "media": [
-        { "type": "image", "src": "https://i.imgur.com/68MnqX6.jpg" },
-        { "type": "image", "src": "https://i.imgur.com/o38NoNI.jpg" },
+        { "type": "image", "src": "https://i.imgur.com/68MnqX6.jpg", "thumbnail": "" },
+        { "type": "image", "src": "https://i.imgur.com/o38NoNI.jpg", "thumbnail": ""},
         {
           "type": "video",
           "src": "https://www.youtube.com/embed/NT_BcwVtYXM",
           "thumbnail": "https://i.imgur.com/qsFHOml.png"
-          
         }
-      ],
-      "repo": "https://github.com/smfils1/youtube-clone",
-      "application": "https://smfils1-youtube-clone.herokuapp.com/"
+      ]
     },
     {
       "title": "Granny's Sweets",
