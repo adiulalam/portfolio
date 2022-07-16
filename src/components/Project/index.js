@@ -61,6 +61,7 @@ const VideoItem = ({ video }) => {
     <div className="video-wrapper">
       <iframe
         width="100%"
+        height="200px"
         title="video"
         src={video}
         frameBorder="0"
@@ -96,7 +97,7 @@ const Project = ({ project }) => {
         renderItem: () => <VideoItem video={src} />,
 
         embedUrl: src,
-        thumbnail: "https://via.placeholder.com/150?text=VIDEO",
+        thumbnail: "https://i.imgur.com/vlyz0a7.jpg",
       };
     }
   });
@@ -134,11 +135,11 @@ const Project = ({ project }) => {
               </div>
             </div>
             <div>
-              <Button className={classes.btn} href={project.repo}>
+              <Button className={classes.btn} href={project.repo} target="_blank" rel="noopener noreferrer">
                 Github Repo
               </Button>
               {project.application && (
-                <Button className={classes.btn} href={project.application}>
+                <Button className={classes.btn} href={project.application} target="_blank" rel="noopener noreferrer">
                   Open Application
                 </Button>
               )}
