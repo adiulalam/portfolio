@@ -86,7 +86,7 @@ const Project = ({ project }) => {
     setStartIndex(index);
   };
 
-  const media = project.media.map(({ type, src }) => {
+  const media = project.media.map(({ type, src, thumbnail }) => {
     if (type === "image") {
       return {
         original: src,
@@ -97,7 +97,8 @@ const Project = ({ project }) => {
         renderItem: () => <VideoItem video={src} />,
 
         embedUrl: src,
-        thumbnail: "https://i.imgur.com/vlyz0a7.jpg",
+        thumbnail: thumbnail,
+        // thumbnail: "https://i.imgur.com/vlyz0a7.jpg",
       };
     }
   });

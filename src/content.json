@@ -9,7 +9,7 @@
   "email": "adiulalam@gmail.com",
   "linkedin": "adiul-alam-adil-717b5a172",
   "github": "adiulalam",
-  "description": " See my journey as a software engineer. I specialize in building web applications using technologies such as <strong>React.js</strong>, <strong>Spring Boot</strong>, <strong>Node.js</strong>, and <strong>AWS microservices</strong>. I’ve been involved in multiple software projects which required proficiency in languages such as <strong>C#</strong>, <strong>JavaScript</strong>, and <strong>Java</strong>. Unless explicitly stated otherwise, <strong> all project back-end and front-end parts were completely done by me. </strong>",
+  "description": "See my journey as a software engineer. I specialize in building web applications using technologies such as <strong>React.js</strong>, <strong>Spring Boot</strong>, <strong>Node.js</strong>, and <strong>AWS microservices</strong>. I’ve been involved in multiple software projects which required proficiency in languages such as <strong>C#</strong>, <strong>JavaScript</strong>, and <strong>Java</strong>. Unless explicitly stated otherwise, <strong> all project back-end and front-end parts were completely done by me. </strong>",
   "shortAboutMe": {
     "base": "a developer specialized in ",
     "loop": ["back-end technologies.", "front-end technologies.", "API integration.", "networking."]
@@ -40,7 +40,9 @@
         { "type": "image", "src": "https://i.imgur.com/o38NoNI.jpg" },
         {
           "type": "video",
-          "src": "https://www.youtube.com/embed/NT_BcwVtYXM"
+          "src": "https://www.youtube.com/embed/NT_BcwVtYXM",
+          "thumbnail": "https://i.imgur.com/qsFHOml.png"
+          
         }
       ],
       "repo": "https://github.com/smfils1/youtube-clone",
@@ -99,7 +101,8 @@
         { "type": "image", "src": "https://i.imgur.com/xJnyo8w.jpg" },
         {
           "type": "video",
-          "src": "https://www.youtube.com/embed/5rKN7FuBIOA"
+          "src": "https://www.youtube.com/embed/5rKN7FuBIOA",
+          "thumbnail": "https://i.imgur.com/orTAbAF.png"
         }
       ],
       "repo": "https://github.com/smfils1/SoS",
@@ -122,7 +125,8 @@
         { "type": "image", "src": "https://i.imgur.com/ZzmervP.png" },
         {
           "type": "video",
-          "src": "https://www.youtube.com/embed/11l-kFBESAw"
+          "src": "https://www.youtube.com/embed/11l-kFBESAw",
+          "thumbnail": "https://i.imgur.com/JkUYZvG.png"
         }
       ],
       "repo": "https://github.com/AbtahiChowdhury/Centrix",
