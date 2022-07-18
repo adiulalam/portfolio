@@ -1,18 +1,21 @@
-require("dotenv").config();
-require("isomorphic-fetch");
+const { default: axios } = require('axios');
+
+require('dotenv').config();
+require('isomorphic-fetch');
 
 async function conn({ query, variables }) {
-  const response = await fetch(process.env.REACT_APP_URL, {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-      "x-hasura-admin-secret": process.env.REACT_APP_ADMIN_SECRET,
-    },
-    body: JSON.stringify({ query, variables }),
-  });
+  const response = await axios.post(
+    process.env.REACT_APP_URL,
+    { query, variables },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-hasura-admin-secret': process.env.REACT_APP_ADMIN_SECRET,
+      },
+    }
+  );
 
-  const json = await response.json();
-  return json;
+  return response.data.data;
 }
 
 module.exports = { conn };
