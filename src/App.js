@@ -1,12 +1,14 @@
 import React, { useContext, useEffect } from 'react';
+// import React from "react";
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Nav from './components/Nav';
 import { PortfolioContext } from './context/portfolio';
-import Home from './Home';
+import PortfolioObject from './Home';
+import Home from "./components/Pages";
 // import Content from "./content";
 const { conn } = require('./connection/connection');
-require('isomorphic-fetch');
+// require('isomorphic-fetch');
 
 const getContentQuery = `
   query getContent {
@@ -51,17 +53,20 @@ function App() {
     setPortfolioContent(portfolio_content?.[0]);
   }, []);
 
-  return (
-    <Home />
-    // <div>
-    //   <Nav>
+  console.log("here---->", PortfolioObject())
 
-    //     <Switch>
-    //       <Route exact path="/" render={(props) => <Home {...props} />} />
-    //       <Route render={() => <Redirect to="/" />} />
-    //     </Switch>
-    //   </Nav>
-    // </div>
+  return (
+    
+    <div>
+      
+      <Nav>
+        <Switch>
+          <Route exact path="/" render={(props) => <Home {...props} />} />
+          <Route render={() => <Redirect to="/" />} />
+          <PortfolioObject />
+        </Switch>
+      </Nav>
+    </div>
   );
 }
 

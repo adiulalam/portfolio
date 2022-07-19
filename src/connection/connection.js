@@ -1,7 +1,7 @@
 const { default: axios } = require('axios');
 
 require('dotenv').config();
-require('isomorphic-fetch');
+// require('isomorphic-fetch');
 
 async function conn({ query, variables }) {
   const response = await axios.post(
