@@ -1,5 +1,9 @@
+
+import { PortfolioContext } from './context/portfolio';
+import PortfolioObject from './Home';
+import { useContext, useEffect } from 'react';
+
 const { conn } = require("./connection/connection");
-require("isomorphic-fetch");
 
 const getContentQuery = `
   query getContent {
@@ -37,47 +41,22 @@ const getContentQuery = `
 `;
 
 
-// conn({ query: getContentQuery })
-//   .then(({ data }) => {
-//     const content = data.portfolio_content[0]
-//     console.log("data----->", content)
-//     return content
+const ContentObjects = () =>{
 
-//   })
-//   .catch((e) => {
-//     console.log(e);
-//   });
+  const { setPortfolioContent } = useContext(PortfolioContext);
 
+  useEffect(async () => {
+    const { portfolio_content } = await conn({ query: getContentQuery });
+    setPortfolioContent(portfolio_content?.[0]);
+  }, []);
 
-// const content = async() => await conn({ query: getContentQuery })
+  const contents = PortfolioObject()
 
+  return (
+    contents
+  )
 
+}
 
+  export default ContentObjects;
 
-
-const ContentFunc = () => {
-    //     const array = [] 
-    //     await conn({ query: getContentQuery })
-    //       .then(({ data }) => {
-    //     // const content = JSON.stringify(data.portfolio_content[0])
-    //     // console.log("data----->", content)
-    //     array.push(data.portfolio_content[0])
-    //     return data.portfolio_content[0]
-    
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-    //   })
-    
-    const array = {key: "value"}
-    
-      return array
-        
-      }
-
-const Content = ContentFunc()
-
-
-  export default Content;
-
-// module.exports = Content ;

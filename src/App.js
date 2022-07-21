@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 // import React from "react";
 import { Switch, Route, Redirect } from 'react-router-dom';
-
+import ContentObjects from './content';
+import contents from './content';
 import Nav from './components/Nav';
 import { PortfolioContext } from './context/portfolio';
 import PortfolioObject from './Home';
@@ -9,6 +10,7 @@ import Home from "./components/Pages";
 // import Content from "./content";
 const { conn } = require('./connection/connection');
 // require('isomorphic-fetch');
+
 
 const getContentQuery = `
   query getContent {
@@ -46,15 +48,18 @@ const getContentQuery = `
 `;
 
 function App() {
-  const { setPortfolioContent } = useContext(PortfolioContext);
+  // const { setPortfolioContent } = useContext(PortfolioContext);
 
-  useEffect(async () => {
-    const { portfolio_content } = await conn({ query: getContentQuery });
-    setPortfolioContent(portfolio_content?.[0]);
-  }, []);
+  // useEffect(async () => {
+  //   const { portfolio_content } = await conn({ query: getContentQuery });
+  //   setPortfolioContent(portfolio_content?.[0]);
+  // }, []);
 
-  console.log("here---->", PortfolioObject())
+  // const content = PortfolioObject()
 
+  // console.log("here---->", content.fullName)
+  // console.log("here---->", ContentObjects())
+  
   return (
     
     <div>
@@ -63,7 +68,7 @@ function App() {
         <Switch>
           <Route exact path="/" render={(props) => <Home {...props} />} />
           <Route render={() => <Redirect to="/" />} />
-          <PortfolioObject />
+          {/* <PortfolioObject /> */}
         </Switch>
       </Nav>
     </div>

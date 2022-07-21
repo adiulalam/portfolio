@@ -11,7 +11,7 @@ import Info from "../Info";
 import { grey } from "@material-ui/core/colors";
 import clsx from "clsx";
 import Typical from "react-typical";
-
+import ContentObjects from "../../content";
 import Portfolio from "./Portfolio";
 
 const useStyles = makeStyles((theme) => ({
@@ -66,6 +66,9 @@ const HomePage = () => {
   const inLandScapeMode = useMediaQuery(
     `(orientation: landscape) and (max-width: ${drawerSize + 900}px)`
   );
+
+  const test = ContentObjects()
+  console.log("test--->", test)
 
   const AboutMe = () => {
     const base = content.shortAboutMe.base;
