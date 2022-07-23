@@ -10,7 +10,8 @@ async function conn({ query, variables }) {
     {
       headers: {
         'Content-Type': 'application/json',
-        'x-hasura-admin-secret': process.env.REACT_APP_ADMIN_SECRET,
+        // 'x-hasura-admin-secret': process.env.REACT_APP_ADMIN_SECRET,
+        'x-hasura-role': 'visitor'
       },
     }
   );

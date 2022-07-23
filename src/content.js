@@ -1,7 +1,6 @@
-
-import { PortfolioContext } from './context/portfolio';
-import PortfolioObject from './Home';
-import { useContext, useEffect } from 'react';
+import { PortfolioContext } from "./context/portfolio";
+import PortfolioObject from "./Home";
+import { useContext, useEffect } from "react";
 
 const { conn } = require("./connection/connection");
 
@@ -40,23 +39,18 @@ const getContentQuery = `
   }
 `;
 
-
-const ContentObjects = () =>{
-
+const ContentObjects = () => {
   const { setPortfolioContent } = useContext(PortfolioContext);
 
+  // eslint-disable-next-line
   useEffect(async () => {
     const { portfolio_content } = await conn({ query: getContentQuery });
     setPortfolioContent(portfolio_content?.[0]);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const contents = PortfolioObject()
+  const contents = PortfolioObject();
 
-  return (
-    contents
-  )
+  return contents;
+};
 
-}
-
-  export default ContentObjects;
-
+export default ContentObjects;
