@@ -14,6 +14,9 @@ import NavItem from "../NavItem";
 import Contacts from "../../Contacts";
 import { toggleDrawer } from "../../../redux/actions/layout";
 import content from "../../../content.json";
+import ContentObjects from "../../../content";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,13 +67,27 @@ const MainNavMenu = () => {
     }
   };
 
+  // const portfolioContent  = ContentObjects();
+  // console.log("test--->", ContentObjects())
+  
   const Profile = ({ name, career }) => (
     <div className={classes.profile}>
-      <img
+   {/* {portfolioContent?.profilePic ? (
+        <img
+          alt="profile"
+          className={classes.img}
+          src={require(`./../../../assets/images/${portfolioContent.profilePic}`)}
+        />
+      ) : (
+        <Skeleton circle width="100px" height="100px" />
+      )} */}
+
+        <img
         alt="profile"
         className={classes.img}
         src={require(`./../../../assets/images/${content.profilePic}`)}
       />
+
       <Typography variant="h5" className={classes.title}>
         {name}
       </Typography>
@@ -79,6 +96,8 @@ const MainNavMenu = () => {
       </Typography>
     </div>
   );
+
+  
 
   return (
     <List className={classes.root}>

@@ -11,8 +11,11 @@ import Info from "../Info";
 import { grey } from "@material-ui/core/colors";
 import clsx from "clsx";
 import Typical from "react-typical";
-// import ContentObjects from "../../content";
 import Portfolio from "./Portfolio";
+
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import ContentObjects from "../../content";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,8 +70,8 @@ const HomePage = () => {
     `(orientation: landscape) and (max-width: ${drawerSize + 900}px)`
   );
 
-  // const test = ContentObjects()
-  // console.log("test--->", test)
+  const portfolioContent = ContentObjects();
+  console.log("test--->", portfolioContent)
 
   const AboutMe = () => {
     const base = content.shortAboutMe.base;
@@ -85,7 +88,14 @@ const HomePage = () => {
       <div className={classes.landing}>
         <div className={classes.content}>
           <Typography className={classes.intro} variant="h3">
-            I'm {content.fullName},
+            {/* I'm {content.fullName}, */}
+            {portfolioContent?.fullName ? (
+              `I'm ${portfolioContent.fullName}`
+            ) : (
+              <Skeleton
+                width="400px"
+              />
+            )}
           </Typography>
           <AboutMe />
         </div>
