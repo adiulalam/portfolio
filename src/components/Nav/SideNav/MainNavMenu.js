@@ -14,7 +14,7 @@ import NavItem from "../NavItem";
 import Contacts from "../../Contacts";
 import { toggleDrawer } from "../../../redux/actions/layout";
 import content from "../../../content.json";
-import ContentObjects from "../../../content";
+// import ContentObjects from "../../../content";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import axios from "axios";
@@ -88,7 +88,7 @@ const MainNavMenu = () => {
 
       const result = response.data.data.portfolio_content[0]
       console.log(result);
-      setData(result);
+      // setData(result);
 
       return result;
     } else {
@@ -97,10 +97,14 @@ const MainNavMenu = () => {
   };
 
   useEffect(() => {
-    ContentObjects();
+    async function fetchData() {
+      const result = await ContentObjects();
+      setData(result);
+    }
+    fetchData();
 }, []);
 
-console.log("data---->", data)
+console.log("data???---->", data)
 
 
   
