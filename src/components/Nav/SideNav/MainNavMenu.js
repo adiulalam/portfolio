@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { grey } from "@material-ui/core/colors";
 import clsx from "clsx";
@@ -17,6 +17,8 @@ import content from "../../../content.json";
 import ContentObjects from "../../../content";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import axios from "axios";
+import { endpoint, graphqlQuery, headers } from "../../../graphql/graphql";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,24 +71,56 @@ const MainNavMenu = () => {
 
   // const portfolioContent  = ContentObjects();
   // console.log("test--->", ContentObjects())
+
+
+
+  const [data, setData] = useState([]);
+
+  const ContentObjects = async () => {
+    const response = await axios({
+      url: endpoint,
+      method: "post",
+      headers: headers,
+      data: graphqlQuery,
+    });
+
+    if (response?.data) {
+
+      const result = response.data.data.portfolio_content[0]
+      console.log(result);
+      setData(result);
+
+      return result;
+    } else {
+      console.log(response.errors);
+    }
+  };
+
+  useEffect(() => {
+    ContentObjects();
+}, []);
+
+console.log("data---->", data)
+
+
   
   const Profile = ({ name, career }) => (
     <div className={classes.profile}>
-   {/* {portfolioContent?.profilePic ? (
+   {(data?.profilePic) ? (
         <img
           alt="profile"
           className={classes.img}
-          src={require(`./../../../assets/images/${portfolioContent.profilePic}`)}
+          src={require(`./../../../assets/images/${data.profilePic}`)}
         />
       ) : (
         <Skeleton circle width="100px" height="100px" />
-      )} */}
+      )}
 
-        <img
+        {/* <img
         alt="profile"
         className={classes.img}
         src={require(`./../../../assets/images/${content.profilePic}`)}
-      />
+      /> */}
 
       <Typography variant="h5" className={classes.title}>
         {name}

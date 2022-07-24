@@ -70,8 +70,8 @@ const HomePage = () => {
     `(orientation: landscape) and (max-width: ${drawerSize + 900}px)`
   );
 
-  const portfolioContent = ContentObjects();
-  console.log("test--->", portfolioContent)
+  // const portfolioContent = ContentObjects();
+  // console.log("test--->", portfolioContent)
 
   const AboutMe = () => {
     const base = content.shortAboutMe.base;
@@ -88,14 +88,14 @@ const HomePage = () => {
       <div className={classes.landing}>
         <div className={classes.content}>
           <Typography className={classes.intro} variant="h3">
-            {/* I'm {content.fullName}, */}
-            {portfolioContent?.fullName ? (
+            I'm {content.fullName},
+            {/* {portfolioContent?.fullName ? (
               `I'm ${portfolioContent.fullName}`
             ) : (
               <Skeleton
                 width="400px"
               />
-            )}
+            )} */}
           </Typography>
           <AboutMe />
         </div>
