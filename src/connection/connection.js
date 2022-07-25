@@ -1,23 +1,25 @@
-const { default: axios } = require("axios");
-require("dotenv").config();
+import axios from "axios";
+import { endpoint, graphqlQuery, headers } from "./graphql";
 
-async function conn({ query, variables }) {
-  const response = await axios.post(
-    process.env.REACT_APP_URL,
-    { query, variables },
-    {
-      headers: {
-        "Content-Type": "application/json",
-        // 'x-hasura-admin-secret': process.env.REACT_APP_ADMIN_SECRET,
-        "x-hasura-role": "visitor",
-      },
+
+  const ContentObjects = async () => {
+    const response = await axios({
+      url: endpoint,
+      method: "post",
+      headers: headers,
+      data: graphqlQuery,
+    });
+
+    if (response?.data) {
+
+      const result = response.data.data.portfolio_content[0]
+      // console.log(result);
+      // setData(result);
+
+      return result;
+    } else {
+      console.log(response.errors);
     }
-  );
-  // this.setState({ appsDataApi: response.data }, () => {
-  //   console.log(this.state.appsDataApi)
-  // });
+  };
 
-  return response.data.data;
-}
-
-module.exports = { conn };
+export default ContentObjects;

@@ -13,10 +13,6 @@ import clsx from "clsx";
 import Typical from "react-typical";
 import Portfolio from "./Portfolio";
 
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import ContentObjects from "../../content";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -61,7 +57,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HomePage = () => {
+const HomePage = (portfolioProps) => {
+
+  const portfolioContent = portfolioProps.portfolioProps;
+
+  // console.log("portfolioContent----->", portfolioContent)
   const classes = useStyles();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.only("xs"));
@@ -69,9 +69,6 @@ const HomePage = () => {
   const inLandScapeMode = useMediaQuery(
     `(orientation: landscape) and (max-width: ${drawerSize + 900}px)`
   );
-
-  // const portfolioContent = ContentObjects();
-  // console.log("test--->", portfolioContent)
 
   const AboutMe = () => {
     const base = content.shortAboutMe.base;
@@ -88,7 +85,8 @@ const HomePage = () => {
       <div className={classes.landing}>
         <div className={classes.content}>
           <Typography className={classes.intro} variant="h3">
-            I'm {content.fullName},
+            {/* I'm {content.fullName}, */}
+            I'm {portfolioContent.fullName},
             {/* {portfolioContent?.fullName ? (
               `I'm ${portfolioContent.fullName}`
             ) : (

@@ -36,7 +36,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SideNav = () => {
+const SideNav = (portfolioProps) => {
+  const portfolioContent = portfolioProps.portfolioProps;
+  // console.log("portfolioContent----->", portfolioContent )
   const theme = useTheme();
   const isMaxScreenSm = useMediaQuery(theme.breakpoints.down("sm"));
   const isDrawerOpen = useSelector(({ layout }) => layout.drawerSize) !== 0;
@@ -57,7 +59,7 @@ const SideNav = () => {
       }}
     >
       <div className={classes.navHead}>{isMaxScreenSm && <StartNav />}</div>
-      <MainNavMenu />
+      <MainNavMenu portfolioProps = {portfolioContent}/>
     </Drawer>
   );
 };

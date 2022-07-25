@@ -3,47 +3,58 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./components/Pages";
 import Admin from "./Authentication/admin";
-// import ContentObjects from "./content";
 import { SkeletonTheme } from "react-loading-skeleton";
-import ContentObjects from "./content";
-import { conn } from "./connection/connection";
-import PortfolioObject from "./Home";
-import axios from "axios";
-
-import {endpoint, headers, graphqlQuery} from "./graphql/graphql";
+import PacmanLoader from "react-spinners/PacmanLoader";
+import CircleLoader from "react-spinners/CircleLoader";
+import BarLoader from "react-spinners/BarLoader";
+import MoonLoader from "react-spinners/MoonLoader";
+import ContentObjects from "./connection/connection";
 
 function App() {
-  
+  const [randNum, setRandNum] = useState(null);
+  useEffect(() => {
+    setRandNum(Math.floor(Math.random() * 4));
+  }, []);
+
   const [data, setData] = useState([]);
-
-  const ContentObjects = async () => {
-    const response = await axios({
-      url: endpoint,
-      method: "post",
-      headers: headers,
-      data: graphqlQuery,
-    });
-
-    if (response?.data) {
-
-      const result = response.data.data.portfolio_content[0]
-      console.log(result);
-      setData(result);
-
-      return result;
-    } else {
-      console.log(response.errors);
-    }
-  };
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    ContentObjects();
-}, []);
+    setIsLoading(true);
+    async function fetchData() {
+      const result = await ContentObjects();
+      setData(result);
+      setIsLoading(false);
+    }
+    fetchData();
+  }, []);
 
-  // ContentObjects();
-  // const k = ContentObjects();
+  if (isLoading)
+    return (
+      (document.body.style.background = "#000000"),
+      (
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          {randNum === 0 ? (
+            <PacmanLoader speedMultiplier="2" color="#ffffff" size="80px" />
+          ) : randNum === 1 ? (
+            <CircleLoader color="#ffffff" size="200px" />
+          ) : randNum === 2 ? (
+            <BarLoader color="#ffffff" height="10px" width="300px" />
+          ) : (
+            <MoonLoader color="#ffffff" size="80px" />
+          )}
+        </div>
+      )
+    );
 
-  // console.log("kkkkkkkkkkk->", data);
+  const portfolioProps = data;
 
   return (
     <div>
@@ -52,17 +63,19 @@ function App() {
         baseColor="black"
         highlightColor="blue"
       >
-        <Nav>
+        <Nav portfolioProps={portfolioProps}>
           <Switch>
-            <Route
-              exact
-              path="/admin"
-              render={(props) => <Admin {...props} />}
-            />
-            <Route exact path="/" render={(props) => <Home {...props} />} />
-            <Route render={() => <Redirect to="/" />} />
-          </Switch>
-        </Nav>
+          <Route exact path="/admin" render={(props) => <Admin {...props} />} />
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Home portfolioProps={portfolioProps} {...props} />
+            )}
+          />
+          <Route render={() => <Redirect to="/" />} />
+        </Switch>
+      </Nav>
       </SkeletonTheme>
     </div>
   );
