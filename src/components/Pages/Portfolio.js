@@ -44,7 +44,7 @@ const Portfolio = (portfolioProps) => {
           dangerouslySetInnerHTML={{ __html: portfolioContent.description }}
         />
       </div>
-      <Experiences />
+      <Experiences portfolioProps={portfolioContent}/>
     </div>
   );
 };

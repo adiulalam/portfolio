@@ -346,22 +346,20 @@ CREATE TABLE portfolio.media (
           "projectdate": "2019-01-01",
           "repo": "https://github.com/smfils1/weather-app",
           "application": "http://smfils1-weather-app.herokuapp.com/",
-          "details": {
-            "data": [
-              "Local weather reports",
-              "Weather search",
-              "Location autocomplete"
-            ],
-            "technologies": [
-              "Bootstrap 4",
-              "EJS",
-              "Node.js",
-              "Express.js",
-              "Mapbox API",
-              "Darksky API",
-              "Algolia Places API"
-            ]
-          },
+          "details": [
+            "Local weather reports",
+            "Weather search",
+            "Location autocomplete"
+          ],
+          "technologies": [
+            "Bootstrap 4",
+            "EJS",
+            "Node.js",
+            "Express.js",
+            "Mapbox API",
+            "Darksky API",
+            "Algolia Places API"
+          ],
           "media": {
             "data": [
               {
