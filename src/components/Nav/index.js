@@ -36,7 +36,7 @@ const NavBar = ({ children, portfolioProps }) => {
 
   return (
     <div className={classes.root}>
-      {isMaxScreenSm && !isDrawerOpen && <TopNav />}
+      {isMaxScreenSm && !isDrawerOpen && <TopNav portfolioProps = {portfolioProps}/>}
       <SideNav portfolioProps = {portfolioProps} />
       <div className={classes.content}>
         <div className={clsx({ [classes.toolbar]: isMaxScreenSm })} />

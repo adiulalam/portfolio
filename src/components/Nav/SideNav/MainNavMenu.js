@@ -13,7 +13,7 @@ import {
 import NavItem from "../NavItem";
 import Contacts from "../../Contacts";
 import { toggleDrawer } from "../../../redux/actions/layout";
-import content from "../../../content.json";
+// import content from "../../../content.json";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
@@ -91,14 +91,14 @@ const MainNavMenu = (portfolioProps) => {
 
   return (
     <List className={classes.root}>
-      <Profile name={content.fullName} career={content.career} />
+      <Profile name={portfolioContent.fullName} career={portfolioContent.career} />
       <div className={classes.mainNavLinks}>
         <NavItem to="home" title="Home" onClick={handleItemClick} />{" "}
         <NavItem to="portfolio" title="Portfolio" onClick={handleItemClick} />
       </div>
       <div className={classes.grow} />
       <div className={classes.contacts}>
-        <Contacts />
+        <Contacts portfolioProps={portfolioContent}/>
       </div>
     </List>
   );

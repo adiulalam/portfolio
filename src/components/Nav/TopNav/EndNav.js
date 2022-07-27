@@ -10,7 +10,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EndNav = () => {
+const EndNav = (portfolioProps) => {
+  const portfolioContent = portfolioProps.portfolioProps;
+  // console.log(portfolioContent)
   const classes = useStyles();
 
   return (
@@ -19,7 +21,7 @@ const EndNav = () => {
         gutters: classes.toolbar,
       }}
     >
-      <Contacts />
+      <Contacts portfolioProps = {portfolioContent}/>
     </Toolbar>
   );
 };

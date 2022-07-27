@@ -61,7 +61,7 @@ CREATE TABLE portfolio.media (
 {
   "objects": {
     "profilePic": "profilePic.jpg",
-    "backgroundImage": "https://i.imgur.com/YNgwpkj.jpg",
+    "backgroundImage": "backgroundImage.jpg",
     "fullName": "Adiul Alam Adil",
     "career": "Junior Software Engineer",
     "resume": "https://drive.google.com/uc?export=download&id=1e1XqaeM2uxLnvt_-LKKeR4GqZywdxoRo",

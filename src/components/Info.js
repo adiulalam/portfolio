@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles, Typography, Button } from "@material-ui/core/";
-import content from "../content.json";
+// import content from "../content.json";
 import { grey } from "@material-ui/core/colors";
 import { School, Email, LocationOn } from "@material-ui/icons";
 const useStyles = makeStyles((theme) => ({
@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
       width: 300,
       backgroundColor: "black",
     },
+    borderRadius: 10
   },
   icon: {
     margin: theme.spacing(0.5, 1),
@@ -27,39 +28,42 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       background: "rgb(201, 163, 143)",
     },
+    borderRadius: 10
   },
   title: {
     color: grey[300],
   },
 }));
 
-const Info = () => {
+const Info = (portfolioProps) => {
+  const portfolioContent = portfolioProps.portfolioProps;
+  // console.log("portfolioContent----->", portfolioContent )
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Typography variant="button" className={classes.title}>
-        {content.career}
+        {portfolioContent.career}
       </Typography>
       <div>
         <Email className={classes.icon} />
         <Typography variant="caption" className={classes.title}>
-          {content.email}
+          {portfolioContent.email}
         </Typography>
       </div>
       <div>
         <School className={classes.icon} />
         <Typography variant="caption" className={classes.title}>
-          {content.education}
+          {portfolioContent.education}
         </Typography>
       </div>
       <div>
         <LocationOn className={classes.icon} />
         <Typography variant="caption" className={classes.title}>
-          {content.location}
+          {portfolioContent.location}
         </Typography>
       </div>
       <div className={classes.btn}>
-        <Button style={{ color: "inherit" }} href={content.resume}>
+        <Button style={{ color: "inherit" }} href={portfolioContent.resume}>
           Resume
         </Button>
       </div>
