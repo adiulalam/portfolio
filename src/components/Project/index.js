@@ -79,7 +79,7 @@ const Project = ({ project }) => {
   const classes = useStyles();
 
   const handleThumbClick = (event, index) => {
-    console.log(index);
+    // console.log(index);
     if (project.media[index].type === "image") {
       setFullScreenButton(true);
     } else {
@@ -89,7 +89,6 @@ const Project = ({ project }) => {
   };
 
   const media = project.media.map(({ type, src, thumbnail }) => {
-
     if (type === "image") {
       return {
         // original: src,
