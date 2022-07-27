@@ -73,7 +73,7 @@ const MainNavMenu = (portfolioProps) => {
         <img
           alt="profile"
           className={classes.img}
-          src={require(`./../../../assets/images/${portfolioContent.profilePic}`)}
+          src={portfolioContent.profilePic.includes("https") ? portfolioContent.profilePic : require(`./../../../assets/images/${portfolioContent.profilePic}`)}
         />
       ) : (
         <Skeleton circle width="100px" height="100px" />

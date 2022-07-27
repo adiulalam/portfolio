@@ -18,10 +18,10 @@ const HomePage = (portfolioProps) => {
   // console.log("portfolioContent----->", portfolioContent.backgroundImage);
 
   const backgroundImageLocation = portfolioContent?.backgroundImage
-    ? require(`./../../assets/images/${portfolioContent.backgroundImage}`)
+    ? portfolioContent.backgroundImage.includes("https")
+      ? portfolioContent.backgroundImage
+      : require(`./../../assets/images/${portfolioContent.backgroundImage}`)
     : "";
-
-    
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -75,27 +75,28 @@ const HomePage = (portfolioProps) => {
     `(orientation: landscape) and (max-width: ${drawerSize + 900}px)`
   );
 
-
   // const loop = portfolioContent?.shortAboutMe?.loop
   //   ? portfolioContent.shortAboutMe.loop.forEach((value) => {
   //     writer.push(base, 150, base + value, 150);
   //   })
   //   : "";
 
-    // console.log("content.shortAboutMe.base--->", shortAboutMe)
+  // console.log("content.shortAboutMe.base--->", shortAboutMe)
 
   const AboutMe = () => {
     const base = portfolioContent?.shortAboutMe?.base
-    ? portfolioContent.shortAboutMe.base
-    : "";
+      ? portfolioContent.shortAboutMe.base
+      : "";
 
     const writer = [];
 
-    if (portfolioContent?.shortAboutMe?.loop){
+    if (portfolioContent?.shortAboutMe?.loop) {
       portfolioContent.shortAboutMe.loop.forEach((value) => {
         writer.push(base, 150, base + value, 150);
       });
-    } else {writer.push(base, 150, base + "", 150)}
+    } else {
+      writer.push(base, 150, base + "", 150);
+    }
 
     return (
       <Typical steps={writer} loop={Infinity} className={classes.writer} />
@@ -125,9 +126,9 @@ const HomePage = (portfolioProps) => {
           [classes.info]: !(isSmallScreen || inLandScapeMode),
         })}
       >
-        <Info portfolioProps={portfolioContent}/>
+        <Info portfolioProps={portfolioContent} />
       </div>
-      <Portfolio portfolioProps={portfolioContent}/>
+      <Portfolio portfolioProps={portfolioContent} />
     </div>
   );
 };

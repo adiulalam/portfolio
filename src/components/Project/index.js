@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     display: "inline",
   },
   btn: {
-    borderRadius: 0,
+    borderRadius: 10,
     color: "white",
     background: "black",
     margin: theme.spacing(1),
@@ -72,6 +72,8 @@ const VideoItem = ({ video }) => {
 };
 
 const Project = ({ project }) => {
+  // console.log("project----->", project);
+
   const [showFullScreenButton, setFullScreenButton] = useState(true);
   const [startIndex, setStartIndex] = useState(0);
   const classes = useStyles();
@@ -87,10 +89,16 @@ const Project = ({ project }) => {
   };
 
   const media = project.media.map(({ type, src, thumbnail }) => {
+
     if (type === "image") {
       return {
-        original: src,
-        thumbnail: src,
+        // original: src,
+        original: src.includes("https")
+          ? src
+          : require(`./../../assets/images/${src}`),
+        thumbnail: src.includes("https")
+          ? src
+          : require(`./../../assets/images/${src}`),
       };
     } else {
       return {
@@ -136,11 +144,21 @@ const Project = ({ project }) => {
               </div>
             </div>
             <div>
-              <Button className={classes.btn} href={project.repo} target="_blank" rel="noopener noreferrer">
+              <Button
+                className={classes.btn}
+                href={project.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Github Repo
               </Button>
               {project.application && (
-                <Button className={classes.btn} href={project.application} target="_blank" rel="noopener noreferrer">
+                <Button
+                  className={classes.btn}
+                  href={project.application}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Open Application
                 </Button>
               )}
