@@ -60,8 +60,8 @@ CREATE TABLE portfolio.media (
 
 {
   "objects": {
-    "profilePic": "https://i.imgur.com/WyWgjFc.jpg?1",
-    "backgroundImage": "https://i.imgur.com/YNgwpkj.jpg",
+    "profilePic": "profilePic.jpg",
+    "backgroundImage": "backgroundImage.jpg",
     "fullName": "Adiul Alam Adil",
     "career": "Junior Software Engineer",
     "resume": "https://drive.google.com/uc?export=download&id=1e1XqaeM2uxLnvt_-LKKeR4GqZywdxoRo",
@@ -346,22 +346,20 @@ CREATE TABLE portfolio.media (
           "projectdate": "2019-01-01",
           "repo": "https://github.com/smfils1/weather-app",
           "application": "http://smfils1-weather-app.herokuapp.com/",
-          "details": {
-            "data": [
-              "Local weather reports",
-              "Weather search",
-              "Location autocomplete"
-            ],
-            "technologies": [
-              "Bootstrap 4",
-              "EJS",
-              "Node.js",
-              "Express.js",
-              "Mapbox API",
-              "Darksky API",
-              "Algolia Places API"
-            ]
-          },
+          "details": [
+            "Local weather reports",
+            "Weather search",
+            "Location autocomplete"
+          ],
+          "technologies": [
+            "Bootstrap 4",
+            "EJS",
+            "Node.js",
+            "Express.js",
+            "Mapbox API",
+            "Darksky API",
+            "Algolia Places API"
+          ],
           "media": {
             "data": [
               {

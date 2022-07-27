@@ -21,7 +21,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TopNav = () => {
+const TopNav = (portfolioProps) => {
+  const portfolioContent = portfolioProps.portfolioProps;
+  // console.log(portfolioContent)
   const classes = useStyles();
 
   return (
@@ -31,7 +33,7 @@ const TopNav = () => {
         <StartNav />
         <div className={classes.grow} />
 
-        <EndNav />
+        <EndNav portfolioProps = {portfolioContent} />
       </AppBar>
     </div>
   );

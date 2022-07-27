@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
   },
 }));
-const NavBar = ({ children }) => {
+const NavBar = ({ children, portfolioProps }) => {
+  // console.log("portfolioProps----->", portfolioProps )
   const classes = useStyles();
   const theme = useTheme();
   const dispatch = useDispatch();
@@ -35,8 +36,8 @@ const NavBar = ({ children }) => {
 
   return (
     <div className={classes.root}>
-      {isMaxScreenSm && !isDrawerOpen && <TopNav />}
-      <SideNav />
+      {isMaxScreenSm && !isDrawerOpen && <TopNav portfolioProps = {portfolioProps}/>}
+      <SideNav portfolioProps = {portfolioProps} />
       <div className={classes.content}>
         <div className={clsx({ [classes.toolbar]: isMaxScreenSm })} />
         {children}
