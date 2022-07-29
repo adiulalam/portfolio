@@ -1,4 +1,4 @@
-export const endpoint = "https://welcome-elf-64.hasura.app/v1/graphql";
+export const endpoint = "https://hasura.adiulalamadil.me/v1/graphql";
 
 export const headers = {
   "Content-Type": "application/json",

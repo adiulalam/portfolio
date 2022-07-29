@@ -56,7 +56,11 @@ CREATE TABLE portfolio.users(
    email text NOT NULL
 );
 
+-----------------------
 
+CREATE INDEX fk_shortAboutMe_uuid_index ON portfolio.content (fk_shortAboutMe_uuid);
+CREATE INDEX fk_content_uuid_index ON portfolio.project (fk_content_uuid);
+CREATE INDEX fk_project_uuid_index ON portfolio.media (fk_project_uuid);
 
 
 
@@ -425,3 +429,8 @@ query x {
     }
   }
 }
+
+
+
+
+
