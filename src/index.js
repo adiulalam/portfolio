@@ -6,17 +6,22 @@ import { HashRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import * as serviceWorker from "./serviceWorker";
-
-// const content= require('./content')
-
-// console.log("here", content);
+import { Auth0Provider } from "@auth0/auth0-react";
 
 ReactDOM.render(
+  <Auth0Provider
+      domain={process.env.REACT_APP_AUTH0_DOMAIN_NAME}
+      clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
+      // redirectUri={window.location.origin}
+      redirectUri="http://localhost:3000/#/admin"
+      audience="hasura"
+    >
     <Provider store={store}>
       <Router>
         <App />
       </Router>
-    </Provider>,
+    </Provider>
+    </Auth0Provider>,
   document.getElementById("root")
 );
 

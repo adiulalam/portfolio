@@ -32,13 +32,9 @@ function App() {
         baseColor="black"
         highlightColor="blue"
       >
-        <Nav portfolioProps={portfolioProps}>
-          <Switch>
-            <Route
-              exact
-              path="/admin"
-              render={(props) => <Admin {...props} />}
-            />
+        <Switch>
+          <Route exact path="/admin" render={(props) => <Admin {...props} />} />
+          <Nav portfolioProps={portfolioProps}>
             <Route
               exact
               path="/"
@@ -47,8 +43,8 @@ function App() {
               )}
             />
             <Route render={() => <Redirect to="/" />} />
-          </Switch>
-        </Nav>
+          </Nav>
+        </Switch>
       </SkeletonTheme>
     </div>
   );
