@@ -49,7 +49,18 @@ CREATE TABLE portfolio.media (
 );
 
 
+CREATE TABLE portfolio.users(
+	users_uuid UUID NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
+	 auth0_id text NOT NULL,
+   full_name text NOT NULL,
+   email text NOT NULL
+);
 
+-----------------------
+
+CREATE INDEX fk_shortAboutMe_uuid_index ON portfolio.content (fk_shortAboutMe_uuid);
+CREATE INDEX fk_content_uuid_index ON portfolio.project (fk_content_uuid);
+CREATE INDEX fk_project_uuid_index ON portfolio.media (fk_project_uuid);
 
 
 
@@ -418,3 +429,8 @@ query x {
     }
   }
 }
+
+
+
+
+

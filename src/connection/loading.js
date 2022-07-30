@@ -21,7 +21,7 @@ const Loading = () => {
         }}
       >
         {randNum === 0 ? (
-          <PacmanLoader speedMultiplier="2" color="#ffffff" size="80px" />
+          <PacmanLoader speedMultiplier="2" color="#ffffff" size="50px" />
         ) : randNum === 1 ? (
           <CircleLoader color="#ffffff" size="200px" />
         ) : randNum === 2 ? (
