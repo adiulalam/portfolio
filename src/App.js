@@ -26,39 +26,27 @@ function App() {
   const portfolioProps = data;
 
   return (
-    // <div>
-    //   <SkeletonTheme
-    //     borderRadius="1rem"
-    //     baseColor="black"
-    //     highlightColor="blue"
-    //   >
-    //     <Switch>
-    //       <Route exact path="/admin" render={(props) => <Admin portfolioProps={portfolioProps} {...props} />} />
-    //       <Nav portfolioProps={portfolioProps}>
-    //         <Route
-    //           exact
-    //           path="/"
-    //           render={(props) => (
-    //             <Home portfolioProps={portfolioProps} {...props} />
-    //           )}
-    //         />
-    //         <Route render={() => <Redirect to="/" />} />
-    //       </Nav>
-    //     </Switch>
-    //   </SkeletonTheme>
-    // </div>
     <div>
-    {/* <LogoutButton />
-    <Profile portfolioProps={portfolioContent} /> */}
-    <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
-      <p className="text-3xl text-gray-700 font-bold mb-5">
-        Welcome!
-      </p>
-      <p className="text-gray-500 text-lg">
-        React and Tailwind CSS in action
-      </p>
+      <SkeletonTheme
+        borderRadius="1rem"
+        baseColor="black"
+        highlightColor="blue"
+      >
+        <Switch>
+          <Route exact path="/admin" render={(props) => <Admin portfolioProps={portfolioProps} {...props} />} />
+          <Nav portfolioProps={portfolioProps}>
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <Home portfolioProps={portfolioProps} {...props} />
+              )}
+            />
+            <Route render={() => <Redirect to="/" />} />
+          </Nav>
+        </Switch>
+      </SkeletonTheme>
     </div>
-  </div>
   );
 }
 

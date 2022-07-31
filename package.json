@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
-  "version": "1.0.0",
-  "homepage": "http://smfils1.github.io/",
+  "version": "5.0.0",
+  "homepage": "https://www.adiulalamadil.me",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
@@ -11,6 +11,9 @@
     "@material-ui/lab": "^4.0.0-alpha.54",
     "axios": "^0.27.2",
     "clsx": "^1.1.1",
+    "fs": "^0.0.1-security",
+    "os": "^0.1.2",
+    "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-event-timeline": "^1.6.3",
@@ -55,7 +58,10 @@
     ]
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.8",
     "gh-pages": "^3.1.0",
-    "react-scripts": "^3.4.1"
+    "postcss": "^8.4.14",
+    "react-scripts": "^5.0.1",
+    "tailwindcss": "^3.1.7"
   }
 }
