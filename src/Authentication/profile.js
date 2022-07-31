@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-// import { FormControl } from '@mui/material';
-// import { useSelector } from "react-redux";
-// import clsx from "clsx";
 
 const Profile = (portfolioProps) => {
   const portfolioContent = portfolioProps.portfolioProps;
