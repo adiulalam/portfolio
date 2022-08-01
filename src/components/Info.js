@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles, Typography, Button } from "@material-ui/core/";
 // import content from "../content.json";
 import { grey } from "@material-ui/core/colors";
 import { School, Email, LocationOn } from "@material-ui/icons";
+import { portfolioContext } from "../App";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -35,35 +37,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Info = (portfolioProps) => {
-  const portfolioContent = portfolioProps.portfolioProps;
-  // console.log("portfolioContent----->", portfolioContent )
+const Info = () => {
+  const {career, email, education, location, resume} = useContext(portfolioContext);
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Typography variant="button" className={classes.title}>
-        {portfolioContent.career}
+        {career}
       </Typography>
       <div>
         <Email className={classes.icon} />
         <Typography variant="caption" className={classes.title}>
-          {portfolioContent.email}
+          {email}
         </Typography>
       </div>
       <div>
         <School className={classes.icon} />
         <Typography variant="caption" className={classes.title}>
-          {portfolioContent.education}
+          {education}
         </Typography>
       </div>
       <div>
         <LocationOn className={classes.icon} />
         <Typography variant="caption" className={classes.title}>
-          {portfolioContent.location}
+          {location}
         </Typography>
       </div>
       <div className={classes.btn}>
-        <Button style={{ color: "inherit" }} href={portfolioContent.resume}>
+        <Button style={{ color: "inherit" }} href={resume}>
           Resume
         </Button>
       </div>

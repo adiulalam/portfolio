@@ -7,6 +7,6 @@ export const headers = {
 
 export const graphqlQuery = {
   operationName: "getContent",
-  query: `query getContent { portfolio_content { profilePic backgroundImage fullName career resume education location email linkedin github description shortAboutMe { base loop } projects(order_by: { projectdate: desc }) { title description time application details technologies media { type src thumbnail } } } }`,
+  query: `query getContent { portfolio_content { profilePic backgroundImage fullName career resume education location email linkedin github description shortAboutMe { base loop } projects(order_by: { projectdate: desc }) { title description time application repo details technologies media { type src thumbnail } } } }`,
   variables: {},
 };

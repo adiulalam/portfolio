@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles, Typography } from "@material-ui/core/";
-// import content from "../../content.json";
 import { grey } from "@material-ui/core/colors";
+import { portfolioContext } from "../../App";
 
 import Experiences from "../Experiences";
 const useStyles = makeStyles((theme) => ({
@@ -22,13 +22,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     color: "white",
     backgroundColor: "black",
-    borderRadius: 10
+    borderRadius: 10,
   },
 }));
 
-const Portfolio = (portfolioProps) => {
-  const portfolioContent = portfolioProps.portfolioProps;
-  // console.log("portfolioContent----->", portfolioContent )
+const Portfolio = () => {
+  const { description } = useContext(portfolioContext);
 
   const classes = useStyles();
 
@@ -41,10 +40,10 @@ const Portfolio = (portfolioProps) => {
         {" "}
         <Typography
           variant="body1"
-          dangerouslySetInnerHTML={{ __html: portfolioContent.description }}
+          dangerouslySetInnerHTML={{ __html: description }}
         />
       </div>
-      <Experiences portfolioProps={portfolioContent}/>
+      <Experiences />
     </div>
   );
 };
