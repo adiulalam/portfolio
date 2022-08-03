@@ -11,24 +11,14 @@ const Intro = ({ textValue, onTextChange, handleReset, handleDelete }) => {
 					</label>
 				</div>
 				<div class="md:w-2/5">
-					{key === "content_uuid" ? (
-						<input
-							class=" bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-normal focus:outline-none focus:bg-white focus:border-purple-500"
-							type="text"
-							name={key}
-							value={value}
-							readOnly
-							onChange={onTextChange}
-						/>
-					) : (
-						<input
-							class=" bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-normal focus:outline-none focus:bg-white focus:border-purple-500"
-							type="text"
-							name={key}
-							value={value}
-							onChange={onTextChange}
-						/>
-					)}
+					<input
+						class=" bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-normal focus:outline-none focus:bg-white focus:border-purple-500"
+						type="text"
+						name={key}
+						value={value}
+						readOnly={key === "content_uuid" ? true : false}
+						onChange={onTextChange}
+					/>
 				</div>
 				<div class="flex place-content-center ">
 					<div class="inline px-1">
