@@ -5,38 +5,34 @@ import StartNav from "./StartNav";
 import EndNav from "./EndNav";
 
 const useStyles = makeStyles((theme) => ({
-  grow: {
-    flexGrow: 1,
-  },
-  appBar: {
-    backgroundColor: "black",
-    display: "flex",
-    flexDirection: "row",
-
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
+	grow: {
+		flexGrow: 1,
+	},
+	appBar: {
+		backgroundColor: "black",
+		display: "flex",
+		flexDirection: "row",
+		zIndex: theme.zIndex.drawer + 1,
+		transition: theme.transitions.create(["margin", "width"], {
+			easing: theme.transitions.easing.sharp,
+			duration: theme.transitions.duration.leavingScreen,
+		}),
+	},
 }));
 
-const TopNav = (portfolioProps) => {
-  const portfolioContent = portfolioProps.portfolioProps;
-  // console.log(portfolioContent)
-  const classes = useStyles();
+const TopNav = () => {
+	const classes = useStyles();
 
-  return (
-    <div>
-      {/* <CssBaseline /> */}
-      <AppBar elevation={0} position="fixed" className={classes.appBar}>
-        <StartNav />
-        <div className={classes.grow} />
-
-        <EndNav portfolioProps = {portfolioContent} />
-      </AppBar>
-    </div>
-  );
+	return (
+		<div>
+			{/* <CssBaseline /> */}
+			<AppBar elevation={0} position="fixed" className={classes.appBar}>
+				<StartNav />
+				<div className={classes.grow} />
+				<EndNav />
+			</AppBar>
+		</div>
+	);
 };
 
 export default TopNav;

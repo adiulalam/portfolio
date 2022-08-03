@@ -25,15 +25,13 @@ function App() {
 
 	if (isLoading) return <Loading />;
 
-	const portfolioProps = data;
-
 	return (
 		<div>
 			<SkeletonTheme borderRadius="1rem" baseColor="black" highlightColor="blue">
-				<portfolioContext.Provider value={portfolioProps}>
+				<portfolioContext.Provider value={data}>
 					<Switch>
-						<Route exact path="/admin" render={(props) => <Admin portfolioProps={portfolioProps} {...props} />} />
-						<Nav portfolioProps={portfolioProps}>
+						<Route exact path="/admin" render={(props) => <Admin {...props} />} />
+						<Nav>
 							<Route exact path="/" render={(props) => <Home {...props} />} />
 							<Route render={() => <Redirect to="/" />} />
 						</Nav>
