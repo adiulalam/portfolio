@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { portfolioContext } from "../App";
 import Intro from "./tabs/intro";
+// import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+// import "react-tabs/style/react-tabs.css";
 
 const Profile = () => {
 	const portfolioContent = useContext(portfolioContext);

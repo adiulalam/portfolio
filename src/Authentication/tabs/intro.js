@@ -16,6 +16,8 @@ const Intro = ({ textValue, onTextChange, handleReset, handleDelete }) => {
 						type="text"
 						name={key}
 						value={value}
+						required
+						id={rest["content_uuid"]}
 						readOnly={key === "content_uuid" ? true : false}
 						onChange={onTextChange}
 					/>
@@ -32,8 +34,9 @@ const Intro = ({ textValue, onTextChange, handleReset, handleDelete }) => {
 					</div>
 					<div class="inline px-1">
 						<button
-							class="bg-red-500 hover:bg-red-700 text-white font-bold rounded border-red-500 border-2 py-2 px-4 cursor-not-allowed"
+							class="bg-red-500 hover:bg-red-700 text-white font-bold rounded border-red-500 border-2 py-2 px-4 disabled:opacity-50"
 							onClick={handleDelete}
+							disabled={true}
 						>
 							DELETE
 						</button>
