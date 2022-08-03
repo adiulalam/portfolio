@@ -1,9 +1,9 @@
 import React from "react";
 
-const Intro = ({ textValue, onTextChange, handleReset, handleDelete }) => {
+const Intro = ({ intro, onTextChange, handleReset, handleDelete }) => {
 	// console.log("textValue---->", onTextChange);
-	return [textValue].map(({ shortAboutMe, projects, ...rest }) => {
-		return Object.entries({ ...rest }).map(([key, value]) => (
+	
+		return Object.entries({ ...intro }).map(([key, value]) => (
 			<div class="md:flex md:items-center mb-6 space-x-1.5">
 				<div class="flex place-content-center ">
 					<label class="block  text-gray-200 font-bold md:text-right mb-1 md:mb-0 px-4" for="inline-full-name">
@@ -17,7 +17,7 @@ const Intro = ({ textValue, onTextChange, handleReset, handleDelete }) => {
 						name={key}
 						value={value}
 						required
-						id={rest["content_uuid"]}
+						id={intro["content_uuid"]}
 						readOnly={key === "content_uuid" ? true : false}
 						onChange={onTextChange}
 					/>
@@ -44,7 +44,7 @@ const Intro = ({ textValue, onTextChange, handleReset, handleDelete }) => {
 				</div>
 			</div>
 		));
-	});
+	
 };
 
 export default Intro;
