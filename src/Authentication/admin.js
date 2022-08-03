@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import LogoutButton from "./logout";
 import Profile from "./profile";
-import { portfolioContext } from "../App";
 
 const Admin = () => {
 	const { getAccessTokenSilently, loginWithRedirect, user, isAuthenticated, isLoading } = useAuth0();
 
+	// eslint-disable-next-line
 	const [userToken, setUserToken] = useState("");
 
 	useEffect(() => {
@@ -25,6 +25,7 @@ const Admin = () => {
 				}
 			}
 		})();
+		// eslint-disable-next-line
 	}, [isLoading, getAccessTokenSilently]);
 
 	// console.log("token---->", userToken);
