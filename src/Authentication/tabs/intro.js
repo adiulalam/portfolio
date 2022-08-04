@@ -1,9 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { portfolioContext } from "../../App";
+import ContentObjects from "../../connection/connection";
+import { mutationHeaders } from "../admin";
+
 // import _ from 'lodash';
 const _ = require("lodash");
 
 const Intro = () => {
+  const headers = useContext(mutationHeaders);
   const portfolioContent = useContext(portfolioContext);
 
   const [textValue, setTextValue] = useState(portfolioContext);
@@ -30,9 +34,9 @@ const Intro = () => {
 
   //   console.log("submitValue----->", submitValue)
 
-  const handleSubmit = (e) => {
-    console.clear();
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+	e.preventDefault();
+    // console.clear();
 
     let isEmpty = false;
     Object.entries(submitValue).map(([key, value]) => {
@@ -40,23 +44,40 @@ const Intro = () => {
         isEmpty = true;
       }
     });
-
-    // console.log(_.isEmpty(submitValue))
-
     if (_.isEmpty(submitValue)) isEmpty = true;
 
     if (isEmpty) {
       setErrorMessage(true);
     } else {
       setErrorMessage(false);
+
+      const content_uuid = e.target.id;
+      const variables = { updatedContent: submitValue };
+      const mutation = `mutation updateContent($updatedContent: portfolio_content_set_input = {}) {
+		update_portfolio_content(where: {content_uuid: {_eq: "${content_uuid}"}}, _set: $updatedContent) {
+		  affected_rows
+		}
+	  }`;
+
+      const graphqlQuery = {
+        operationName: "updateContent",
+        query: mutation,
+        variables: variables,
+      };
+
+      async function fetchData() {
+        await ContentObjects(headers, graphqlQuery);
+        // console.log("result--->", result)
+		window.location.reload();
+
+      }
+      fetchData();
+	  
+
+      //   console.log("mutation----->", fetchData());
+      // console.log("submitValue----->", _.isEmpty(submitValue));
+      //   console.log(headers);
     }
-
-    // console.log("isEmpty----->", isEmpty);
-    // console.log("submitValue----->", _.isEmpty(submitValue));
-
-
-    const content_uuid = e.target.id;
-    const content_object = submitValue;
   };
 
   const handleReset = (e) => {
@@ -80,10 +101,9 @@ const Intro = () => {
     e.preventDefault();
   };
 
-
   return (
     <div class="flex justify-center">
-      <form class="w-full max-w-2xl">
+      <form class="w-full max-w-2xl" >
         {errorMessage ? (
           <div
             class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
@@ -141,7 +161,7 @@ const Intro = () => {
           {[textValue].map(({ content_uuid }) => (
             <button
               class=" mb-4 shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-              type="button"
+              type="submit"
               onClick={handleSubmit}
               id={content_uuid}
             >

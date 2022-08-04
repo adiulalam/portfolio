@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Home from "./components/Pages";
 import ContentObjects from "./connection/connection";
 import Loading from "./connection/loading";
+import { headers, graphqlQuery } from "./connection/graphql";
 
 export const portfolioContext = createContext();
 
@@ -16,8 +17,8 @@ function App() {
 	useEffect(() => {
 		setIsLoading(true);
 		async function fetchData() {
-			const result = await ContentObjects();
-			setData(result);
+			const result = await ContentObjects(headers, graphqlQuery);
+			setData(result.data.portfolio_content[0]);
 			setIsLoading(false);
 		}
 		fetchData();
