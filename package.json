@@ -1,7 +1,7 @@
 {
 	"name": "portfolio",
+	"homepage": ".",
 	"version": "5.0.0",
-	"homepage": "https://www.adiulalamadil.me",
 	"keywords": [],
 	"main": "src/index.js",
 	"dependencies": {
