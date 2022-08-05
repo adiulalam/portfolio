@@ -1,0 +1,11 @@
+version: "3"
+services:
+    react-app:
+        build: ./
+        ports:
+            - 8075:80
+        expose:
+            - "8075"
+        volumes:
+            - ./src:/app/src
+        restart: unless-stopped
