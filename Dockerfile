@@ -1,10 +1,10 @@
 FROM node as build
-WORKDIR /usr/app
-COPY package.json ./
+WORKDIR /app
+COPY package.json /app/
 RUN npm install
-COPY ./ ./
+COPY ./ /app/
 RUN npm run build
 
 
 FROM nginx
-COPY --from=build /usr/app/build /usr/share/nginx/html
+COPY --from=build /app/build /usr/share/nginx/html
