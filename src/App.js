@@ -11,6 +11,8 @@ import { headers, graphqlQuery } from "./connection/graphql";
 export const portfolioContext = createContext();
 
 function App() {
+	console.log("test")
+	
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 
