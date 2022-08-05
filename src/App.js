@@ -8,50 +8,38 @@ import Loading from "./connection/loading";
 import ContentObjects from "./connection/connection";
 
 function App() {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+	const [data, setData] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    setIsLoading(true);
-    async function fetchData() {
-      const result = await ContentObjects();
-      setData(result);
-      setIsLoading(false);
-    }
-    fetchData();
-  }, []);
+	useEffect(() => {
+		setIsLoading(true);
+		async function fetchData() {
+			const result = await ContentObjects();
+			setData(result);
+			setIsLoading(false);
+		}
+		fetchData();
+	}, []);
 
-  if (isLoading) return <Loading />;
+	if (isLoading) return <Loading />;
 
-  const portfolioProps = data;
+	const portfolioProps = data;
 
-  return (
-    <div>
-      <SkeletonTheme
-        borderRadius="1rem"
-        baseColor="black"
-        highlightColor="blue"
-      >
-        <Nav portfolioProps={portfolioProps}>
-          <Switch>
-            <Route
-              exact
-              path="/admin"
-              render={(props) => <Admin {...props} />}
-            />
-            <Route
-              exact
-              path="/"
-              render={(props) => (
-                <Home portfolioProps={portfolioProps} {...props} />
-              )}
-            />
-            <Route render={() => <Redirect to="/" />} />
-          </Switch>
-        </Nav>
-      </SkeletonTheme>
-    </div>
-  );
+	console.log("Test---->");
+
+	return (
+		<div>
+			<SkeletonTheme borderRadius="1rem" baseColor="black" highlightColor="blue">
+				<Nav portfolioProps={portfolioProps}>
+					<Switch>
+						<Route exact path="/admin" render={(props) => <Admin {...props} />} />
+						<Route exact path="/" render={(props) => <Home portfolioProps={portfolioProps} {...props} />} />
+						<Route render={() => <Redirect to="/" />} />
+					</Switch>
+				</Nav>
+			</SkeletonTheme>
+		</div>
+	);
 }
 
 export default App;
