@@ -8,3 +8,4 @@ services:
             - "8075"
         volumes:
             - ./src:/app/src
+        restart: unless-stopped
