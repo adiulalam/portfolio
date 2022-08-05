@@ -1,49 +1,93 @@
-import React, { useEffect, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-// import LoginButton from "./login";
-import LogoutButton from "./logout";
+import React, { useContext, useEffect, useState } from "react";
+import { portfolioContext } from "../App";
+import Intro from "./tabs/intro";
+import AboutMe from "./tabs/aboutme";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "./tabs/react-tabs.css";
 
 const Profile = () => {
-  const {
-    getAccessTokenSilently,
-    loginWithRedirect,
-    user,
-    isAuthenticated,
-    isLoading,
-  } = useAuth0();
+  // const portfolioContent = useContext(portfolioContext);
 
-  const [userToken, setUserToken] = useState("");
+  // const [textValue, setTextValue] = useState(portfolioContent);
 
-  useEffect(() => {
-    (async function login() {
-      if (!isLoading && !user && !isAuthenticated) {
-        await loginWithRedirect();
-      } else {
-        try {
-          const token = await getAccessTokenSilently({
-            audience: "hasura",
-          });
-          setUserToken(token);
-          // console.log("token---->", token);
-        } catch (e) {
-          console.error(e);
-        }
-      }
-    })();
-  }, [isLoading, getAccessTokenSilently]);
+  const [intro, setIntro] = useState();
+  const [projects, setProjects] = useState();
+  const [aboutMe, setAboutMe] = useState();
 
-  console.log("token---->", user);
+  // useEffect(() => {
+  //   [textValue].map(
+  //     ({ shortAboutMe, projects, ...rest }) => (
+  //       setIntro(rest), setProjects(projects), setAboutMe(shortAboutMe)
+  //     )
+  //   );
+  // }, [textValue]);
+
+  // const onTextChange = (e, index) => {
+  //   // console.log("e.target.index--->", index);
+
+  //   const { name, value } = e.target;
+  //   // console.log("e.target.name--->", { [name]: value });
+  //   if (name === "loop") {
+  //     const { loop } = textValue.shortAboutMe;
+  //     const newLoop = [...loop];
+  //     newLoop[index] = value;
+
+  //     return setTextValue((prevState) => ({
+  //       ...prevState,
+  //       shortAboutMe: { ...prevState.shortAboutMe, loop: newLoop },
+  //     }));
+  //   } else if (name === "base") {
+  //     return setTextValue((prevState) => ({
+  //       ...prevState,
+  //       shortAboutMe: { ...prevState.shortAboutMe, [name]: value },
+  //     }));
+  //   } else {
+  //     return setTextValue((prevState) => ({
+  //       ...prevState,
+  //       [name]: value,
+  //     }));
+  //   }
+  // };
+
+  // const handleSubmit = () => console.log(textValue);
+
+  // const handleReset = (e) => {
+  //   e.preventDefault();
+  //   const { name } = e.target;
+  //   setTextValue((prevState) => ({
+  //     ...prevState,
+  //     [name]: portfolioContent[name],
+  //   }));
+  //   // console.log(value);
+  // };
+
+  // const handleDelete = (e) => {
+  //   e.preventDefault();
+  // };
+
+  //   const {shortAboutMe, projects, ...rest} = textValue;
+
+  // console.log("..rewst--->", aboutMe)
 
   return (
-    isAuthenticated && (
-      <div style={{ "background-color": "white" }}>
-        <LogoutButton />
-        <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
-        {/* <p>{token}</p> */}
-      </div>
-    )
+    <Tabs defaultIndex={0}>
+      <TabList>
+        <Tab>Intro</Tab>
+        <Tab>AboutMe</Tab>
+      </TabList>
+
+      <TabPanel>
+        <Intro />
+      </TabPanel>
+      {/* <TabPanel>
+        <AboutMe
+          aboutMe={aboutMe}
+          onTextChange={onTextChange}
+          handleReset={handleReset}
+          handleDelete={handleDelete}
+        />
+      </TabPanel> */}
+    </Tabs>
   );
 };
 

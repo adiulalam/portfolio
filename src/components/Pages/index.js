@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   makeStyles,
   Typography,
@@ -6,21 +6,21 @@ import {
   useMediaQuery,
 } from "@material-ui/core/";
 import { useSelector } from "react-redux";
-// import content from "../../content.json";
 import Info from "../Info";
 import { grey } from "@material-ui/core/colors";
 import clsx from "clsx";
 import Typical from "react-typical";
 import Portfolio from "./Portfolio";
+import { portfolioContext } from "../../App";
 
-const HomePage = (portfolioProps) => {
-  const portfolioContent = portfolioProps.portfolioProps;
-  // console.log("portfolioContent----->", portfolioContent.backgroundImage);
+const HomePage = () => {
+  const { backgroundImage, shortAboutMe, fullName } =
+    useContext(portfolioContext);
 
-  const backgroundImageLocation = portfolioContent?.backgroundImage
-    ? portfolioContent.backgroundImage.includes("https")
-      ? portfolioContent.backgroundImage
-      : require(`./../../assets/images/${portfolioContent.backgroundImage}`)
+  const backgroundImageLocation = backgroundImage
+    ? backgroundImage.includes("https")
+      ? backgroundImage
+      : require(`./../../assets/images/${backgroundImage}`)
     : "";
 
   const useStyles = makeStyles((theme) => ({
@@ -75,23 +75,13 @@ const HomePage = (portfolioProps) => {
     `(orientation: landscape) and (max-width: ${drawerSize + 900}px)`
   );
 
-  // const loop = portfolioContent?.shortAboutMe?.loop
-  //   ? portfolioContent.shortAboutMe.loop.forEach((value) => {
-  //     writer.push(base, 150, base + value, 150);
-  //   })
-  //   : "";
-
-  // console.log("content.shortAboutMe.base--->", shortAboutMe)
-
   const AboutMe = () => {
-    const base = portfolioContent?.shortAboutMe?.base
-      ? portfolioContent.shortAboutMe.base
-      : "";
+    const base = shortAboutMe?.base ? shortAboutMe.base : "";
 
     const writer = [];
 
-    if (portfolioContent?.shortAboutMe?.loop) {
-      portfolioContent.shortAboutMe.loop.forEach((value) => {
+    if (shortAboutMe?.loop) {
+      shortAboutMe.loop.forEach((value) => {
         writer.push(base, 150, base + value, 150);
       });
     } else {
@@ -107,18 +97,10 @@ const HomePage = (portfolioProps) => {
       <div className={classes.landing}>
         <div className={classes.content}>
           <Typography className={classes.intro} variant="h3">
-            I'm {portfolioContent.fullName},
-            {/* {portfolioContent?.fullName ? (
-              `I'm ${portfolioContent.fullName}`
-            ) : (
-              <Skeleton
-                width="400px"
-              />
-            )} */}
+            I'm {fullName},
           </Typography>
           <AboutMe />
         </div>
-        {/* </div> */}
       </div>
       <div
         className={clsx({
@@ -126,9 +108,9 @@ const HomePage = (portfolioProps) => {
           [classes.info]: !(isSmallScreen || inLandScapeMode),
         })}
       >
-        <Info portfolioProps={portfolioContent} />
+        <Info />
       </div>
-      <Portfolio portfolioProps={portfolioContent} />
+      <Portfolio />
     </div>
   );
 };

@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import React, { createContext, useEffect, useState } from "react";
+import { SkeletonTheme } from "react-loading-skeleton";
+import { Redirect, Route, Switch } from "react-router-dom";
+import Admin from "./Authentication/admin";
 import Nav from "./components/Nav";
 import Home from "./components/Pages";
-import Admin from "./Authentication/admin";
-import { SkeletonTheme } from "react-loading-skeleton";
-import Loading from "./connection/loading";
 import ContentObjects from "./connection/connection";
+import Loading from "./connection/loading";
+import { headers, graphqlQuery } from "./connection/graphql";
+
+export const portfolioContext = createContext();
+
+console.log("welcome");
 
 function App() {
 	const [data, setData] = useState([]);
@@ -14,8 +19,8 @@ function App() {
 	useEffect(() => {
 		setIsLoading(true);
 		async function fetchData() {
-			const result = await ContentObjects();
-			setData(result);
+			const result = await ContentObjects(headers, graphqlQuery);
+			setData(result.data.portfolio_content[0]);
 			setIsLoading(false);
 		}
 		fetchData();
@@ -23,20 +28,18 @@ function App() {
 
 	if (isLoading) return <Loading />;
 
-	const portfolioProps = data;
-
-	console.log("Test---->");
-
 	return (
 		<div>
 			<SkeletonTheme borderRadius="1rem" baseColor="black" highlightColor="blue">
-				<Nav portfolioProps={portfolioProps}>
+				<portfolioContext.Provider value={data}>
 					<Switch>
 						<Route exact path="/admin" render={(props) => <Admin {...props} />} />
-						<Route exact path="/" render={(props) => <Home portfolioProps={portfolioProps} {...props} />} />
-						<Route render={() => <Redirect to="/" />} />
+						<Nav>
+							<Route exact path="/" render={(props) => <Home {...props} />} />
+							<Route render={() => <Redirect to="/" />} />
+						</Nav>
 					</Switch>
-				</Nav>
+				</portfolioContext.Provider>
 			</SkeletonTheme>
 		</div>
 	);
