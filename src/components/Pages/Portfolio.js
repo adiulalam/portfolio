@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(2),
   },
   description: {
-    padding: theme.spacing(0.5),
+    padding: theme.spacing(1.5),
     display: "flex",
     color: "white",
     backgroundColor: "black",
