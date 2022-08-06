@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
   },
   details: {
-    padding: theme.spacing(1, 0),
+    padding: theme.spacing(2, 5),
     [theme.breakpoints.down("xs")]: {
       padding: theme.spacing(0),
     },
@@ -126,9 +126,9 @@ const Project = ({ project }) => {
               <strong>{project.description}</strong>
             </Typography>
             <div className={classes.details}>
-              <ul>
+              <ul >
                 {project.details.map((detail, i) => (
-                  <li key={i}>
+                  <li class="list-disc" key={i}>
                     <Typography variant="body1">{detail}</Typography>
                   </li>
                 ))}
