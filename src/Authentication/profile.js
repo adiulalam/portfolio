@@ -79,14 +79,10 @@ const Profile = () => {
       <TabPanel>
         <Intro />
       </TabPanel>
-      {/* <TabPanel>
+      <TabPanel>
         <AboutMe
-          aboutMe={aboutMe}
-          onTextChange={onTextChange}
-          handleReset={handleReset}
-          handleDelete={handleDelete}
         />
-      </TabPanel> */}
+      </TabPanel>
     </Tabs>
   );
 };

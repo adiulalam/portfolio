@@ -8,7 +8,6 @@ export const mutationHeaders = createContext();
 const Admin = () => {
 	const { getAccessTokenSilently, loginWithRedirect, user, isAuthenticated, isLoading } = useAuth0();
 
-	// eslint-disable-next-line
 	const [userToken, setUserToken] = useState("");
 
 	useEffect(() => {

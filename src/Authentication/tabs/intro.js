@@ -8,17 +8,13 @@ const _ = require("lodash");
 
 const Intro = () => {
   const headers = useContext(mutationHeaders);
-  const portfolioContent = useContext(portfolioContext);
 
-  const [textValue, setTextValue] = useState(portfolioContext);
+  const { shortAboutMe, projects, ...restObject } =
+    useContext(portfolioContext);
+
+  const [textValue, setTextValue] = useState(restObject);
   const [submitValue, setSubmitValue] = useState({});
   const [errorMessage, setErrorMessage] = useState(false);
-
-  useEffect(() => {
-    [portfolioContent].map(({ shortAboutMe, projects, ...rest }) =>
-      setTextValue(rest)
-    );
-  }, [portfolioContent]);
 
   const onTextChange = (e) => {
     const { name, value } = e.target;
@@ -32,17 +28,12 @@ const Intro = () => {
     }));
   };
 
-  //   console.log("submitValue----->", submitValue)
-
   const handleSubmit = async (e) => {
-	e.preventDefault();
-    // console.clear();
+    e.preventDefault();
 
     let isEmpty = false;
     Object.entries(submitValue).map(([key, value]) => {
-      if (!value.length) {
-        isEmpty = true;
-      }
+      if (!value.length) isEmpty = true;
     });
     if (_.isEmpty(submitValue)) isEmpty = true;
 
@@ -53,11 +44,7 @@ const Intro = () => {
 
       const content_uuid = e.target.id;
       const variables = { updatedContent: submitValue };
-      const mutation = `mutation updateContent($updatedContent: portfolio_content_set_input = {}) {
-		update_portfolio_content(where: {content_uuid: {_eq: "${content_uuid}"}}, _set: $updatedContent) {
-		  affected_rows
-		}
-	  }`;
+      const mutation = `mutation updateContent($updatedContent: portfolio_content_set_input = {}) { update_portfolio_content(where: {content_uuid: {_eq: "${content_uuid}"}}, _set: $updatedContent) { affected_rows } }`;
 
       const graphqlQuery = {
         operationName: "updateContent",
@@ -65,14 +52,10 @@ const Intro = () => {
         variables: variables,
       };
 
-      async function fetchData() {
+      (async function fetchData() {
         await ContentObjects(headers, graphqlQuery);
-        // console.log("result--->", result)
-		window.location.reload();
-
-      }
-      fetchData();
-	  
+        window.location.reload();
+      })();
 
       //   console.log("mutation----->", fetchData());
       // console.log("submitValue----->", _.isEmpty(submitValue));
@@ -85,7 +68,7 @@ const Intro = () => {
     const { name } = e.target;
     setTextValue((prevState) => ({
       ...prevState,
-      [name]: portfolioContent[name],
+      [name]: restObject[name],
     }));
     setSubmitValue((prevState) => {
       delete prevState[name];
@@ -103,7 +86,7 @@ const Intro = () => {
 
   return (
     <div class="flex justify-center">
-      <form class="w-full max-w-2xl" >
+      <form class="w-full max-w-2xl">
         {errorMessage ? (
           <div
             class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
@@ -124,7 +107,9 @@ const Intro = () => {
             </div>
             <div class="md:w-2/5">
               <input
-                class=" bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-normal focus:outline-none focus:bg-white focus:border-purple-500"
+                class={` bg-gray-200 appearance-none border-2 ${
+                  value ? "" : "border-red-500"
+                } rounded w-full py-2 px-4 text-gray-700 leading-normal focus:outline-none focus:bg-white focus:border-purple-500`}
                 type="text"
                 name={key}
                 value={value}
