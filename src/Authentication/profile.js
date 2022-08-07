@@ -70,7 +70,7 @@ const Profile = () => {
   // console.log("..rewst--->", aboutMe)
 
   return (
-    <Tabs defaultIndex={0}>
+    <Tabs defaultIndex={1}>
       <TabList>
         <Tab>Intro</Tab>
         <Tab>AboutMe</Tab>

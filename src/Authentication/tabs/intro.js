@@ -57,9 +57,6 @@ const Intro = () => {
         window.location.reload();
       })();
 
-      //   console.log("mutation----->", fetchData());
-      // console.log("submitValue----->", _.isEmpty(submitValue));
-      //   console.log(headers);
     }
   };
 
@@ -87,14 +84,14 @@ const Intro = () => {
   return (
     <div class="flex justify-center">
       <form class="w-full max-w-2xl">
-        {errorMessage ? (
+        {errorMessage && (
           <div
             class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
             role="alert"
           >
             <span class="font-medium">Error!</span> Field is Empty
           </div>
-        ) : null}
+        )}
         {Object.entries({ ...textValue }).map(([key, value]) => (
           <div class="md:flex md:items-center mb-6 space-x-1.5">
             <div class="flex place-content-center ">
