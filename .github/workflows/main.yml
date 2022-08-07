@@ -47,6 +47,8 @@ jobs:
           platforms: linux/arm/v7
           context: .
           file: ./Dockerfile
+          build-args: |
+            REACT_APP_URL=https://hasura.adiulalamadil.me/v1/graphql
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/portfolio:latest
           cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/portfolio:buildcache
