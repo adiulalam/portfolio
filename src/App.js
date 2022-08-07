@@ -12,7 +12,8 @@ export const portfolioContext = createContext();
 
 function App() {
 
-	console.log(process.env.REACT_APP_URL)
+	console.log("REACT_APP_URL---->", process.env.REACT_APP_URL)
+	console.log("REACT_APP_TEST---->", process.env.REACT_APP_TEST)
 
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
