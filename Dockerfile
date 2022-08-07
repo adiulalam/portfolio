@@ -2,6 +2,7 @@ FROM node:lts-alpine as build
 WORKDIR /app
 ARG REACT_APP_URL
 ARG REACT_APP_TEST
+ENV REACT_APP_TEST_URL=TEST_URL
 COPY package.json /app/
 RUN npm install
 COPY ./ /app/

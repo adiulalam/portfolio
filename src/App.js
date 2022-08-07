@@ -14,6 +14,7 @@ function App() {
 
 	console.log("REACT_APP_URL---->", process.env.REACT_APP_URL)
 	console.log("REACT_APP_TEST---->", process.env.REACT_APP_TEST)
+	console.log("REACT_APP_TEST_URL---->", process.env.REACT_APP_TEST_URL)
 
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
