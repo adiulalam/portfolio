@@ -2,9 +2,9 @@ version: "3"
 services:
     react-app:
         image: docker.io/adiulalam/portfolio:latest
-        build: ./
         args:
           REACT_APP_URL: ${APP_URL}
+        build: ./
         ports:
             - 8075:80
         expose:
