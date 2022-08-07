@@ -4,7 +4,7 @@ services:
         image: docker.io/adiulalam/portfolio:latest
         build: ./
         args:
-          REACT_APP_HOST_IP_ADDRESS: ${IP_ADDRESS}
+          REACT_APP_URL: ${APP_URL}
         ports:
             - 8075:80
         expose:

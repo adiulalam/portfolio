@@ -3,8 +3,8 @@ WORKDIR /app
 COPY package.json /app/
 RUN npm install
 
-ARG REACT_APP_DEBUG
-ENV REACT_APP_DEBUG=$REACT_APP_DEBUG
+ARG REACT_APP_URL
+ENV REACT_APP_URL=$REACT_APP_URL
 
 COPY ./ /app/
 RUN npm run build
