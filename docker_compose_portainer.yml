@@ -1,0 +1,14 @@
+version: "3"
+services:
+    react-app:
+        image: docker.io/adiulalam/portfolio:latest
+        build: ./
+        args:
+          REACT_APP_HOST_IP_ADDRESS: ${IP_ADDRESS}
+        ports:
+            - 8075:80
+        expose:
+            - "8075"
+        volumes:
+            - ./src:/app/src
+        restart: unless-stopped
