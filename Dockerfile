@@ -1,7 +1,7 @@
 FROM node:lts-alpine as build
 WORKDIR /app
-ARG REACT_APP_URL
-ENV REACT_APP_URL=$REACT_APP_URL
+# ARG REACT_APP_URL
+ENV REACT_APP_URL = https://hasura.adiulalamadil.me/v1/graphql
 COPY package.json /app/
 RUN npm install
 COPY ./ /app/
