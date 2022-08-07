@@ -1,4 +1,4 @@
-export const endpoint = "https://hasura.adiulalamadil.me/v1/graphql";
+export const endpoint = process.env.REACT_APP_URL;
 
 export const headers = {
 	"Content-Type": "application/json",
