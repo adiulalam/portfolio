@@ -25,7 +25,7 @@ function App() {
 		setIsLoading(true);
 		async function fetchData() {
 			const result = await ContentObjects(headers, graphqlQuery);
-			setData(result.data.portfolio_content[0]);
+			setData(result);
 			setIsLoading(false);
 		}
 		fetchData();
