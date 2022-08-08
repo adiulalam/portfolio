@@ -46,7 +46,7 @@ jobs:
         with:
           platforms: linux/arm/v7
           secrets: |
-            "REACT_APP_URL = https://hasura.adiulalamadil.me/v1/graphql"
+            REACT_APP_URL = https://hasura.adiulalamadil.me/v1/graphql
           context: .
           file: ./Dockerfile
           push: true
