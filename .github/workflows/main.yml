@@ -45,10 +45,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           platforms: linux/arm/v7
-          build-args: |
-            "REACT_APP_URL=https://hasura.adiulalamadil.me/v1/graphql"
           secrets: |
-            "REACT_APP_URL=https://hasura.adiulalamadil.me/v1/graphql"
+            "REACT_APP_URL = https://hasura.adiulalamadil.me/v1/graphql"
           context: .
           file: ./Dockerfile
           push: true
