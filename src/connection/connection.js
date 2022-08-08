@@ -3,7 +3,7 @@ import { endpoint } from "./graphql";
 
 const ContentObjects = async (headers, graphql) => {
   const response = await axios({
-    url: endpoint,
+    url: process.env.REACT_APP_URL,
     method: "post",
     headers: headers,
     data: graphql,
