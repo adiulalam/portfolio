@@ -7,17 +7,10 @@ import Home from "./components/Pages";
 import ContentObjects from "./connection/connection";
 import Loading from "./connection/loading";
 import { headers, graphqlQuery } from "./connection/graphql";
-import { endpoint } from "./connection/graphql";
 
 export const portfolioContext = createContext();
 
 function App() {
-
-	console.log("endpoint appjs---->", endpoint)
-	console.log("REACT_APP_TES---->", process.env.REACT_APP_URL)
-	console.log("REACT_APP_TEST---->", process.env.REACT_APP_TEST)
-	console.log("REACT_APP_TEST_URL---->", process.env.REACT_APP_TEST_URL)
-
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 
