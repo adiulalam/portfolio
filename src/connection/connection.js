@@ -1,17 +1,10 @@
-// import axios from "axios";
 import { endpoint } from "./graphql";
 
-const ContentObjects = async (headers, graphql) => {
-  console.log(
-    "axios {process.env.REACT_APP_URL}--->",
-    `${process.env.REACT_APP_URL}`
-  );
-  console.log("axios endpoint--->", endpoint);
-
+const ContentObjects = async (headers, graphqlQuery) => {
   const options = {
     method: "POST",
     headers: headers,
-    body: JSON.stringify(graphql),
+    body: JSON.stringify(graphqlQuery),
   };
 
   const response = await fetch(endpoint, options);
@@ -20,7 +13,7 @@ const ContentObjects = async (headers, graphql) => {
   if (data?.data) {
     const result = data?.data?.portfolio_content[0];
 
-    console.log(result); // data
+    // console.log(result);
 
     return result;
   } else {
