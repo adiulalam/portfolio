@@ -45,10 +45,11 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           platforms: linux/arm/v7
+          build-args: REACT_APP_URL = https://hasura.adiulalamadil.me/v1/graphql
           context: .
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/portfolio:latest
           cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/portfolio:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/portfolio:buildcache,mode=max
-          build-args: REACT_APP_URL = https://hasura.adiulalamadil.me/v1/graphql
+          
