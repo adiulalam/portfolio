@@ -18,6 +18,7 @@
 		"babel-loader": "^8.2.5",
 		"clsx": "^1.1.1",
 		"eslint-visitor-keys": "^3.3.0",
+		"fetch": "^1.1.0",
 		"lodash": "^4.17.21",
 		"path": "^0.12.7",
 		"react": "^16.8.6",
