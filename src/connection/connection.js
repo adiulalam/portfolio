@@ -2,8 +2,10 @@ import axios from "axios";
 import { endpoint } from "./graphql";
 
 const ContentObjects = async (headers, graphql) => {
+  console.log("axios {process.env.REACT_APP_URL}--->", `${process.env.REACT_APP_URL}`)
+  console.log("axios endpoint--->", endpoint)
   const response = await axios({
-    url: process.env.REACT_APP_URL,
+    url: endpoint,
     method: "post",
     headers: headers,
     data: graphql,
