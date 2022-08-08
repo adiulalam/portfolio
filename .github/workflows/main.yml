@@ -45,12 +45,14 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           platforms: linux/arm64
-          build-args: |
-            REACT_APP_URL=https://hasura.adiulalamadil.me/v1/graphql
-          secrets: |
-            REACT_APP_URL=https://hasura.adiulalamadil.me/v1/graphql
           context: .
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/portfolio:latest
+          build-args: |
+            "REACT_APP_URL=${{ secrets.REACT_APP_URL }}"
+            "REACT_APP_TEST=TEST"
+          secrets: |
+            "REACT_APP_URL=${{ secrets.REACT_APP_URL }}"
+            "REACT_APP_TEST=TEST"
           
