@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -46,7 +46,7 @@ jobs:
         with:
           platforms: linux/arm/v7
           build-args: |
-            REACT_APP_URL = https://hasura.adiulalamadil.me/v1/graphql
+            "REACT_APP_URL = https://hasura.adiulalamadil.me/v1/graphql"
           context: .
           file: ./Dockerfile
           push: true
