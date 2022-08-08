@@ -46,9 +46,9 @@ jobs:
         with:
           platforms: linux/arm64
           build-args: |
-            "REACT_APP_URL=https://hasura.adiulalamadil.me/v1/graphql"
+            REACT_APP_URL=https://hasura.adiulalamadil.me/v1/graphql
           secrets: |
-            "REACT_APP_URL=https://hasura.adiulalamadil.me/v1/graphql"
+            REACT_APP_URL=https://hasura.adiulalamadil.me/v1/graphql
           context: .
           file: ./Dockerfile
           push: true
