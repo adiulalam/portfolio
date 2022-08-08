@@ -50,6 +50,4 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/portfolio:latest
-          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/portfolio:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/portfolio:buildcache,mode=max
           
