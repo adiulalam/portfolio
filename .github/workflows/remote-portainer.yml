@@ -25,7 +25,7 @@ jobs:
                   serverurl: http://132.145.17.195:9000
                   username: admin
                   password: ${{ secrets.PORTAINER_PASSWORD }}
-                  endpointId: 1
+                  endpointId: 2
                   stackname: portfolio
                   imagenames: |
                       xxx/xxx
