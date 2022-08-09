@@ -1,9 +1,7 @@
 version: "3"
 services:
     react-app:
-        build:
-            context: .
-            dockerfile: Dockerfile
+        build: ./
         ports:
             - 8075:80
         expose:
