@@ -60,16 +60,9 @@ jobs:
             "REACT_APP_AUTH0_DOMAIN_NAME=${{ secrets.REACT_APP_AUTH0_DOMAIN_NAME }}"
             "REACT_APP_AUTH0_CLIENT_ID=${{ secrets.REACT_APP_AUTH0_CLIENT_ID }}"
             
-      - name: Deploy Stage
-        id: myRequest
-        uses: fjogeleit/http-request-action@v1
-        with:
-          url: ${{ secrets.PORTAINER_WEBHOOK_URL }}
-          method: 'POST'
           
-      - name: Show Response
+      - name: Send Webhook
         run: |
-          echo ${{ steps.myRequest.outputs.response }}
-          echo ${{ fromJson(steps.myRequest.outputs.response).field_you_want_to_access }}
+          curl -X POST ${{ secrets.PORTAINER_WEBHOOK_URL }}
             
           
