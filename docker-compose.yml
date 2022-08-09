@@ -2,10 +2,8 @@ version: "3"
 services:
     react-app:
         build:
-          context: .
-          dockerfile: Dockerfile
-          args:
-            - REACT_APP_URL=https://hasura.adiulalamadil.me/v1/graphql
+            context: .
+            dockerfile: Dockerfile
         ports:
             - 8075:80
         expose:
