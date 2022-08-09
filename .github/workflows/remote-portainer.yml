@@ -19,8 +19,9 @@ jobs:
               uses: docker/setup-buildx-action@v1
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v1
-            - uses: actions/checkout@v2
-            - uses: bots-house/portainer-deploy-stack-action
+            - name: Deploy Stack
+
+              uses: bots-house/portainer-deploy-stack-action
               with:
                   # url of Poratainer instance
                   portainer-url: "http://132.145.17.195:9000/"
