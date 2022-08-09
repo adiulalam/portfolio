@@ -60,9 +60,9 @@ jobs:
             "REACT_APP_AUTH0_DOMAIN_NAME=${{ secrets.REACT_APP_AUTH0_DOMAIN_NAME }}"
             "REACT_APP_AUTH0_CLIENT_ID=${{ secrets.REACT_APP_AUTH0_CLIENT_ID }}"
             
-          
       - name: Send Webhook
         run: |
-          curl -X POST ${{ secrets.PORTAINER_WEBHOOK_URL }}
+          sleep 30s
+          curl -X POST "${{ secrets.PORTAINER_WEBHOOK_URL }}"
             
           
