@@ -5,8 +5,6 @@ services:
         build:
           context: .
           dockerfile: Dockerfile
-          args:
-            - REACT_APP_URL=https://hasura.adiulalamadil.me/v1/graphql
         ports:
             - 8075:80
         volumes:
