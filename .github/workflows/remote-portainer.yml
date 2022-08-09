@@ -19,15 +19,7 @@ jobs:
               uses: docker/setup-buildx-action@v1
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v1
-            - name: Deploy Stack
-              uses: kgierke/portainer-stack-deployment@v1
-              with:
-                  portainer-url: "http://132.145.17.195:9000/"
-                  portainer-username: "admin"
-                  portainer-password: ${{ secrets.PORTAINER_PASSWORD }}
-                  portainer-endpoint: 2
-                  name: portfolio
-                  file: docker-compose.yml
+            - uses: actions/checkout@v2
             - uses: bots-house/portainer-deploy-stack-action
               with:
                   # url of Poratainer instance
