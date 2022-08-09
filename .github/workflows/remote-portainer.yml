@@ -25,6 +25,6 @@ jobs:
                   portainer-url: "http://132.145.17.195:9000/"
                   portainer-username: "admin"
                   portainer-password: ${{ secrets.PORTAINER_PASSWORD }}
-                  portainer-endpoint: 2
+                  portainer-endpoint: 1
                   name: portfolio
                   file: docker-compose.yml
