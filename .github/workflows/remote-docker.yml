@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CD
 
 on:
   push:
@@ -30,4 +30,5 @@ jobs:
           copy_stack_file: true
           stack_file_name: docker-compose.yaml
           args: up -d
+          pull_images_first: 'true'
           
