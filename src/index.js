@@ -13,11 +13,6 @@ ReactDOM.render(
     domain={process.env.REACT_APP_AUTH0_DOMAIN_NAME}
     clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
     redirectUri={`${window.location.origin}/#/admin`}
-    // redirectUri={
-    //   process?.env?.REACT_APP_ENV === "local"
-    //     ? "http://localhost:3000/#/admin"
-    //     : "adiulalamadil.me/#/admin"
-    // }
     audience="hasura"
   >
     <Provider store={store}>
