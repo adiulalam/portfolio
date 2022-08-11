@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { portfolioContext } from "../../App";
 import ContentObjects from "../../connection/connection";
 import { mutationHeaders } from "../admin";
+import Input from "../components/input";
 
 // import _ from 'lodash';
 const _ = require("lodash");
@@ -93,7 +94,7 @@ const Intro = () => {
         )}
         {Object.entries({ ...textValue }).map(([key, value]) => (
           <div class="md:flex md:items-center mb-6 space-x-1.5">
-            <div class="flex place-content-center ">
+            {/* <div class="flex place-content-center ">
               <label
                 class="block  text-gray-200 font-bold md:text-right mb-1 md:mb-0 px-4"
                 for="inline-full-name"
@@ -107,14 +108,21 @@ const Intro = () => {
                   value ? "" : "border-red-500"
                 } rounded w-full py-2 px-4 text-gray-700 leading-normal focus:outline-none focus:bg-white focus:border-purple-500`}
                 type="text"
-                name={key}
+                name={`${key}`}
                 value={value}
                 id={textValue["content_uuid"]}
                 readOnly={key === "content_uuid" ? true : false}
                 onChange={onTextChange}
                 required
               />
-            </div>
+            </div> */}
+            <Input
+              name={key}
+              value={value}
+              textValue={textValue}
+              id="content_uuid"
+              onTextChange={onTextChange}
+            />
             <div class="flex place-content-center ">
               <div class="inline px-1">
                 <button
