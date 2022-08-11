@@ -83,8 +83,8 @@ const AboutMe = () => {
 			const { loop } = textValue;
 			console.log("textValue", textValue);
 			const newLoop = [...loop];
-			// newLoop[index].splice(shortAboutMe[name], 1);
-			newLoop[index] = shortAboutMe[name][index];
+			// newLoop[index].splice(resetValue[name], 1);
+			newLoop[index] = resetValue[name][index];
 
 			setTextValue((prevState) => ({
 				...prevState,
@@ -92,7 +92,7 @@ const AboutMe = () => {
 			}));
 
 			setSubmitValue((prevState) => {
-				if (_.isEqual([...loop], shortAboutMe[name])) {
+				if (_.isEqual([...loop], resetValue[name])) {
 					delete prevState[name];
 					return {
 						...prevState,
@@ -107,7 +107,7 @@ const AboutMe = () => {
 		} else {
 			setTextValue((prevState) => ({
 				...prevState,
-				[name]: shortAboutMe[name],
+				[name]: resetValue[name],
 			}));
 			setSubmitValue((prevState) => {
 				delete prevState[name];
@@ -136,10 +136,15 @@ const AboutMe = () => {
 				...prevState,
 				[name]: newLoop,
 			}));
+
+			setResetValue((prevState) => ({
+				...prevState,
+				[name]: newLoop,
+			}));
 		} else {
 			setTextValue((prevState) => ({
 				...prevState,
-				[name]: shortAboutMe[name],
+				[name]: resetValue[name],
 			}));
 			setSubmitValue((prevState) => {
 				delete prevState[name];
@@ -164,6 +169,11 @@ const AboutMe = () => {
 		}));
 
 		setSubmitValue((prevState) => ({
+			...prevState,
+			[name]: newLoop,
+		}));
+
+		setResetValue((prevState) => ({
 			...prevState,
 			[name]: newLoop,
 		}));

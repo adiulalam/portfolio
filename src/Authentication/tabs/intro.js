@@ -52,11 +52,10 @@ const Intro = () => {
         variables: variables,
       };
 
-      (async function fetchData() {
+      (async () => {
         await ContentObjects(headers, graphqlQuery);
         window.location.reload();
       })();
-
     }
   };
 
