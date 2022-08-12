@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { portfolioContext } from "../../App";
 import ContentObjects from "../../connection/connection";
 import { mutationHeaders } from "../admin";
+import { ButtonSubmit } from "../components/button";
 import Input from "../components/input";
 
 // import _ from 'lodash';
@@ -105,19 +106,7 @@ const Intro = () => {
             />
           </div>
         ))}
-
-        <div class="flex place-content-center">
-          {[textValue].map(({ content_uuid }) => (
-            <button
-              class=" mb-4 shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-              type="submit"
-              onClick={handleSubmit}
-              id={content_uuid}
-            >
-              Submit
-            </button>
-          ))}
-        </div>
+        <ButtonSubmit id={textValue['content_uuid']} handleSubmit={handleSubmit} />
       </form>
     </div>
   );

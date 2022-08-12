@@ -1,6 +1,7 @@
 import _ from "lodash";
 import React, { useContext, useState } from "react";
 import { portfolioContext } from "../../App";
+import { ButtonSubmit } from "../components/button";
 import Input from "../components/input";
 
 const AboutMe = () => {
@@ -266,18 +267,7 @@ const AboutMe = () => {
             ))
           );
         })}
-        <div class="flex place-content-center">
-          {[textValue].map(({ shortaboutme_uuid }) => (
-            <button
-              class=" mb-4 shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-              type="submit"
-              onClick={handleSubmit}
-              id={shortaboutme_uuid}
-            >
-              Submit
-            </button>
-          ))}
-        </div>
+        <ButtonSubmit id={textValue['shortaboutme_uuid']} handleSubmit={handleSubmit} />
       </form>
     </div>
   );
