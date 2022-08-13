@@ -5,6 +5,7 @@ import ContentObjects from "../../connection/connection";
 import { mutationHeaders } from "../admin";
 import { ButtonSubmit } from "../components/button";
 import Input from "../components/input";
+import { ErrorMessage } from "../components/message";
 
 const AboutMe = () => {
   const headers = useContext(mutationHeaders);
@@ -166,8 +167,6 @@ const AboutMe = () => {
     const { name } = e.target;
     const { loop } = textValue;
     const newLoop = [...loop, []];
-    // newLoop.splice(index, 1);
-    // setData(newLoop);
 
     setTextValue((prevState) => ({
       ...prevState,
@@ -189,83 +188,34 @@ const AboutMe = () => {
     <div class="flex justify-center">
       <form class="w-full max-w-2xl">
         {errorMessage && (
-          <div
-            class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-            role="alert"
-          >
-            <span class="font-medium">Error!</span> Field is Empty
-          </div>
+          <ErrorMessage error="Error!" message="Field is Empty" />
         )}
         {Object.entries(textValue).map(([key, value]) => {
-          return key !== "loop" ? (
-            <div class="md:flex md:items-center mb-6 space-x-1.5">
+          return !Array.isArray(value) ? (
+            // Gives me all Objects
+            <Input
+              name={key}
+              value={value}
+              textValue={textValue}
+              id="shortaboutme_uuid"
+              onTextChange={onTextChange}
+              handleReset={handleReset}
+              handleDelete={handleDelete}
+            />
+          ) : (
+            // Gives me all Array
+            value.map((val, index) => (
               <Input
                 name={key}
-                value={value}
-                textValue={textValue}
+                value={val}
+                textValue={value}
                 id="shortaboutme_uuid"
                 onTextChange={onTextChange}
                 handleReset={handleReset}
                 handleDelete={handleDelete}
+                handleAdd={handleAdd}
+                index={index}
               />
-            </div>
-          ) : (
-            value.map((val, index) => (
-              <div class="md:flex md:items-center mb-6 space-x-1.5">
-                <div class="flex place-content-center ">
-                  <label
-                    class="block  text-gray-200 font-bold md:text-right mb-1 md:mb-0 px-4"
-                    for="inline-full-name"
-                  >
-                    {`${key}[${index}]`}:
-                  </label>
-                </div>
-                <div class="md:w-2/5">
-                  <input
-                    class=" bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-normal focus:outline-none focus:bg-white focus:border-purple-500"
-                    type="text"
-                    name={key}
-                    key={index}
-                    value={val}
-                    required
-                    readOnly={key === "shortaboutme_uuid" ? true : false}
-                    onChange={(e) => onTextChange(e, index)}
-                  />
-                </div>
-                <div class="flex place-content-center ">
-                  <div class="inline px-1">
-                    <button
-                      class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded border-2 border-blue-500 py-2 px-4 "
-                      name={key}
-                      onClick={(e) => handleReset(e, index)}
-                    >
-                      RESET
-                    </button>
-                  </div>
-                  <div class="inline px-1">
-                    <button
-                      class="bg-red-500 hover:bg-red-700 text-white font-bold rounded border-red-500 border-2 py-2 px-4 disabled:opacity-50"
-                      name={key}
-                      disabled={false}
-                      onClick={(e) => handleDelete(e, index)}
-                    >
-                      DELETE
-                    </button>
-                  </div>
-                  {index === value.length - 1 && (
-                    <div class="inline px-1">
-                      <button
-                        class="bg-green-500 hover:bg-green-700 text-white font-bold rounded border-green-500 border-2 py-2 px-4 disabled:opacity-50"
-                        name={key}
-                        onClick={(e) => handleAdd(e, index)}
-                        disabled={false}
-                      >
-                        ADD
-                      </button>
-                    </div>
-                  )}
-                </div>
-              </div>
             ))
           );
         })}

@@ -17,7 +17,7 @@ const ButtonSubmit = ({ id, handleSubmit }) => {
   );
 };
 
-const ButtonReset = ({ name, handleReset }) => {
+const ButtonReset = ({ name, handleReset, index }) => {
   return (
     <>
       <div class="inline px-1">
@@ -25,7 +25,7 @@ const ButtonReset = ({ name, handleReset }) => {
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded border-2 border-blue-500 py-2 px-4 "
           name={name}
           onClick={(e) => {
-            handleReset(e);
+            handleReset(e, index);
           }}
         >
           RESET
@@ -45,7 +45,7 @@ const ButtonDelete = ({ name, handleDelete }) => {
           onClick={(e) => {
             handleDelete(e);
           }}
-          disabled={true}
+          disabled={name === "loop" ? false : true}
         >
           DELETE
         </button>
@@ -54,4 +54,21 @@ const ButtonDelete = ({ name, handleDelete }) => {
   );
 };
 
-export { ButtonSubmit, ButtonReset, ButtonDelete };
+const ButtonAdd = ({ name, handleAdd, index }) => {
+  return (
+     <>
+      <div class="inline px-1">
+        <button
+          class="bg-green-500 hover:bg-green-700 text-white font-bold rounded border-green-500 border-2 py-2 px-4 disabled:opacity-50"
+          name={name}
+          onClick={(e) => handleAdd(e, index)}
+        //   disabled={false}
+        >
+          ADD
+        </button>
+      </div>
+    </>
+  );
+};
+
+export { ButtonSubmit, ButtonReset, ButtonDelete, ButtonAdd };

@@ -4,6 +4,7 @@ import ContentObjects from "../../connection/connection";
 import { mutationHeaders } from "../admin";
 import { ButtonSubmit } from "../components/button";
 import Input from "../components/input";
+import { ErrorMessage } from "../components/message";
 
 // import _ from 'lodash';
 const _ = require("lodash");
@@ -86,15 +87,9 @@ const Intro = () => {
     <div class="flex justify-center">
       <form class="w-full max-w-2xl">
         {errorMessage && (
-          <div
-            class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-            role="alert"
-          >
-            <span class="font-medium">Error!</span> Field is Empty
-          </div>
+          <ErrorMessage error="Error!" message="Field is Empty" />
         )}
         {Object.entries({ ...textValue }).map(([key, value]) => (
-          <div class="md:flex md:items-center mb-6 space-x-1.5">
             <Input
               name={key}
               value={value}
@@ -104,7 +99,6 @@ const Intro = () => {
               handleReset={handleReset}
               handleDelete={handleDelete}
             />
-          </div>
         ))}
         <ButtonSubmit id={textValue['content_uuid']} handleSubmit={handleSubmit} />
       </form>
