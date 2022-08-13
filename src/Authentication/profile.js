@@ -15,6 +15,7 @@ const Profile = () => {
       <TabPanel>
         <Intro />
       </TabPanel>
+
       <TabPanel>
         <AboutMe />
       </TabPanel>
