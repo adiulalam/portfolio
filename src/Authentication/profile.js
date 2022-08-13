@@ -1,6 +1,7 @@
 import React from "react";
 import Intro from "./tabs/intro";
 import AboutMe from "./tabs/aboutme";
+import Projects from "./tabs/projects";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./tabs/react-tabs.css";
 
@@ -10,6 +11,7 @@ const Profile = () => {
       <TabList>
         <Tab>Intro</Tab>
         <Tab>AboutMe</Tab>
+        <Tab>Projects</Tab>
       </TabList>
 
       <TabPanel>
@@ -19,6 +21,11 @@ const Profile = () => {
       <TabPanel>
         <AboutMe />
       </TabPanel>
+
+      <TabPanel>
+        <Projects />
+      </TabPanel>
+
     </Tabs>
   );
 };

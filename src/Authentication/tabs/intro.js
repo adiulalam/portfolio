@@ -5,9 +5,7 @@ import { mutationHeaders } from "../admin";
 import { ButtonSubmit } from "../components/button";
 import Input from "../components/input";
 import { ErrorMessage } from "../components/message";
-
-// import _ from 'lodash';
-const _ = require("lodash");
+import _ from 'lodash';
 
 const Intro = () => {
   const headers = useContext(mutationHeaders);
