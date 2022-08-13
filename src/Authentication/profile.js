@@ -5,8 +5,6 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./tabs/react-tabs.css";
 
 const Profile = () => {
-  
-
   return (
     <Tabs defaultIndex={1}>
       <TabList>
@@ -18,8 +16,7 @@ const Profile = () => {
         <Intro />
       </TabPanel>
       <TabPanel>
-        <AboutMe
-        />
+        <AboutMe />
       </TabPanel>
     </Tabs>
   );
