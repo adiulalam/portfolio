@@ -7,7 +7,7 @@ import "./tabs/react-tabs.css";
 
 const Profile = () => {
   return (
-    <Tabs defaultIndex={1}>
+    <Tabs defaultIndex={2}>
       <TabList>
         <Tab>Intro</Tab>
         <Tab>AboutMe</Tab>
