@@ -8,34 +8,121 @@ import Input from "../components/input";
 import { ErrorMessage } from "../components/message";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./react-tabs.css";
+import { reset } from "react-tabs/lib/helpers/uuid";
 
 const Projects = () => {
   const headers = useContext(mutationHeaders);
 
   const { projects } = useContext(portfolioContext);
 
-  const [resetValue, setResetValue] = useState(projects);
+  const [resetValue, setResetValue] = useState(_.cloneDeep(projects));
   const [textValue, setTextValue] = useState(projects);
   const [submitValue, setSubmitValue] = useState({});
   const [errorMessage, setErrorMessage] = useState(false);
 
+  const handleReset = (e, arrayindex, index) => {
+    e.preventDefault();
+    const { name } = e.target;
+
+    if (name === "details" || name === "technologies") {
+      const resetArr = _.cloneDeep([...textValue]);
+      resetArr[arrayindex][name][index] = [...resetValue][arrayindex][name][
+        index
+      ];
+
+      setTextValue(resetArr);
+
+      // setSubmitValue((prevState) => {
+      //   if (_.isEqual([...loop], resetValue[name])) {
+      //     delete prevState[name];
+      //     return {
+      //       ...prevState,
+      //     };
+      //   } else {
+      //     return {
+      //       ...prevState,
+      //       [name]: newLoop,
+      //     };
+      //   }
+      // });
+    } else {
+      const resetArr = [...textValue];
+      resetArr[arrayindex][name] = [...resetValue][arrayindex][name];
+
+      // console.log(resetArr)
+
+      setTextValue(resetArr);
+
+      setSubmitValue((prevState) => {
+        delete prevState[name]
+        return {
+          ...prevState,
+        };
+      });
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    console.clear();
+    e.preventDefault();
+
+    console.log("submitValue", submitValue);
+
+    // let isEmpty = false;
+    // Object.entries(submitValue).map(([key, value]) => {
+    //   if (!value.length) isEmpty = true;
+    // });
+    // if (_.isEmpty(submitValue)) isEmpty = true;
+
+    // if (isEmpty) {
+    //   setErrorMessage(true);
+    //   // console.log("IS EMPTY");
+    // } else {
+    //   // console.log("NOT EMPTY");
+    //   setErrorMessage(false);
+
+    //   const shortaboutme_uuid = e.target.id;
+    //   const variables = { updateAboutme: submitValue };
+    //   const mutation = `mutation updateAboutMe($updateAboutme: portfolio_shortaboutme_set_input = {}) { update_portfolio_shortaboutme(where: {shortaboutme_uuid: {_eq: "${shortaboutme_uuid}"}}, _set: $updateAboutme) { affected_rows } }`;
+
+    //   const graphqlQuery = {
+    //     operationName: "updateAboutMe",
+    //     query: mutation,
+    //     variables: variables,
+    //   };
+
+    //   (async function fetchData() {
+    //     await ContentObjects(headers, graphqlQuery);
+    //     window.location.reload();
+    //   })();
+    // }
+  };
+
   const onTextChange = (e, arrayindex, index) => {
     const { name, value } = e.target;
+
     if (name === "details" || name === "technologies") {
       const newArr = [...textValue];
       newArr[arrayindex][name][index] = value;
 
       setTextValue(newArr);
-      
+
+      setSubmitValue((prevState) => ({
+        ...prevState,
+        [name]: [newArr[arrayindex][name]],
+      }));
     } else {
       let newArr = [...textValue];
       newArr[arrayindex][name] = value;
+
       setTextValue(newArr);
 
       setSubmitValue((prevState) => ({
         ...prevState,
         [name]: value,
       }));
+
+      // setSubmitValue(newArr[arrayindex][name]);
     }
   };
 
@@ -85,7 +172,7 @@ const Projects = () => {
                         textValue={objectValue}
                         id="project_uuid"
                         onTextChange={(e) => onTextChange(e, arrayindex, index)}
-                        // handleReset={handleReset}
+                        handleReset={(e) => handleReset(e, arrayindex, index)}
                         // handleDelete={handleDelete}
                         // handleAdd={handleAdd}
                         index={index}
@@ -98,13 +185,17 @@ const Projects = () => {
                     value={objectValue}
                     textValue={arrayValue}
                     id="project_uuid"
-                    onTextChange={(e) => onTextChange(e, arrayindex)}
-                    // handleReset={handleReset}
+                    onTextChange={onTextChange}
+                    handleReset={handleReset}
                     // handleDelete={handleDelete}
+                    index={arrayindex}
                   />
                 );
               })}
-              {/* <ButtonSubmit id={textValue['project_uuid']} handleSubmit={handleSubmit} /> */}
+              <ButtonSubmit
+                id={textValue["project_uuid"]}
+                handleSubmit={handleSubmit}
+              />
             </form>
           </div>
         </TabPanel>
