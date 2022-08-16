@@ -20,31 +20,76 @@ const Projects = () => {
   const [submitValue, setSubmitValue] = useState({});
   const [errorMessage, setErrorMessage] = useState(false);
 
+  const handleDelete = (e, arrayindex, index) => {
+    e.preventDefault();
+    const { name } = e.target;
+
+    if (name === "details" || name === "technologies") {
+      setTextValue((prevState) => {
+        const deleteArr = [...prevState];
+        deleteArr[arrayindex][name].splice(index, 1);
+        return deleteArr;
+      });
+
+      setResetValue((prevState) => {
+        const deleteArr = [...prevState];
+        deleteArr[arrayindex][name].splice(index, 1);
+        return deleteArr;
+      });
+
+      setSubmitValue((prevState) => {
+        const deleteArr = [...textValue];
+        const newLoop = deleteArr[arrayindex][name];
+
+        return {
+          ...prevState,
+          [name]: newLoop,
+        };
+      });
+    } else {
+      // setTextValue((prevState) => ({
+      //   ...prevState,
+      //   [name]: resetValue[name],
+      // }));
+      // setSubmitValue((prevState) => {
+      //   delete prevState[name];
+      //   return {
+      //     ...prevState,
+      //   };
+      // });
+    }
+  };
+
   const handleReset = (e, arrayindex, index) => {
     e.preventDefault();
     const { name } = e.target;
 
     if (name === "details" || name === "technologies") {
-      const resetArr = _.cloneDeep([...textValue]);
+      const resetArr = [...textValue];
       resetArr[arrayindex][name][index] = [...resetValue][arrayindex][name][
         index
       ];
 
       setTextValue(resetArr);
 
-      // setSubmitValue((prevState) => {
-      //   if (_.isEqual([...loop], resetValue[name])) {
-      //     delete prevState[name];
-      //     return {
-      //       ...prevState,
-      //     };
-      //   } else {
-      //     return {
-      //       ...prevState,
-      //       [name]: newLoop,
-      //     };
-      //   }
-      // });
+      setSubmitValue((prevState) => {
+        if (
+          _.isEqual(
+            [...textValue][arrayindex][name],
+            [...resetValue][arrayindex][name]
+          )
+        ) {
+          delete prevState[name];
+          return {
+            ...prevState,
+          };
+        } else {
+          return {
+            ...prevState,
+            [name]: [...resetValue][arrayindex][name],
+          };
+        }
+      });
     } else {
       const resetArr = [...textValue];
       resetArr[arrayindex][name] = [...resetValue][arrayindex][name];
@@ -54,7 +99,7 @@ const Projects = () => {
       setTextValue(resetArr);
 
       setSubmitValue((prevState) => {
-        delete prevState[name]
+        delete prevState[name];
         return {
           ...prevState,
         };
@@ -66,36 +111,37 @@ const Projects = () => {
     console.clear();
     e.preventDefault();
 
-    console.log("submitValue", submitValue);
+    // console.log("submitValue", submitValue);
 
-    // let isEmpty = false;
-    // Object.entries(submitValue).map(([key, value]) => {
-    //   if (!value.length) isEmpty = true;
-    // });
-    // if (_.isEmpty(submitValue)) isEmpty = true;
+    let isEmpty = false;
+    Object.entries(submitValue).map(([key, value]) => {
+      if (!value.length) isEmpty = true;
+    });
+    if (_.isEmpty(submitValue)) isEmpty = true;
 
-    // if (isEmpty) {
-    //   setErrorMessage(true);
-    //   // console.log("IS EMPTY");
-    // } else {
-    //   // console.log("NOT EMPTY");
-    //   setErrorMessage(false);
+    if (isEmpty) {
+      setErrorMessage(true);
+      // console.log("IS EMPTY");
+    } else {
+      // console.log("NOT EMPTY");
+      setErrorMessage(false);
 
-    //   const shortaboutme_uuid = e.target.id;
-    //   const variables = { updateAboutme: submitValue };
-    //   const mutation = `mutation updateAboutMe($updateAboutme: portfolio_shortaboutme_set_input = {}) { update_portfolio_shortaboutme(where: {shortaboutme_uuid: {_eq: "${shortaboutme_uuid}"}}, _set: $updateAboutme) { affected_rows } }`;
+      const project_uuid = e.target.id;
+      const variables = { updateProject: submitValue };
+      const mutation = `mutation updateProject($updateProject: portfolio_project_set_input = {}) { update_portfolio_project(where: {project_uuid: {_eq: "${project_uuid}"}}, _set: $updateProject) { affected_rows } }`;
 
-    //   const graphqlQuery = {
-    //     operationName: "updateAboutMe",
-    //     query: mutation,
-    //     variables: variables,
-    //   };
+      const graphqlQuery = {
+        operationName: "updateProject",
+        query: mutation,
+        variables: variables,
+      };
 
-    //   (async function fetchData() {
-    //     await ContentObjects(headers, graphqlQuery);
-    //     window.location.reload();
-    //   })();
-    // }
+      (async function fetchData() {
+        // console.log(graphqlQuery)
+        await ContentObjects(headers, graphqlQuery);
+        window.location.reload();
+      })();
+    }
   };
 
   const onTextChange = (e, arrayindex, index) => {
@@ -173,7 +219,7 @@ const Projects = () => {
                         id="project_uuid"
                         onTextChange={(e) => onTextChange(e, arrayindex, index)}
                         handleReset={(e) => handleReset(e, arrayindex, index)}
-                        // handleDelete={handleDelete}
+                        handleDelete={(e) => handleDelete(e, arrayindex, index)}
                         // handleAdd={handleAdd}
                         index={index}
                       />
@@ -187,13 +233,13 @@ const Projects = () => {
                     id="project_uuid"
                     onTextChange={onTextChange}
                     handleReset={handleReset}
-                    // handleDelete={handleDelete}
+                    handleDelete={handleDelete}
                     index={arrayindex}
                   />
                 );
               })}
               <ButtonSubmit
-                id={textValue["project_uuid"]}
+                id={textValue[arrayindex]["project_uuid"]}
                 handleSubmit={handleSubmit}
               />
             </form>

@@ -35,7 +35,7 @@ const ButtonReset = ({ name, handleReset, index }) => {
   );
 };
 
-const ButtonDelete = ({ name, handleDelete }) => {
+const ButtonDelete = ({ name, handleDelete, index }) => {
   return (
     <>
       <div class="inline px-1">
@@ -45,7 +45,13 @@ const ButtonDelete = ({ name, handleDelete }) => {
           onClick={(e) => {
             handleDelete(e);
           }}
-          disabled={name === "loop" ? false : true}
+          disabled={
+            (name === "loop" && index !== 0) ||
+            (name === "details" && index !== 0) ||
+            (name === "technologies" && index !== 0)
+              ? false
+              : true
+          }
         >
           DELETE
         </button>
@@ -56,7 +62,7 @@ const ButtonDelete = ({ name, handleDelete }) => {
 
 const ButtonAdd = ({ name, handleAdd, index }) => {
   return (
-     <>
+    <>
       <div class="inline px-1">
         <button
           class="bg-green-500 hover:bg-green-700 text-white font-bold rounded border-green-500 border-2 py-2 px-4 disabled:opacity-50"

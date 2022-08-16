@@ -43,7 +43,7 @@ const Input = ({
         </div>
         <div class="flex place-content-center ">
           <ButtonReset name={name} handleReset={handleReset} index={index} />
-          <ButtonDelete name={name} handleDelete={handleDelete} />
+          <ButtonDelete name={name} handleDelete={handleDelete} index={index}/>
           {index === textValue.length - 1 && (<ButtonAdd name={name} handleAdd={handleAdd} index={index} />)}
         </div>
       </div>
