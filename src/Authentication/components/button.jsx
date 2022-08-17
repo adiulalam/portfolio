@@ -46,9 +46,8 @@ const ButtonDelete = ({ name, handleDelete, index }) => {
             handleDelete(e);
           }}
           disabled={
-            (name === "loop" && index !== 0) ||
-            (name === "details" && index !== 0) ||
-            (name === "technologies" && index !== 0)
+            index !== 0 &&
+            (name === "loop" || name === "details" || name === "technologies")
               ? false
               : true
           }
