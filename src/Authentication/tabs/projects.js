@@ -8,7 +8,6 @@ import Input from "../components/input";
 import { ErrorMessage } from "../components/message";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./react-tabs.css";
-import { reset } from "react-tabs/lib/helpers/uuid";
 
 const Projects = () => {
   const headers = useContext(mutationHeaders);
@@ -19,6 +18,37 @@ const Projects = () => {
   const [textValue, setTextValue] = useState(projects);
   const [submitValue, setSubmitValue] = useState({});
   const [errorMessage, setErrorMessage] = useState(false);
+
+  const handleAdd = (e, arrayindex, index) => {
+    e.preventDefault();
+    const { name } = e.target;
+
+    setTextValue((prevState) => {
+      const setArr = _.set([...prevState], `[${arrayindex}][${name}]`, [...prevState[arrayindex][name], ''])
+
+      console.log(setArr);
+
+      return [...setArr];
+    });
+
+    // const { loop } = textValue;
+    // const newLoop = [...loop, []];
+
+    // setTextValue((prevState) => ({
+    //   ...prevState,
+    //   [name]: newLoop,
+    // }));
+
+    // setSubmitValue((prevState) => ({
+    //   ...prevState,
+    //   [name]: newLoop,
+    // }));
+
+    // setResetValue((prevState) => ({
+    //   ...prevState,
+    //   [name]: newLoop,
+    // }));
+  };
 
   const handleDelete = (e, arrayindex, index) => {
     e.preventDefault();
@@ -94,8 +124,6 @@ const Projects = () => {
       const resetArr = [...textValue];
       resetArr[arrayindex][name] = [...resetValue][arrayindex][name];
 
-      // console.log(resetArr)
-
       setTextValue(resetArr);
 
       setSubmitValue((prevState) => {
@@ -136,11 +164,10 @@ const Projects = () => {
         variables: variables,
       };
 
-      (async function fetchData() {
-        // console.log(graphqlQuery)
-        await ContentObjects(headers, graphqlQuery);
-        window.location.reload();
-      })();
+      // (async function fetchData() {
+      //   await ContentObjects(headers, graphqlQuery);
+      //   window.location.reload();
+      // })();
     }
   };
 
@@ -167,8 +194,6 @@ const Projects = () => {
         ...prevState,
         [name]: value,
       }));
-
-      // setSubmitValue(newArr[arrayindex][name]);
     }
   };
 
@@ -220,7 +245,7 @@ const Projects = () => {
                         onTextChange={(e) => onTextChange(e, arrayindex, index)}
                         handleReset={(e) => handleReset(e, arrayindex, index)}
                         handleDelete={(e) => handleDelete(e, arrayindex, index)}
-                        // handleAdd={handleAdd}
+                        handleAdd={(e) => handleAdd(e, arrayindex, index)}
                         index={index}
                       />
                     );
