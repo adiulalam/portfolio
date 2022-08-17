@@ -25,29 +25,24 @@ const Projects = () => {
 
     setTextValue((prevState) => {
       const setArr = _.set([...prevState], `[${arrayindex}][${name}]`, [...prevState[arrayindex][name], ''])
-
-      console.log(setArr);
-
       return [...setArr];
     });
 
-    // const { loop } = textValue;
-    // const newLoop = [...loop, []];
+    setResetValue((prevState) => {
+      const setArr = _.set([...prevState], `[${arrayindex}][${name}]`, [...prevState[arrayindex][name], ''])
+      return [...setArr];
+    });
 
-    // setTextValue((prevState) => ({
-    //   ...prevState,
-    //   [name]: newLoop,
-    // }));
 
-    // setSubmitValue((prevState) => ({
-    //   ...prevState,
-    //   [name]: newLoop,
-    // }));
+    setSubmitValue((prevState) => {
+      const addArr = [...textValue];
+      const newLoop = addArr[arrayindex][name];
 
-    // setResetValue((prevState) => ({
-    //   ...prevState,
-    //   [name]: newLoop,
-    // }));
+      return {
+        ...prevState,
+        [name]: newLoop,
+      };
+    });
   };
 
   const handleDelete = (e, arrayindex, index) => {
@@ -139,7 +134,7 @@ const Projects = () => {
     console.clear();
     e.preventDefault();
 
-    // console.log("submitValue", submitValue);
+    console.log("submitValue", submitValue);
 
     let isEmpty = false;
     Object.entries(submitValue).map(([key, value]) => {
