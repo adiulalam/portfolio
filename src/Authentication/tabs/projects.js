@@ -210,12 +210,13 @@ const Projects = () => {
       time: "",
       application: "",
       repo: "",
-      details: [''],
-      technologies: [''],
+      details: [""],
+      technologies: [""],
     };
 
     setTextValue((prevState) => [...prevState, newObject]);
     setResetValue((prevState) => [...prevState, newObject]);
+    setSubmitValue( newObject );
 
     // console.log(textValue)
   };
@@ -223,12 +224,12 @@ const Projects = () => {
   return (
     <Tabs forceRenderTabPanel>
       <div class="flex flex-col items-center">
-      <TabList>
-        {textValue.map((value, index) => (
-          <Tab tabIndex={index}>{value["title"]}</Tab>
-        ))}
-        <ButtonAddTab handleAddTab={handleAddTab} />
-      </TabList>
+        <TabList>
+          {textValue.map((value, index) => (
+            <Tab tabIndex={index}>{value["title"]}</Tab>
+          ))}
+          <ButtonAddTab handleAddTab={handleAddTab} />
+        </TabList>
       </div>
 
       {textValue.map((arrayValue, arrayindex) => (
