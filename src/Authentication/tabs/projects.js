@@ -1,9 +1,13 @@
 import _ from "lodash";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { portfolioContext } from "../../App";
 import ContentObjects from "../../connection/connection";
 import { mutationHeaders } from "../admin";
-import { ButtonAddTab, ButtonSubmit } from "../components/button";
+import {
+  ButtonAddTab,
+  ButtonDeleteTab,
+  ButtonSubmit,
+} from "../components/button";
 import Input from "../components/input";
 import { ErrorMessage } from "../components/message";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -135,16 +139,16 @@ const Projects = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, index) => {
     console.clear();
     e.preventDefault();
 
     console.log("submitValue", submitValue);
 
     let isEmpty = false;
-    Object.entries(submitValue).map(([key, value]) => {
-      if (!value.length) isEmpty = true;
-    });
+    Object.entries(submitValue).map(
+      ([key, value]) => !value.length && (isEmpty = true)
+    );
     if (_.isEmpty(submitValue)) isEmpty = true;
 
     if (isEmpty) {
@@ -156,18 +160,32 @@ const Projects = () => {
 
       const project_uuid = e.target.id;
       const variables = { updateProject: submitValue };
-      const mutation = `mutation updateProject($updateProject: portfolio_project_set_input = {}) { update_portfolio_project(where: {project_uuid: {_eq: "${project_uuid}"}}, _set: $updateProject) { affected_rows } }`;
 
-      const graphqlQuery = {
-        operationName: "updateProject",
-        query: mutation,
-        variables: variables,
+      const fetchData = async(graphqlQuery) => {
+        // await ContentObjects(headers, graphqlQuery);
+        window.location.reload();
       };
 
-      // (async function fetchData() {
-      //   await ContentObjects(headers, graphqlQuery);
-      //   window.location.reload();
-      // })();
+      if (
+        project_uuid?.length &&
+        _.has([...textValue][index], "project_uuid")
+      ) {
+        console.log("if");
+
+        const mutation = `mutation updateProject($updateProject: portfolio_project_set_input = {}) { update_portfolio_project(where: {project_uuid: {_eq: "${project_uuid}"}}, _set: $updateProject) { affected_rows } }`;
+
+        const graphqlQuery = {
+          operationName: "updateProject",
+          query: mutation,
+          variables: variables,
+        };
+
+       await fetchData(graphqlQuery)
+
+      } else {
+        console.log("else");
+        //todo- Write Add new Project GraphQL query
+      }
     }
   };
 
@@ -199,9 +217,6 @@ const Projects = () => {
 
   const handleAddTab = (e) => {
     e.preventDefault();
-    const { name } = e.target;
-
-    console.log("click");
 
     const newObject = {
       title: `newProject`,
@@ -216,7 +231,40 @@ const Projects = () => {
 
     setTextValue((prevState) => [...prevState, newObject]);
     setResetValue((prevState) => [...prevState, newObject]);
-    setSubmitValue( newObject );
+    setSubmitValue(newObject);
+  };
+
+  const handleDeleteTab = (e, index) => {
+    e.preventDefault();
+    const { id } = e.target;
+
+    if (id?.length && _.has([...textValue][index], "project_uuid")) {
+      console.log("id?.length && _.has([...textValue][index], 'project_uuid'");
+
+      //todo- Write GraphQL query
+    } else {
+      // console.log(index)
+
+      setTextValue((prevState) => {
+        const deleteArr = [...prevState];
+        deleteArr.splice(index, 1);
+        return deleteArr;
+      });
+
+      setResetValue((prevState) => {
+        const deleteArr = [...prevState];
+        deleteArr.splice(index, 1);
+        return deleteArr;
+      });
+
+      setSubmitValue({});
+
+      //todo- Write GraphQL query and for submitvalue
+    }
+
+    // setTextValue((prevState) => [...prevState, newObject]);
+    // setResetValue((prevState) => [...prevState, newObject]);
+    // setSubmitValue(newObject);
 
     // console.log(textValue)
   };
@@ -226,7 +274,16 @@ const Projects = () => {
       <div class="flex flex-col items-center">
         <TabList>
           {textValue.map((value, index) => (
-            <Tab tabIndex={index}>{value["title"]}</Tab>
+            <Tab tabIndex={index}>
+              <div>
+                {value["title"]}
+                <ButtonDeleteTab
+                  handleDeleteTab={handleDeleteTab}
+                  index={index}
+                  id={value["project_uuid"]}
+                />
+              </div>
+            </Tab>
           ))}
           <ButtonAddTab handleAddTab={handleAddTab} />
         </TabList>
@@ -272,8 +329,9 @@ const Projects = () => {
                 );
               })}
               <ButtonSubmit
-                id={textValue[arrayindex]["project_uuid"]}
+                id={arrayValue["project_uuid"]}
                 handleSubmit={handleSubmit}
+                index={arrayindex}
               />
             </form>
           </div>

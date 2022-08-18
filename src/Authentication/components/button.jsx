@@ -1,4 +1,4 @@
-const ButtonSubmit = ({ id, handleSubmit }) => {
+const ButtonSubmit = ({ id, handleSubmit, index }) => {
   return (
     <>
       <div class="flex place-content-center">
@@ -6,7 +6,7 @@ const ButtonSubmit = ({ id, handleSubmit }) => {
           class=" mb-4 shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
           type="submit"
           onClick={(e) => {
-            handleSubmit(e);
+            handleSubmit(e, index);
           }}
           id={id}
         >
@@ -85,7 +85,8 @@ const ButtonAddTab = ({ handleAddTab }) => {
           fill="white"
           viewBox="0 0 22 22"
           stroke="currentColor"
-          strokeWidth={2}        >
+          strokeWidth={2}
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -97,4 +98,41 @@ const ButtonAddTab = ({ handleAddTab }) => {
   );
 };
 
-export { ButtonSubmit, ButtonReset, ButtonDelete, ButtonAdd, ButtonAddTab };
+const ButtonDeleteTab = ({ handleDeleteTab, index, id }) => {
+  return (
+    <>
+      <button
+        class=" absolute float-right right-0 bottom-5 space-x-2 hover:bg-gray-500 rounded-full"
+        onClick={(e) => handleDeleteTab(e, index, id)}
+        id={id}
+      >
+        <svg
+        aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+          id={id}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+            id={id}
+          />
+        </svg>
+      </button>
+    </>
+  );
+};
+
+export {
+  ButtonSubmit,
+  ButtonReset,
+  ButtonDelete,
+  ButtonAdd,
+  ButtonAddTab,
+  ButtonDeleteTab,
+};
