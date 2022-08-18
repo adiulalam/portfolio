@@ -12,7 +12,6 @@ const Input = ({
   handleAdd,
   index,
 }) => {
-  // console.log(index);
   return (
     <>
       <div class="md:flex md:items-center mb-6 space-x-1.5">
