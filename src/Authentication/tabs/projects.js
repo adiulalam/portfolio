@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { portfolioContext } from "../../App";
 import ContentObjects from "../../connection/connection";
 import { mutationHeaders } from "../admin";
-import { ButtonSubmit } from "../components/button";
+import { ButtonAddTab, ButtonSubmit } from "../components/button";
 import Input from "../components/input";
 import { ErrorMessage } from "../components/message";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -24,15 +24,20 @@ const Projects = () => {
     const { name } = e.target;
 
     setTextValue((prevState) => {
-      const setArr = _.set([...prevState], `[${arrayindex}][${name}]`, [...prevState[arrayindex][name], ''])
+      const setArr = _.set([...prevState], `[${arrayindex}][${name}]`, [
+        ...prevState[arrayindex][name],
+        "",
+      ]);
       return [...setArr];
     });
 
     setResetValue((prevState) => {
-      const setArr = _.set([...prevState], `[${arrayindex}][${name}]`, [...prevState[arrayindex][name], ''])
+      const setArr = _.set([...prevState], `[${arrayindex}][${name}]`, [
+        ...prevState[arrayindex][name],
+        "",
+      ]);
       return [...setArr];
     });
-
 
     setSubmitValue((prevState) => {
       const addArr = [...textValue];
@@ -192,32 +197,39 @@ const Projects = () => {
     }
   };
 
+  const handleAddTab = (e) => {
+    e.preventDefault();
+    const { name } = e.target;
+
+    console.log("click");
+
+    const newObject = {
+      title: `newProject`,
+      description: "",
+      projectdate: "",
+      time: "",
+      application: "",
+      repo: "",
+      details: [''],
+      technologies: [''],
+    };
+
+    setTextValue((prevState) => [...prevState, newObject]);
+    setResetValue((prevState) => [...prevState, newObject]);
+
+    // console.log(textValue)
+  };
+
   return (
     <Tabs forceRenderTabPanel>
+      <div class="flex flex-col items-center">
       <TabList>
-        {textValue.map((value, index) =>
-          index === textValue.length - 1 ? (
-            <button>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="white"
-                viewBox="0 0 22 22"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </button>
-          ) : (
-            <Tab tabIndex={index}>{value["title"]}</Tab>
-          )
-        )}
+        {textValue.map((value, index) => (
+          <Tab tabIndex={index}>{value["title"]}</Tab>
+        ))}
+        <ButtonAddTab handleAddTab={handleAddTab} />
       </TabList>
+      </div>
 
       {textValue.map((arrayValue, arrayindex) => (
         <TabPanel>

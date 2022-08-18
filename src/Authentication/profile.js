@@ -8,11 +8,13 @@ import "./tabs/react-tabs.css";
 const Profile = () => {
   return (
     <Tabs defaultIndex={2}>
+      <div class="flex flex-col items-center">
       <TabList>
         <Tab>Intro</Tab>
         <Tab>AboutMe</Tab>
         <Tab>Projects</Tab>
       </TabList>
+      </div>
 
       <TabPanel>
         <Intro />
