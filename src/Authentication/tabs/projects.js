@@ -11,7 +11,9 @@ import {
 import Input from "../components/input";
 import { ErrorMessage } from "../components/message";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import Media from "./media";
 import "./react-tabs.css";
+import { Sort } from "@material-ui/icons";
 
 const Projects = () => {
   const headers = useContext(mutationHeaders);
@@ -58,40 +60,27 @@ const Projects = () => {
     e.preventDefault();
     const { name } = e.target;
 
-    if (name === "details" || name === "technologies") {
-      setTextValue((prevState) => {
-        const deleteArr = [...prevState];
-        deleteArr[arrayindex][name].splice(index, 1);
-        return deleteArr;
-      });
+    setTextValue((prevState) => {
+      const deleteArr = [...prevState];
+      deleteArr[arrayindex][name].splice(index, 1);
+      return deleteArr;
+    });
 
-      setResetValue((prevState) => {
-        const deleteArr = [...prevState];
-        deleteArr[arrayindex][name].splice(index, 1);
-        return deleteArr;
-      });
+    setResetValue((prevState) => {
+      const deleteArr = [...prevState];
+      deleteArr[arrayindex][name].splice(index, 1);
+      return deleteArr;
+    });
 
-      setSubmitValue((prevState) => {
-        const deleteArr = [...textValue];
-        const newLoop = deleteArr[arrayindex][name];
+    setSubmitValue((prevState) => {
+      const deleteArr = [...textValue];
+      const newLoop = deleteArr[arrayindex][name];
 
-        return {
-          ...prevState,
-          [name]: newLoop,
-        };
-      });
-    } else {
-      // setTextValue((prevState) => ({
-      //   ...prevState,
-      //   [name]: resetValue[name],
-      // }));
-      // setSubmitValue((prevState) => {
-      //   delete prevState[name];
-      //   return {
-      //     ...prevState,
-      //   };
-      // });
-    }
+      return {
+        ...prevState,
+        [name]: newLoop,
+      };
+    });
   };
 
   const handleReset = (e, arrayindex, index) => {
@@ -161,7 +150,7 @@ const Projects = () => {
       const project_uuid = e.target.id;
       const variables = { updateProject: submitValue };
 
-      const fetchData = async(graphqlQuery) => {
+      const fetchData = async (graphqlQuery) => {
         // await ContentObjects(headers, graphqlQuery);
         window.location.reload();
       };
@@ -180,8 +169,7 @@ const Projects = () => {
           variables: variables,
         };
 
-       await fetchData(graphqlQuery)
-
+        await fetchData(graphqlQuery);
       } else {
         console.log("else");
         //todo- Write Add new Project GraphQL query
@@ -261,13 +249,12 @@ const Projects = () => {
 
       //todo- Write GraphQL query and for submitvalue
     }
-
-    // setTextValue((prevState) => [...prevState, newObject]);
-    // setResetValue((prevState) => [...prevState, newObject]);
-    // setSubmitValue(newObject);
-
-    // console.log(textValue)
   };
+
+  const sortMediaObject = (arrayValue) => ({
+    media: arrayValue["media"],
+    ...arrayValue,
+  });
 
   return (
     <Tabs forceRenderTabPanel>
@@ -296,12 +283,13 @@ const Projects = () => {
               {errorMessage && (
                 <ErrorMessage error="Error!" message="Field is Empty" />
               )}
-              {Object.entries(arrayValue).map(([key, objectValue]) => {
-                // Gives me all Array
-                return Array.isArray(objectValue) ? (
-                  objectValue.map((val, index) => {
-                    // console.log(val),
-                    return typeof val === "object" && val !== null ? null : (
+              {Object.entries(sortMediaObject(arrayValue)).map(
+                ([key, objectValue]) => {
+                  // Gives me all Array
+                  return key === "media" ? (
+                    <Media objectValue={objectValue} />
+                  ) : Array.isArray(objectValue) ? (
+                    objectValue.map((val, index) => (
                       <Input
                         name={key}
                         value={val}
@@ -313,21 +301,21 @@ const Projects = () => {
                         handleAdd={(e) => handleAdd(e, arrayindex, index)}
                         index={index}
                       />
-                    );
-                  })
-                ) : (
-                  <Input
-                    name={key}
-                    value={objectValue}
-                    textValue={arrayValue}
-                    id="project_uuid"
-                    onTextChange={onTextChange}
-                    handleReset={handleReset}
-                    handleDelete={handleDelete}
-                    index={arrayindex}
-                  />
-                );
-              })}
+                    ))
+                  ) : (
+                    <Input
+                      name={key}
+                      value={objectValue}
+                      textValue={arrayValue}
+                      id="project_uuid"
+                      onTextChange={onTextChange}
+                      handleReset={handleReset}
+                      handleDelete={handleDelete}
+                      index={arrayindex}
+                    />
+                  );
+                }
+              )}
               <ButtonSubmit
                 id={arrayValue["project_uuid"]}
                 handleSubmit={handleSubmit}
