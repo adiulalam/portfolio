@@ -152,15 +152,13 @@ const Projects = () => {
 
       const fetchData = async (graphqlQuery) => {
         // await ContentObjects(headers, graphqlQuery);
-        window.location.reload();
+        // window.location.reload();
       };
 
       if (
         project_uuid?.length &&
         _.has([...textValue][index], "project_uuid")
       ) {
-        console.log("if");
-
         const mutation = `mutation updateProject($updateProject: portfolio_project_set_input = {}) { update_portfolio_project(where: {project_uuid: {_eq: "${project_uuid}"}}, _set: $updateProject) { affected_rows } }`;
 
         const graphqlQuery = {
@@ -171,7 +169,6 @@ const Projects = () => {
 
         await fetchData(graphqlQuery);
       } else {
-        console.log("else");
         //todo- Write Add new Project GraphQL query
       }
     }
@@ -207,7 +204,9 @@ const Projects = () => {
     e.preventDefault();
 
     const newObject = {
-      title: `newProject`,
+      // media: [{ type: "image", src: "", thumbnail: "" }],
+      media: [],
+      title: "newProject",
       description: "",
       projectdate: "",
       time: "",
@@ -219,7 +218,7 @@ const Projects = () => {
 
     setTextValue((prevState) => [...prevState, newObject]);
     setResetValue((prevState) => [...prevState, newObject]);
-    setSubmitValue(newObject);
+    setSubmitValue(_.omit(newObject, ['media']));
   };
 
   const handleDeleteTab = (e, index) => {
@@ -227,8 +226,6 @@ const Projects = () => {
     const { id } = e.target;
 
     if (id?.length && _.has([...textValue][index], "project_uuid")) {
-      console.log("id?.length && _.has([...textValue][index], 'project_uuid'");
-
       //todo- Write GraphQL query
     } else {
       // console.log(index)
