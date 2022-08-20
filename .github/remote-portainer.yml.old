@@ -1,0 +1,38 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CD
+
+on:
+    push:
+        branches: ["master"]
+
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: self-hosted
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Set up Docker Buildx
+              uses: docker/setup-buildx-action@v1
+            - name: Set up QEMU
+              uses: docker/setup-qemu-action@v1
+            - name: deploy to portainer
+              uses: LGinC/portainer-stack-deploy@master
+              with:
+                  serverurl: http://132.145.17.195:9000
+                  username: admin
+                  password: ${{ secrets.PORTAINER_PASSWORD }}
+                  endpointId: 2
+                  stackname: portfolio
+                  imagenames: |
+                      xxx/xxx
+                      myhub.com/xx1/xxx
+                  variables: |
+                      tag=6.0-alpine
+                  env: |
+                      TZ=Asia/Shanghai
+                      myTag=App
+                  docker_compose_path: deploy/docker-compose.yaml
