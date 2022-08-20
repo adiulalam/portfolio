@@ -2,8 +2,6 @@ version: "3"
 services:
     react-app:
         container_name: portfolio
-        env_file:
-            - /home/opc/portfolio-content/.env
         build:
             context: .
             dockerfile: Dockerfile
