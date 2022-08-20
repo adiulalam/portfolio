@@ -204,8 +204,7 @@ const Projects = () => {
     e.preventDefault();
 
     const newObject = {
-      // media: [{ type: "image", src: "", thumbnail: "" }],
-      media: [],
+      media: [{ type: "image or video", src: "", thumbnail: "" }],
       title: "newProject",
       description: "",
       projectdate: "",
