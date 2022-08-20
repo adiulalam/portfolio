@@ -1,6 +1,7 @@
 version: "3"
 services:
     react-app:
+        container_name: portfolio:latest
         build:
             context: .
             dockerfile: Dockerfile

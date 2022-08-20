@@ -9,15 +9,14 @@ const ContentObjects = async (headers, graphqlQuery) => {
 
   const response = await fetch(endpoint, options);
   const data = await response.json();
-  
+
   if (data?.data) {
-    const result = data?.data?.portfolio_content[0];
-
+    const result = data?.data;
     // console.log(result);
-
     return result;
   } else {
-    console.log(data.errors); 
+    console.log("ERROR ON Query", data.errors);
+    return data.errors;
   }
 };
 
