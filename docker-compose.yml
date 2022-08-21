@@ -7,6 +7,8 @@ services:
             dockerfile: Dockerfile
         ports:
             - 8075:80
+        env_file:
+            - ./.env
         expose:
             - "8075"
         volumes:
