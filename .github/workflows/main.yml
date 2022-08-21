@@ -7,11 +7,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
+          platforms: linux/arm64
           host: ${{ secrets.DOCKER_HOST }}
           username: ${{ secrets.DOCKER_USERNAME }}
           key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
