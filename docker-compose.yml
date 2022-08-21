@@ -8,7 +8,7 @@ services:
         ports:
             - 8075:80
         env_file:
-            - ./.env
+            - .env
         expose:
             - "8075"
         volumes:
