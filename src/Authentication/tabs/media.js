@@ -102,7 +102,7 @@ const Media = (objectValue) => {
   const handleAddTab = (e) => {
     e.preventDefault();
 
-    const newObject = { type: "image or video", src: "", thumbnail: "" };
+    const newObject = { type: "image/video", src: "", thumbnail: "" };
 
     setTextValue((prevState) => [...prevState, newObject]);
     setResetValue((prevState) => [...prevState, newObject]);
