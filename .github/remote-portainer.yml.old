@@ -22,7 +22,7 @@ jobs:
             - name: deploy to portainer
               uses: LGinC/portainer-stack-deploy@master
               with:
-                  serverurl: http://132.145.17.195:9000
+                  serverurl: http://${{ secrets.DOCKER_HOST }}:9000
                   username: admin
                   password: ${{ secrets.PORTAINER_PASSWORD }}
                   endpointId: 2
