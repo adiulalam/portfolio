@@ -15,5 +15,5 @@ jobs:
           host: ${{ secrets.DOCKER_HOST }}
           username: ${{ secrets.DOCKER_USERNAME }}
           key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
-          port: 22
+          port: '22'
           script: whoami
