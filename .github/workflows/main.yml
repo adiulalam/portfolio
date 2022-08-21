@@ -16,4 +16,5 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
           script: |
-            ./portfolio-content/deploy-portfolio.sh
+            cd portfolio-content/
+            ./deploy-portfolio.sh
