@@ -14,5 +14,5 @@ jobs:
         with:
           host: ${{ secrets.DOCKER_HOST }}
           username: ${{ secrets.DOCKER_USERNAME }}
-          key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
+          key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
           script: whoami
