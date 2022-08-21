@@ -224,6 +224,7 @@ const Projects = () => {
     const { id } = e.target;
 
     if (id?.length && _.has([...textValue][index], "project_uuid")) {
+      console.log("this has uuid and need a graphql DELETE query");
       //todo- Write GraphQL query
     } else {
       // console.log(index)
