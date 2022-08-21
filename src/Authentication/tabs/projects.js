@@ -13,7 +13,6 @@ import { ErrorMessage } from "../components/message";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Media from "./media";
 import "./react-tabs.css";
-import { Sort } from "@material-ui/icons";
 
 const Projects = () => {
   const headers = useContext(mutationHeaders);

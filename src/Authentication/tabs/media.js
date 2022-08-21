@@ -14,10 +14,17 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./react-tabs.css";
 
 const Media = (objectValue) => {
-    const arrayValue = objectValue.objectValue
+  const arrayValue = objectValue.objectValue;
+
+  const [tabIndex, setTabIndex] = useState(-1);
 
   return (
-    <Tabs forceRenderTabPanel>
+    <Tabs
+      selectedIndex={tabIndex}
+      onSelect={(index, tabIndex) =>
+        index === tabIndex ? setTabIndex(-1) : setTabIndex(index)
+      }
+    >
       <div class="flex flex-col items-center">
         <TabList>
           {arrayValue.map((value, index) => (
@@ -25,7 +32,7 @@ const Media = (objectValue) => {
               <div>
                 {value["type"]}
                 <ButtonDeleteTab
-                //   handleDeleteTab={handleDeleteTab}
+                  //   handleDeleteTab={handleDeleteTab}
                   index={index}
                   id={value["media_uuid"]}
                 />
@@ -36,51 +43,37 @@ const Media = (objectValue) => {
         </TabList>
       </div>
 
-      {/* {textValue.map((arrayValue, arrayindex) => (
+      {arrayValue.map((objValue, objIndex) => (
         <TabPanel>
-          <div class="flex justify-center">
+          <div class="flex justify-center border-b-2 mb-4">
             <form class="w-full max-w-2xl">
-              {errorMessage && (
+              {/* {errorMessage && (
                 <ErrorMessage error="Error!" message="Field is Empty" />
-              )}
-              {Object.entries(arrayValue).map(([key, objectValue]) => {
+              )} */}
+              {Object.entries(objValue).map(([key, value]) => {
                 // Gives me all Array
-                return key === "media" ? <Media objectValue={objectValue} /> : Array.isArray(objectValue) ? (
-                  objectValue.map((val, index) => (
-                    <Input
-                      name={key}
-                      value={val}
-                      textValue={objectValue}
-                      id="project_uuid"
-                      onTextChange={(e) => onTextChange(e, arrayindex, index)}
-                      handleReset={(e) => handleReset(e, arrayindex, index)}
-                      handleDelete={(e) => handleDelete(e, arrayindex, index)}
-                      handleAdd={(e) => handleAdd(e, arrayindex, index)}
-                      index={index}
-                    />
-                  ))
-                ) : (
+                return (
                   <Input
                     name={key}
-                    value={objectValue}
-                    textValue={arrayValue}
-                    id="project_uuid"
-                    onTextChange={onTextChange}
-                    handleReset={handleReset}
-                    handleDelete={handleDelete}
-                    index={arrayindex}
+                    value={value}
+                    textValue={objValue}
+                    id="media_uuid"
+                    // onTextChange={onTextChange}
+                    // handleReset={handleReset}
+                    // handleDelete={handleDelete}
+                    index={objIndex}
                   />
                 );
               })}
               <ButtonSubmit
-                id={arrayValue["project_uuid"]}
-                handleSubmit={handleSubmit}
-                index={arrayindex}
+                id={arrayValue["media_uuid"]}
+                // handleSubmit={handleSubmit}
+                index={objIndex}
               />
             </form>
           </div>
         </TabPanel>
-      ))} */}
+      ))}
     </Tabs>
   );
 };
