@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted, linux, ARM64]
+    runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
