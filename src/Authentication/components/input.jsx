@@ -1,6 +1,5 @@
 import { ButtonAdd, ButtonDelete, ButtonReset } from "./button";
 
-
 const Input = ({
   name,
   value,
@@ -33,17 +32,17 @@ const Input = ({
             value={value}
             id={textValue[id]}
             readOnly={name === id ? true : false}
-            onChange={
-              (e) => {
-                onTextChange(e, index);
-              }
-            }
+            onChange={(e) => {
+              onTextChange(e, index);
+            }}
           />
         </div>
         <div class="flex place-content-center ">
           <ButtonReset name={name} handleReset={handleReset} index={index} />
-          <ButtonDelete name={name} handleDelete={handleDelete} index={index}/>
-          {index === textValue.length - 1 && (<ButtonAdd name={name} handleAdd={handleAdd} index={index} />)}
+          <ButtonDelete name={name} handleDelete={handleDelete} index={index} />
+          {index === textValue.length - 1 && (
+            <ButtonAdd name={name} handleAdd={handleAdd} index={index} />
+          )}
         </div>
       </div>
     </>

@@ -114,7 +114,7 @@ const Media = (objectValue) => {
     const { id } = e.target;
 
     if (id?.length && _.has([...textValue][index], "media_uuid")) {
-      console.log('this has uuid and need a graphql DELETE query')
+      console.log("this has uuid and need a graphql DELETE query");
 
       //todo- Write GraphQL query
     } else {
@@ -172,16 +172,18 @@ const Media = (objectValue) => {
               )}
               {Object.entries(arrayValue).map(([key, value]) => {
                 return (
-                  <Input
-                    name={key}
-                    value={value}
-                    textValue={arrayValue}
-                    id="media_uuid"
-                    onTextChange={onTextChange}
-                    handleReset={handleReset}
-                    // handleDelete={handleDelete}
-                    index={arrayIndex}
-                  />
+                  (key !== "thumbnail" || arrayValue["type"] !== "image") && (
+                    <Input
+                      name={key}
+                      value={value}
+                      textValue={arrayValue}
+                      id="media_uuid"
+                      onTextChange={onTextChange}
+                      handleReset={handleReset}
+                      // handleDelete={handleDelete}
+                      index={arrayIndex}
+                    />
+                  )
                 );
               })}
               <ButtonSubmit
