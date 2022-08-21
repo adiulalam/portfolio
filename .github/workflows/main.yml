@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
