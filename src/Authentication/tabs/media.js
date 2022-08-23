@@ -1,6 +1,5 @@
 import _ from "lodash";
 import React, { useContext, useState } from "react";
-import { portfolioContext } from "../../App";
 import ContentObjects from "../../connection/connection";
 import { mutationHeaders } from "../admin";
 import {
@@ -13,8 +12,14 @@ import { ErrorMessage } from "../components/message";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./react-tabs.css";
 
-const Media = ({fk_uuid: fk_project_uuid, ...objectValue}) => {
-  
+const Media = ({ fk_uuid: fk_project_uuid, ...objectValue }) => {
+  const headers = useContext(mutationHeaders);
+  const fetchData = async (graphqlQuery) => {
+    console.log(graphqlQuery);
+    // await ContentObjects(headers, graphqlQuery);
+    // window.location.reload();
+  };
+
   const [tabIndex, setTabIndex] = useState(-1);
   const [resetValue, setResetValue] = useState(
     _.cloneDeep(objectValue.objectValue)
@@ -58,47 +63,51 @@ const Media = ({fk_uuid: fk_project_uuid, ...objectValue}) => {
     console.clear();
     e.preventDefault();
 
-    // console.log("fk_uuid",fk_project_uuid)
-
     console.log("submitValue", submitValue);
 
     let isEmpty = false;
     Object.entries(submitValue).map(
-      ([key, value]) => !value.length && (isEmpty = true)
+      ([key, value]) =>
+        !value.length &&
+        !(key === "thumbnail" || key === "repo" || key === "application") &&
+        (isEmpty = true)
     );
     if (_.isEmpty(submitValue)) isEmpty = true;
 
     if (isEmpty) {
       setErrorMessage(true);
-      // console.log("IS EMPTY");
     } else {
-      // console.log("NOT EMPTY");
       setErrorMessage(false);
 
-      const project_uuid = e.target.id;
-      const variables = { updateProject: submitValue };
+      const media_uuid = e.target.id;
+      const variables = { mediaObject: submitValue };
 
-      const fetchData = async (graphqlQuery) => {
-        // await ContentObjects(headers, graphqlQuery);
-        // window.location.reload();
-      };
+      if (media_uuid?.length && _.has([...textValue][index], "media_uuid")) {
+        const mutation = `mutation updateMedia($mediaObject: portfolio_media_set_input = {}) { update_portfolio_media_by_pk(pk_columns: {media_uuid: "${media_uuid}"}, _set: $mediaObject) { media_uuid } }`;
 
-      // if (
-      //   project_uuid?.length &&
-      //   _.has([...textValue][index], "project_uuid")
-      // ) {
-      //   const mutation = `mutation updateProject($updateProject: portfolio_project_set_input = {}) { update_portfolio_project(where: {project_uuid: {_eq: "${project_uuid}"}}, _set: $updateProject) { affected_rows } }`;
+        const graphqlQuery = {
+          operationName: "updateMedia",
+          query: mutation,
+          variables: variables,
+        };
 
-      //   const graphqlQuery = {
-      //     operationName: "updateProject",
-      //     query: mutation,
-      //     variables: variables,
-      //   };
+        await fetchData(graphqlQuery);
+      } else {
+        variables["mediaObject"] = {
+          ...variables["mediaObject"],
+          fk_project_uuid: fk_project_uuid,
+        };
 
-      //   await fetchData(graphqlQuery);
-      // } else {
-      //   //todo- Write Add new Project GraphQL query
-      // }
+        const mutation = `mutation insertMedia($mediaObject: [portfolio_media_insert_input!] = {}) { insert_portfolio_media(objects: $mediaObject) { affected_rows } }`;
+
+        const graphqlQuery = {
+          operationName: "insertMedia",
+          query: mutation,
+          variables: variables,
+        };
+
+        await fetchData(graphqlQuery);
+      }
     }
   };
 
@@ -112,16 +121,21 @@ const Media = ({fk_uuid: fk_project_uuid, ...objectValue}) => {
     setSubmitValue(_.omit(newObject, ["media"]));
   };
 
-  const handleDeleteTab = (e, index) => {
+  const handleDeleteTab = async (e, index) => {
     e.preventDefault();
     const { id } = e.target;
 
     if (id?.length && _.has([...textValue][index], "media_uuid")) {
-      console.log("this has uuid and need a graphql DELETE query");
+      const mutation = `mutation deleteMedia { delete_portfolio_media_by_pk (media_uuid: "${id}") { media_uuid } }`;
 
-      //todo- Write GraphQL query
+      const graphqlQuery = {
+        operationName: "deleteMedia",
+        query: mutation,
+        variables: {},
+      };
+
+      await fetchData(graphqlQuery);
     } else {
-      // console.log(index)
 
       setTextValue((prevState) => {
         const deleteArr = [...prevState];
@@ -136,8 +150,6 @@ const Media = ({fk_uuid: fk_project_uuid, ...objectValue}) => {
       });
 
       setSubmitValue({});
-
-      //todo- Write GraphQL query and for submitvalue
     }
   };
 
@@ -190,7 +202,7 @@ const Media = ({fk_uuid: fk_project_uuid, ...objectValue}) => {
                 );
               })}
               <ButtonSubmit
-                id={textValue["media_uuid"]}
+                id={arrayValue["media_uuid"]}
                 handleSubmit={handleSubmit}
                 index={arrayIndex}
               />

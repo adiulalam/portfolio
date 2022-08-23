@@ -146,9 +146,9 @@ const Projects = () => {
 
     if (isEmpty) {
       setErrorMessage(true);
-      // console.log("IS EMPTY");
+
     } else {
-      // console.log("NOT EMPTY");
+
       setErrorMessage(false);
 
       const project_uuid = e.target.id;
