@@ -16,6 +16,11 @@ import "./react-tabs.css";
 
 const Projects = () => {
   const headers = useContext(mutationHeaders);
+  const fetchData = async (graphqlQuery) => {
+    console.log(graphqlQuery)
+    // await ContentObjects(headers, graphqlQuery);
+    // window.location.reload();
+  };
 
   const { projects } = useContext(portfolioContext);
 
@@ -149,11 +154,6 @@ const Projects = () => {
       const project_uuid = e.target.id;
       const variables = { updateProject: submitValue };
 
-      const fetchData = async (graphqlQuery) => {
-        // await ContentObjects(headers, graphqlQuery);
-        // window.location.reload();
-      };
-
       if (
         project_uuid?.length &&
         _.has([...textValue][index], "project_uuid")
@@ -227,8 +227,6 @@ const Projects = () => {
       console.log("this has uuid and need a graphql DELETE query");
       //todo- Write GraphQL query
     } else {
-      // console.log(index)
-
       setTextValue((prevState) => {
         const deleteArr = [...prevState];
         deleteArr.splice(index, 1);
