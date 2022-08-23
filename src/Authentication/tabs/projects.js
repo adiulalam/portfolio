@@ -296,7 +296,7 @@ const Projects = () => {
                 ([key, objectValue]) => {
                   // Gives me all Array
                   return key === "media" ? (
-                    <Media objectValue={objectValue} />
+                    <Media objectValue={objectValue} fk_uuid={textValue[`${arrayindex}`]["project_uuid"]} />
                   ) : Array.isArray(objectValue) ? (
                     objectValue.map((val, index) => (
                       <Input
