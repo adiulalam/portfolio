@@ -17,12 +17,11 @@ import "./react-tabs.css";
 const Projects = () => {
   const headers = useContext(mutationHeaders);
   const fetchData = async (graphqlQuery) => {
-    console.log(graphqlQuery)
-    // await ContentObjects(headers, graphqlQuery);
-    // window.location.reload();
+    await ContentObjects(headers, graphqlQuery);
+    window.location.reload();
   };
 
-  const { projects } = useContext(portfolioContext);
+  const { projects, content_uuid } = useContext(portfolioContext);
 
   const [resetValue, setResetValue] = useState(_.cloneDeep(projects));
   const [textValue, setTextValue] = useState(projects);
@@ -140,19 +139,26 @@ const Projects = () => {
 
     let isEmpty = false;
     Object.entries(submitValue).map(
-      ([key, value]) => !value.length && (isEmpty = true)
+      ([key, value]) =>
+        !value.length &&
+        !(
+          key === "media" ||
+          key === "repo" ||
+          key === "application"
+        ) &&
+        (isEmpty = true)
     );
     if (_.isEmpty(submitValue)) isEmpty = true;
 
+    
+
     if (isEmpty) {
       setErrorMessage(true);
-
     } else {
-
       setErrorMessage(false);
 
       const project_uuid = e.target.id;
-      const variables = { projectObject : submitValue };
+      const variables = { projectObject: submitValue };
 
       if (
         project_uuid?.length &&
@@ -211,7 +217,7 @@ const Projects = () => {
     e.preventDefault();
 
     const newObject = {
-      media: [{ type: "image/video", src: "", thumbnail: "" }],
+      // media: [{ type: "image/video", src: "", thumbnail: "" }],
       title: "newProject",
       description: "",
       projectdate: "",
@@ -224,15 +230,17 @@ const Projects = () => {
 
     setTextValue((prevState) => [...prevState, newObject]);
     setResetValue((prevState) => [...prevState, newObject]);
-    setSubmitValue(_.omit(newObject, ['media']));
+    setSubmitValue({
+      ...newObject,
+      fk_content_uuid: content_uuid,
+    });
   };
 
-  const handleDeleteTab = async(e, index) => {
+  const handleDeleteTab = async (e, index) => {
     e.preventDefault();
     const { id } = e.target;
 
     if (id?.length && _.has([...textValue][index], "project_uuid")) {
-
       const mutation = `mutation deleteProject { delete_portfolio_project_by_pk (project_uuid: "${id}") { project_uuid } }`;
 
       const graphqlQuery = {
@@ -240,9 +248,8 @@ const Projects = () => {
         query: mutation,
         variables: {},
       };
-      
-      await fetchData(graphqlQuery);
 
+      await fetchData(graphqlQuery);
     } else {
       setTextValue((prevState) => {
         const deleteArr = [...prevState];
@@ -260,10 +267,15 @@ const Projects = () => {
     }
   };
 
-  const sortMediaObject = (arrayValue) => ({
-    media: arrayValue["media"],
-    ...arrayValue,
-  });
+  const sortMediaObject = (arrayValue) =>
+    arrayValue["media"]
+      ? {
+          media: arrayValue["media"],
+          ...arrayValue,
+        }
+      : {
+          ...arrayValue,
+        };
 
   return (
     <Tabs forceRenderTabPanel>
@@ -296,7 +308,10 @@ const Projects = () => {
                 ([key, objectValue]) => {
                   // Gives me all Array
                   return key === "media" ? (
-                    <Media objectValue={objectValue} fk_uuid={textValue[`${arrayindex}`]["project_uuid"]} />
+                    <Media
+                      objectValue={objectValue}
+                      fk_uuid={textValue[arrayindex]["project_uuid"]}
+                    />
                   ) : Array.isArray(objectValue) ? (
                     objectValue.map((val, index) => (
                       <Input

@@ -15,9 +15,8 @@ import "./react-tabs.css";
 const Media = ({ fk_uuid: fk_project_uuid, ...objectValue }) => {
   const headers = useContext(mutationHeaders);
   const fetchData = async (graphqlQuery) => {
-    console.log(graphqlQuery);
-    // await ContentObjects(headers, graphqlQuery);
-    // window.location.reload();
+    await ContentObjects(headers, graphqlQuery);
+    window.location.reload();
   };
 
   const [tabIndex, setTabIndex] = useState(-1);
@@ -69,7 +68,9 @@ const Media = ({ fk_uuid: fk_project_uuid, ...objectValue }) => {
     Object.entries(submitValue).map(
       ([key, value]) =>
         !value.length &&
-        !(key === "thumbnail" || key === "repo" || key === "application") &&
+        !(
+          key === "thumbnail" 
+        ) &&
         (isEmpty = true)
     );
     if (_.isEmpty(submitValue)) isEmpty = true;
@@ -118,7 +119,7 @@ const Media = ({ fk_uuid: fk_project_uuid, ...objectValue }) => {
 
     setTextValue((prevState) => [...prevState, newObject]);
     setResetValue((prevState) => [...prevState, newObject]);
-    setSubmitValue(_.omit(newObject, ["media"]));
+    setSubmitValue(newObject);
   };
 
   const handleDeleteTab = async (e, index) => {
@@ -136,7 +137,6 @@ const Media = ({ fk_uuid: fk_project_uuid, ...objectValue }) => {
 
       await fetchData(graphqlQuery);
     } else {
-
       setTextValue((prevState) => {
         const deleteArr = [...prevState];
         deleteArr.splice(index, 1);
