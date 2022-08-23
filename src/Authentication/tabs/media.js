@@ -13,9 +13,7 @@ import { ErrorMessage } from "../components/message";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./react-tabs.css";
 
-const Media = ({...objectValue}) => {
-
-  const fk_project_uuid = objectValue.fk_uuid
+const Media = ({fk_uuid: fk_project_uuid, ...objectValue}) => {
   
   const [tabIndex, setTabIndex] = useState(-1);
   const [resetValue, setResetValue] = useState(
