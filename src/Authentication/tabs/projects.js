@@ -152,13 +152,13 @@ const Projects = () => {
       setErrorMessage(false);
 
       const project_uuid = e.target.id;
-      const variables = { updateProject: submitValue };
+      const variables = { projectObject : submitValue };
 
       if (
         project_uuid?.length &&
         _.has([...textValue][index], "project_uuid")
       ) {
-        const mutation = `mutation updateProject($updateProject: portfolio_project_set_input = {}) { update_portfolio_project(where: {project_uuid: {_eq: "${project_uuid}"}}, _set: $updateProject) { affected_rows } }`;
+        const mutation = `mutation updateProject($projectObject: portfolio_project_set_input = {}) { update_portfolio_project(where: {project_uuid: {_eq: "${project_uuid}"}}, _set: $projectObject) { affected_rows } }`;
 
         const graphqlQuery = {
           operationName: "updateProject",
@@ -168,7 +168,15 @@ const Projects = () => {
 
         await fetchData(graphqlQuery);
       } else {
-        //todo- Write Add new Project GraphQL query
+        const mutation = `mutation insertProject($projectObject: [portfolio_project_insert_input!] = {}) { insert_portfolio_project(objects: $projectObject) { affected_rows } }`;
+
+        const graphqlQuery = {
+          operationName: "insertProject",
+          query: mutation,
+          variables: variables,
+        };
+
+        await fetchData(graphqlQuery);
       }
     }
   };
@@ -219,13 +227,22 @@ const Projects = () => {
     setSubmitValue(_.omit(newObject, ['media']));
   };
 
-  const handleDeleteTab = (e, index) => {
+  const handleDeleteTab = async(e, index) => {
     e.preventDefault();
     const { id } = e.target;
 
     if (id?.length && _.has([...textValue][index], "project_uuid")) {
-      console.log("this has uuid and need a graphql DELETE query");
-      //todo- Write GraphQL query
+
+      const mutation = `mutation deleteProject { delete_portfolio_project_by_pk (project_uuid: "${id}") { project_uuid } }`;
+
+      const graphqlQuery = {
+        operationName: "deleteProject",
+        query: mutation,
+        variables: {},
+      };
+      
+      await fetchData(graphqlQuery);
+
     } else {
       setTextValue((prevState) => {
         const deleteArr = [...prevState];
@@ -240,8 +257,6 @@ const Projects = () => {
       });
 
       setSubmitValue({});
-
-      //todo- Write GraphQL query and for submitvalue
     }
   };
 
