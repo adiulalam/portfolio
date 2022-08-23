@@ -158,7 +158,7 @@ const Projects = () => {
         project_uuid?.length &&
         _.has([...textValue][index], "project_uuid")
       ) {
-        const mutation = `mutation updateProject($projectObject: portfolio_project_set_input = {}) { update_portfolio_project(where: {project_uuid: {_eq: "${project_uuid}"}}, _set: $projectObject) { affected_rows } }`;
+        const mutation = `mutation updateProject($projectObject: portfolio_project_set_input = {}) { update_portfolio_project_by_pk(pk_columns: {project_uuid: "${project_uuid}"}, _set: $projectObject) { project_uuid } }`;
 
         const graphqlQuery = {
           operationName: "updateProject",
