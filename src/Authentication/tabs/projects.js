@@ -265,7 +265,7 @@ const Projects = () => {
 
       setSubmitValue({});
     }
-  }; 
+  };
 
   const sortMediaObject = (arrayValue) =>
     arrayValue["media"]
