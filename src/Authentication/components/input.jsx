@@ -13,8 +13,8 @@ const Input = ({
 }) => {
   return (
     <>
-      <div class="md:flex md:items-center mb-6 space-x-1.5">
-        <div class="flex place-content-center ">
+      <div class="md:grid md:grid-cols-5 mb-6 space-x-1.5 ">
+        <div class="flex justify-center md:sm:justify-end ">
           <label
             class="block  text-gray-200 font-bold md:text-right mb-1 md:mb-0 px-4"
             for="inline-full-name"
@@ -22,7 +22,7 @@ const Input = ({
             {Array.isArray(textValue) ? `${name}[${index}]` : name}:
           </label>
         </div>
-        <div class="md:w-2/5">
+        <div class="flex col-span-3">
           <input
             class={` bg-gray-200 appearance-none border-2 ${
               value ? "" : "border-red-500"
@@ -37,7 +37,7 @@ const Input = ({
             }}
           />
         </div>
-        <div class="flex place-content-center ">
+        <div class="flex justify-center md:sm:justify-start">
           <ButtonReset name={name} handleReset={handleReset} index={index} />
           {Array.isArray(textValue) && (
             <ButtonDelete
