@@ -240,6 +240,8 @@ const Projects = () => {
     e.preventDefault();
     const { id } = e.target;
 
+    console.log(e)
+
     if (id?.length && _.has([...textValue][index], "project_uuid")) {
       const mutation = `mutation deleteProject { delete_portfolio_project_by_pk (project_uuid: "${id}") { project_uuid } }`;
 

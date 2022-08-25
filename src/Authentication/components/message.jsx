@@ -11,61 +11,79 @@ const ErrorMessage = ({ error, message }) => {
   );
 };
 
-const ConfirmDelete = (e) => {
-  console.log(e.type)
-  // e.preventDefault();
+const ConfirmDelete = ({handleDelete, setShowModal, name, index}) => {
   return (
     <>
-
-      <div
-        class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-        id="exampleModalCenter"
-        tabindex="-1"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-modal="true"
-        role="dialog"
-      >
-        <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
-          <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-            <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-              <h5
-                class="text-xl font-medium leading-normal text-gray-800"
-                id="exampleModalScrollableLabel"
+    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+      <div className="relative w-auto my-6 mx-auto max-w-sm">
+        <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white dark:bg-gray-700 outline-none focus:outline-none">
+          <div class="p-6 text-center ">
+            <button
+              onClick={() => setShowModal(false)}
+              type="button"
+              class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+              data-modal-toggle="popup-modal"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-5 h-5 "
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                Modal title
-              </h5>
-              <button
-                type="button"
-                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body relative p-4">
-              <p>This is a vertically centered modal.</p>
-            </div>
-            <div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-              <button
-                type="button"
-                class="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
-                // onClick={(e) => {
-                //   handleDelete(e);
-                // }}
-              >
-                Delete
-              </button>
-            </div>
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <span class="sr-only ">Close modal</span>
+            </button>
+            <svg
+              aria-hidden="true"
+              class=" mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            <h3 className="text-lg font-normal text-gray-500 dark:text-gray-400">
+              Are you sure you want to delete this?
+            </h3>
+          </div>
+          <div className="flex items-center justify-center p-6  border-slate-200 rounded-b">
+            <button
+              className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              type="button"
+              onClick={() => setShowModal(false)}
+            >
+              Close
+            </button>
+            <button
+              className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              type="button"
+              name={name}
+              id={name}
+              onClick={(e) => {
+                handleDelete(e, index, name)
+                setShowModal(false)
+              }}
+            >
+              Save Changes
+            </button>
           </div>
         </div>
       </div>
-    </>
+    </div>
+    <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+  </>
   );
 };
 
