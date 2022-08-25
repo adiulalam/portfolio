@@ -354,3 +354,27 @@ const Projects = () => {
 };
 
 export default Projects;
+
+
+//todo joe's stuff
+// const textValueFunction = ({e, index, textValue, setTextValue}) => {
+//   if (textValue && setTextValue) {
+//       let newTextValue = {};
+//       if (!textValue || !typeof textValue === "object") {
+//           return false;
+//       } else if (Array.isArray(textValue)) {
+//           // TODO - Do array shit
+//           newTextValue = "blah"
+//       } else {
+//           // TODO - Do object shit
+//           newTextValue = "blah blah"
+//       }
+//       setTextValue(newTextvalue)
+//   }
+
+//   if (submitValue && setSubmitValue) {
+//       // TODO - do submit shit
+//   }
+
+//   if (resetValue && setResetValue) return false
+// }
