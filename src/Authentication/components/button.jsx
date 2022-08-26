@@ -114,8 +114,6 @@ const ButtonDeleteTab = ({ handleDeleteTab, index, id }) => {
     <>
       <button
         class=" absolute float-right right-0 bottom-5 space-x-2 hover:bg-gray-500 rounded-full"
-        // onClick={(e) => handleDeleteTab(e, index, id)}
-        // id={id}
         onClick={(e) => {
           e.preventDefault();
           setShowModal(true)}}
