@@ -116,7 +116,9 @@ const ButtonDeleteTab = ({ handleDeleteTab, index, id }) => {
         class=" absolute float-right right-0 bottom-5 space-x-2 hover:bg-gray-500 rounded-full"
         // onClick={(e) => handleDeleteTab(e, index, id)}
         // id={id}
-        onClick={() => setShowModal(true)}
+        onClick={(e) => {
+          e.preventDefault();
+          setShowModal(true)}}
       >
         <svg
           aria-hidden="true"
