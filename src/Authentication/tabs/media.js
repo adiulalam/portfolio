@@ -7,7 +7,7 @@ import {
   ButtonDeleteTab,
   ButtonSubmit,
 } from "../components/button";
-import Input from "../components/input";
+import Form from "../components/form";
 import { ErrorMessage } from "../components/message";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./react-tabs.css";
@@ -188,7 +188,7 @@ const Media = ({ fk_uuid: fk_project_uuid, ...objectValue }) => {
               {Object.entries(arrayValue).map(([key, value]) => {
                 return (
                   (key !== "thumbnail" || arrayValue["type"] !== "image") && (
-                    <Input
+                    <Form
                       name={key}
                       value={value}
                       textValue={arrayValue}

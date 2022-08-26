@@ -8,7 +8,7 @@ import {
   ButtonDeleteTab,
   ButtonSubmit,
 } from "../components/button";
-import Input from "../components/input";
+import Form from "../components/form";
 import { ErrorMessage } from "../components/message";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Media from "./media";
@@ -266,14 +266,14 @@ const Projects = () => {
         <TabList>
           {textValue.map((value, index) => (
             <Tab tabIndex={index}>
-              <div>
+              <>
                 {value["title"]}
                 <ButtonDeleteTab
                   handleDeleteTab={handleDeleteTab}
                   index={index}
                   id={value["project_uuid"]}
                 />
-              </div>
+              </>
             </Tab>
           ))}
           <ButtonAddTab handleAddTab={handleAddTab} />
@@ -297,7 +297,7 @@ const Projects = () => {
                     />
                   ) : Array.isArray(objectValue) ? (
                     objectValue.map((val, index) => (
-                      <Input
+                      <Form
                         name={key}
                         value={val}
                         textValue={objectValue}
@@ -310,7 +310,7 @@ const Projects = () => {
                       />
                     ))
                   ) : (
-                    <Input
+                    <Form
                       name={key}
                       value={objectValue}
                       textValue={arrayValue}

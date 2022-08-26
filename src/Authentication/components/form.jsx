@@ -1,6 +1,7 @@
 import { ButtonAdd, ButtonDelete, ButtonReset } from "./button";
+import { Input } from "./form_components";
 
-const Input = ({
+const Form = ({
   name,
   value,
   textValue,
@@ -23,7 +24,7 @@ const Input = ({
           </label>
         </div>
         <div class="flex col-span-3">
-          <input
+          {/* <input
             class={` bg-gray-200 appearance-none border-2 ${
               value ? "" : "border-red-500"
             } rounded w-full py-2 px-4 text-gray-700 leading-normal focus:outline-none focus:bg-white focus:border-purple-500`}
@@ -33,6 +34,16 @@ const Input = ({
             id={textValue[id]}
             readOnly={name === id ? true : false}
             onChange={(e) => {
+              onTextChange(e, index);
+            }}
+          /> */}
+          <Input
+            name={name}
+            value={value}
+            id={id}
+            textValue={textValue}
+            readOnly={name === id ? true : false}
+            onTextChange={(e) => {
               onTextChange(e, index);
             }}
           />
@@ -55,4 +66,4 @@ const Input = ({
   );
 };
 
-export default Input;
+export default Form;

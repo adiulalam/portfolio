@@ -4,7 +4,7 @@ import { portfolioContext } from "../../App";
 import ContentObjects from "../../connection/connection";
 import { mutationHeaders } from "../admin";
 import { ButtonSubmit } from "../components/button";
-import Input from "../components/input";
+import Form from "../components/form";
 import { ErrorMessage } from "../components/message";
 
 const AboutMe = () => {
@@ -193,7 +193,7 @@ const AboutMe = () => {
         {Object.entries(textValue).map(([key, value]) => {
           return !Array.isArray(value) ? (
             // Gives me all Objects
-            <Input
+            <Form
               name={key}
               value={value}
               textValue={textValue}
@@ -205,7 +205,7 @@ const AboutMe = () => {
           ) : (
             // Gives me all Array
             value.map((val, index) => (
-              <Input
+              <Form
                 name={key}
                 value={val}
                 textValue={value}

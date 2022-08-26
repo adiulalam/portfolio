@@ -3,7 +3,7 @@ import { portfolioContext } from "../../App";
 import ContentObjects from "../../connection/connection";
 import { mutationHeaders } from "../admin";
 import { ButtonSubmit } from "../components/button";
-import Input from "../components/input";
+import Form from "../components/form";
 import { ErrorMessage } from "../components/message";
 import _ from 'lodash';
 
@@ -88,7 +88,7 @@ const Intro = () => {
           <ErrorMessage error="Error!" message="Field is Empty" />
         )}
         {Object.entries({ ...textValue }).map(([key, value]) => (
-            <Input
+            <Form
               name={key}
               value={value}
               textValue={textValue}
