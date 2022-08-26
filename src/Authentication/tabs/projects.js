@@ -17,8 +17,9 @@ import "./react-tabs.css";
 const Projects = () => {
   const headers = useContext(mutationHeaders);
   const fetchData = async (graphqlQuery) => {
-    await ContentObjects(headers, graphqlQuery);
-    window.location.reload();
+    console.log(graphqlQuery);
+    // await ContentObjects(headers, graphqlQuery);
+    // window.location.reload();
   };
 
   const { projects, content_uuid } = useContext(portfolioContext);
@@ -45,17 +46,7 @@ const Projects = () => {
         ...prevState[arrayindex][name],
         "",
       ]);
-      return [...setArr];
-    });
-
-    setSubmitValue((prevState) => {
-      const addArr = [...textValue];
-      const newLoop = addArr[arrayindex][name];
-
-      return {
-        ...prevState,
-        [name]: newLoop,
-      };
+      return _.cloneDeep([...setArr]);
     });
   };
 
@@ -141,16 +132,10 @@ const Projects = () => {
     Object.entries(submitValue).map(
       ([key, value]) =>
         !value.length &&
-        !(
-          key === "media" ||
-          key === "repo" ||
-          key === "application"
-        ) &&
+        !(key === "media" || key === "repo" || key === "application") &&
         (isEmpty = true)
     );
     if (_.isEmpty(submitValue)) isEmpty = true;
-
-    
 
     if (isEmpty) {
       setErrorMessage(true);
@@ -198,7 +183,7 @@ const Projects = () => {
 
       setSubmitValue((prevState) => ({
         ...prevState,
-        [name]: [newArr[arrayindex][name]],
+        [name]: newArr[arrayindex][name],
       }));
     } else {
       let newArr = [...textValue];
@@ -217,7 +202,6 @@ const Projects = () => {
     e.preventDefault();
 
     const newObject = {
-      // media: [{ type: "image/video", src: "", thumbnail: "" }],
       title: "newProject",
       description: "",
       projectdate: "",
@@ -239,8 +223,6 @@ const Projects = () => {
   const handleDeleteTab = async (e, index) => {
     e.preventDefault();
     const { id } = e.target;
-
-    console.log(e)
 
     if (id?.length && _.has([...textValue][index], "project_uuid")) {
       const mutation = `mutation deleteProject { delete_portfolio_project_by_pk (project_uuid: "${id}") { project_uuid } }`;
@@ -356,7 +338,6 @@ const Projects = () => {
 };
 
 export default Projects;
-
 
 //todo joe's stuff
 // const textValueFunction = ({e, index, textValue, setTextValue}) => {

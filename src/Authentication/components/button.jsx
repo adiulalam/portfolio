@@ -59,7 +59,7 @@ const ButtonDelete = ({ name, handleDelete, index }) => {
         </button>
         {showModal ? (
           <ConfirmDelete
-            handleDelete={handleDelete}
+            handleDelete={(e) => handleDelete(e)}
             setShowModal={setShowModal}
             name={name}
           />
@@ -126,19 +126,17 @@ const ButtonDeleteTab = ({ handleDeleteTab, index, id }) => {
           viewBox="0 0 24 24"
           stroke="currentColor"
           strokeWidth={2}
-          // id={id}
         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
             d="M6 18L18 6M6 6l12 12"
-            // id={id}
           />
         </svg>
       </button>
       {showModal ? (
           <ConfirmDelete
-            handleDelete={handleDeleteTab}
+            handleDelete={(e) => handleDeleteTab(e, index, id)}
             setShowModal={setShowModal}
             name={id}
             index={index}

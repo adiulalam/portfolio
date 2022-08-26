@@ -72,7 +72,7 @@ const ConfirmDelete = ({handleDelete, setShowModal, name, index}) => {
               name={name}
               id={name}
               onClick={(e) => {
-                handleDelete(e, index, name)
+                handleDelete(e)
                 setShowModal(false)
               }}
             >
