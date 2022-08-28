@@ -17,8 +17,9 @@ import "./react-tabs.css";
 const Projects = () => {
   const headers = useContext(mutationHeaders);
   const fetchData = async (graphqlQuery) => {
-    await ContentObjects(headers, graphqlQuery);
-    window.location.reload();
+    console.log(graphqlQuery)
+    // await ContentObjects(headers, graphqlQuery);
+    // window.location.reload();
   };
 
   const { projects, content_uuid } = useContext(portfolioContext);
@@ -204,7 +205,6 @@ const Projects = () => {
       title: "newProject",
       description: "",
       projectdate: "",
-      time: "",
       application: "",
       repo: "",
       details: [""],
@@ -307,6 +307,7 @@ const Projects = () => {
                         handleDelete={(e) => handleDelete(e, arrayindex, index)}
                         handleAdd={(e) => handleAdd(e, arrayindex, index)}
                         index={index}
+                        arrayindex={arrayindex}
                       />
                     ))
                   ) : (
@@ -319,6 +320,7 @@ const Projects = () => {
                       handleReset={handleReset}
                       handleDelete={handleDelete}
                       index={arrayindex}
+                      arrayindex={arrayindex}
                     />
                   );
                 }

@@ -11,6 +11,7 @@ const Form = ({
   handleDelete,
   handleAdd,
   index,
+  arrayindex
 }) => {
   return (
     <>
@@ -41,6 +42,7 @@ const Form = ({
               value={value}
               id={id}
               textValue={textValue}
+              arrayindex={arrayindex ? arrayindex : index}
               readOnly={name === id ? true : false}
               onTextChange={(e) => {
                 onTextChange(e, index);
