@@ -1,6 +1,6 @@
 import Datepicker from "flowbite-datepicker/Datepicker";
 import _ from "lodash";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Input = ({ name, value, textValue, id, onTextChange, index }) => {
   return (
@@ -47,6 +47,7 @@ const DatePick = ({
   index,
   arrayindex,
 }) => {
+  const [dateState, setDateState] = useState(false);
   const DatePickID = JSON.stringify(arrayindex);
 
   const DatePicker = () => {
@@ -64,7 +65,8 @@ const DatePick = ({
   const SetDate = (e) => {
     e.preventDefault();
     inputRef.current.click();
-    console.log()
+    setDateState(true)
+    console.log();
   };
 
   return (
@@ -101,6 +103,7 @@ const DatePick = ({
         onClick={(e) => {
           DatePicker();
           onTextChange(e, index);
+          setDateState(false)
         }}
         onChange={(e) => {
           DatePicker();
@@ -109,7 +112,7 @@ const DatePick = ({
         value={value}
         name={name}
         class={`flex bg-gray-200 appearance-none border-2 ${
-          value ? "" : "border-red-500"
+          value && dateState ? "" : "border-red-500"
         } rounded w-full py-2 px-4 text-gray-700 leading-normal pl-24 p-2.5 focus:outline-none focus:bg-white focus:border-purple-500 datepicker-input`}
         placeholder="Select date"
       />
