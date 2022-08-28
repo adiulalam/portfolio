@@ -22,6 +22,7 @@ const Input = ({ name, value, textValue, id, onTextChange, index }) => {
 const TextArea = ({ name, value, textValue, id, onTextChange, index }) => {
   return (
     <textarea
+      rows="5"
       class={` resize-y file:bg-gray-200 appearance-none border-2 ${
         value ? "" : "border-red-500"
       } rounded w-full py-2 px-4 text-gray-700 leading-normal focus:outline-none focus:bg-white focus:border-purple-500`}
@@ -37,15 +38,7 @@ const TextArea = ({ name, value, textValue, id, onTextChange, index }) => {
   );
 };
 
-const DatePick = ({
-  name,
-  value,
-  textValue,
-  id,
-  onTextChange,
-  index,
-  arrayindex,
-}) => {
+const DatePick = ({ name, value, onTextChange, index, arrayindex }) => {
   const [dateState, setDateState] = useState(false);
   const DatePickID = JSON.stringify(arrayindex);
 
@@ -64,7 +57,7 @@ const DatePick = ({
   const SetDate = (e) => {
     e.preventDefault();
     inputRef.current.click();
-    setDateState(true)
+    setDateState(true);
   };
 
   return (
@@ -101,7 +94,7 @@ const DatePick = ({
         onClick={(e) => {
           DatePicker();
           onTextChange(e, index);
-          setDateState(false)
+          setDateState(false);
         }}
         onChange={(e) => {
           DatePicker();
