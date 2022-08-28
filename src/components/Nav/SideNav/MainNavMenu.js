@@ -65,6 +65,8 @@ const MainNavMenu = () => {
 			{profilePic ? (
 				<img
 					alt="profile"
+					height='100px'
+					width="100px"
 					className={classes.img}
 					src={profilePic.includes("https") ? profilePic : require(`./../../../assets/images/${profilePic}`)}
 				/>

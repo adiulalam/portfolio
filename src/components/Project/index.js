@@ -115,20 +115,17 @@ const Project = ({ project }) => {
     <div className={classes.root}>
       <Grid container>
         <Grid item xs={12} sm={8}>
-          {" "}
           <div>
             <Typography className={classes.title} variant="h4">
-              {" "}
               {project.title}
             </Typography>
             <Typography variant="body1">
-              {" "}
               <strong>{project.description}</strong>
             </Typography>
             <div className={classes.details}>
               <ul >
                 {project.details.map((detail, i) => (
-                  <li class="list-disc" key={i}>
+                  <li className="list-disc" key={i}>
                     <Typography variant="body1">{detail}</Typography>
                   </li>
                 ))}

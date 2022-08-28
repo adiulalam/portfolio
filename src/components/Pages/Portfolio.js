@@ -37,7 +37,6 @@ const Portfolio = () => {
         PORTFOLIO
       </Typography>
       <div className={classes.description}>
-        {" "}
         <Typography
           variant="body1"
           dangerouslySetInnerHTML={{ __html: description }}

@@ -98,7 +98,6 @@ const DatePick = ({ name, value, onTextChange, index, arrayindex }) => {
         }}
         onChange={(e) => {
           DatePicker();
-          onTextChange(e, index);
         }}
         value={value}
         name={name}
