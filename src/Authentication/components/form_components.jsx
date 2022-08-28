@@ -1,5 +1,4 @@
 import Datepicker from "flowbite-datepicker/Datepicker";
-import _ from "lodash";
 import { useRef, useState } from "react";
 
 const Input = ({ name, value, textValue, id, onTextChange, index }) => {
@@ -66,7 +65,6 @@ const DatePick = ({
     e.preventDefault();
     inputRef.current.click();
     setDateState(true)
-    console.log();
   };
 
   return (
