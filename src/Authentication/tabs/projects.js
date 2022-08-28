@@ -17,7 +17,7 @@ import "./react-tabs.css";
 const Projects = () => {
   const headers = useContext(mutationHeaders);
   const fetchData = async (graphqlQuery) => {
-    console.log(graphqlQuery)
+    // console.log(graphqlQuery)
     await ContentObjects(headers, graphqlQuery);
     window.location.reload();
   };
