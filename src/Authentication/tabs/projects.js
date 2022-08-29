@@ -8,17 +8,21 @@ import {
   ButtonDeleteTab,
   ButtonSubmit,
 } from "../components/button";
-import Input from "../components/input";
+import Form from "../components/form";
 import { ErrorMessage } from "../components/message";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Media from "./media";
 import "./react-tabs.css";
-import { Sort } from "@material-ui/icons";
 
 const Projects = () => {
   const headers = useContext(mutationHeaders);
+  const fetchData = async (graphqlQuery) => {
+    // console.log(graphqlQuery)
+    await ContentObjects(headers, graphqlQuery);
+    window.location.reload();
+  };
 
-  const { projects } = useContext(portfolioContext);
+  const { projects, content_uuid } = useContext(portfolioContext);
 
   const [resetValue, setResetValue] = useState(_.cloneDeep(projects));
   const [textValue, setTextValue] = useState(projects);
@@ -42,17 +46,7 @@ const Projects = () => {
         ...prevState[arrayindex][name],
         "",
       ]);
-      return [...setArr];
-    });
-
-    setSubmitValue((prevState) => {
-      const addArr = [...textValue];
-      const newLoop = addArr[arrayindex][name];
-
-      return {
-        ...prevState,
-        [name]: newLoop,
-      };
+      return _.cloneDeep([...setArr]);
     });
   };
 
@@ -136,30 +130,26 @@ const Projects = () => {
 
     let isEmpty = false;
     Object.entries(submitValue).map(
-      ([key, value]) => !value.length && (isEmpty = true)
+      ([key, value]) =>
+        !value.length &&
+        !(key === "media" || key === "repo" || key === "application") &&
+        (isEmpty = true)
     );
     if (_.isEmpty(submitValue)) isEmpty = true;
 
     if (isEmpty) {
       setErrorMessage(true);
-      // console.log("IS EMPTY");
     } else {
-      // console.log("NOT EMPTY");
       setErrorMessage(false);
 
       const project_uuid = e.target.id;
-      const variables = { updateProject: submitValue };
-
-      const fetchData = async (graphqlQuery) => {
-        // await ContentObjects(headers, graphqlQuery);
-        // window.location.reload();
-      };
+      const variables = { projectObject: submitValue };
 
       if (
         project_uuid?.length &&
         _.has([...textValue][index], "project_uuid")
       ) {
-        const mutation = `mutation updateProject($updateProject: portfolio_project_set_input = {}) { update_portfolio_project(where: {project_uuid: {_eq: "${project_uuid}"}}, _set: $updateProject) { affected_rows } }`;
+        const mutation = `mutation updateProject($projectObject: portfolio_project_set_input = {}) { update_portfolio_project_by_pk(pk_columns: {project_uuid: "${project_uuid}"}, _set: $projectObject) { project_uuid } }`;
 
         const graphqlQuery = {
           operationName: "updateProject",
@@ -169,7 +159,15 @@ const Projects = () => {
 
         await fetchData(graphqlQuery);
       } else {
-        //todo- Write Add new Project GraphQL query
+        const mutation = `mutation insertProject($projectObject: [portfolio_project_insert_input!] = {}) { insert_portfolio_project(objects: $projectObject) { affected_rows } }`;
+
+        const graphqlQuery = {
+          operationName: "insertProject",
+          query: mutation,
+          variables: variables,
+        };
+
+        await fetchData(graphqlQuery);
       }
     }
   };
@@ -185,7 +183,7 @@ const Projects = () => {
 
       setSubmitValue((prevState) => ({
         ...prevState,
-        [name]: [newArr[arrayindex][name]],
+        [name]: newArr[arrayindex][name],
       }));
     } else {
       let newArr = [...textValue];
@@ -204,11 +202,9 @@ const Projects = () => {
     e.preventDefault();
 
     const newObject = {
-      media: [{ type: "image or video", src: "", thumbnail: "" }],
       title: "newProject",
       description: "",
       projectdate: "",
-      time: "",
       application: "",
       repo: "",
       details: [""],
@@ -217,18 +213,27 @@ const Projects = () => {
 
     setTextValue((prevState) => [...prevState, newObject]);
     setResetValue((prevState) => [...prevState, newObject]);
-    setSubmitValue(_.omit(newObject, ['media']));
+    setSubmitValue({
+      ...newObject,
+      fk_content_uuid: content_uuid,
+    });
   };
 
-  const handleDeleteTab = (e, index) => {
+  const handleDeleteTab = async (e, index) => {
     e.preventDefault();
     const { id } = e.target;
 
     if (id?.length && _.has([...textValue][index], "project_uuid")) {
-      //todo- Write GraphQL query
-    } else {
-      // console.log(index)
+      const mutation = `mutation deleteProject { delete_portfolio_project_by_pk (project_uuid: "${id}") { project_uuid } }`;
 
+      const graphqlQuery = {
+        operationName: "deleteProject",
+        query: mutation,
+        variables: {},
+      };
+
+      await fetchData(graphqlQuery);
+    } else {
       setTextValue((prevState) => {
         const deleteArr = [...prevState];
         deleteArr.splice(index, 1);
@@ -242,15 +247,18 @@ const Projects = () => {
       });
 
       setSubmitValue({});
-
-      //todo- Write GraphQL query and for submitvalue
     }
   };
 
-  const sortMediaObject = (arrayValue) => ({
-    media: arrayValue["media"],
-    ...arrayValue,
-  });
+  const sortMediaObject = (arrayValue) =>
+    arrayValue["media"]
+      ? {
+          media: arrayValue["media"],
+          ...arrayValue,
+        }
+      : {
+          ...arrayValue,
+        };
 
   return (
     <Tabs forceRenderTabPanel>
@@ -258,14 +266,14 @@ const Projects = () => {
         <TabList>
           {textValue.map((value, index) => (
             <Tab tabIndex={index}>
-              <div>
+              <>
                 {value["title"]}
                 <ButtonDeleteTab
                   handleDeleteTab={handleDeleteTab}
                   index={index}
                   id={value["project_uuid"]}
                 />
-              </div>
+              </>
             </Tab>
           ))}
           <ButtonAddTab handleAddTab={handleAddTab} />
@@ -283,10 +291,13 @@ const Projects = () => {
                 ([key, objectValue]) => {
                   // Gives me all Array
                   return key === "media" ? (
-                    <Media objectValue={objectValue} />
+                    <Media
+                      objectValue={objectValue}
+                      fk_uuid={textValue[arrayindex]["project_uuid"]}
+                    />
                   ) : Array.isArray(objectValue) ? (
                     objectValue.map((val, index) => (
-                      <Input
+                      <Form
                         name={key}
                         value={val}
                         textValue={objectValue}
@@ -296,10 +307,11 @@ const Projects = () => {
                         handleDelete={(e) => handleDelete(e, arrayindex, index)}
                         handleAdd={(e) => handleAdd(e, arrayindex, index)}
                         index={index}
+                        arrayindex={arrayindex}
                       />
                     ))
                   ) : (
-                    <Input
+                    <Form
                       name={key}
                       value={objectValue}
                       textValue={arrayValue}
@@ -308,6 +320,7 @@ const Projects = () => {
                       handleReset={handleReset}
                       handleDelete={handleDelete}
                       index={arrayindex}
+                      arrayindex={arrayindex}
                     />
                   );
                 }
@@ -326,3 +339,26 @@ const Projects = () => {
 };
 
 export default Projects;
+
+//todo joe's stuff
+// const textValueFunction = ({e, index, textValue, setTextValue}) => {
+//   if (textValue && setTextValue) {
+//       let newTextValue = {};
+//       if (!textValue || !typeof textValue === "object") {
+//           return false;
+//       } else if (Array.isArray(textValue)) {
+//           // TODO - Do array shit
+//           newTextValue = "blah"
+//       } else {
+//           // TODO - Do object shit
+//           newTextValue = "blah blah"
+//       }
+//       setTextValue(newTextvalue)
+//   }
+
+//   if (submitValue && setSubmitValue) {
+//       // TODO - do submit shit
+//   }
+
+//   if (resetValue && setResetValue) return false
+// }

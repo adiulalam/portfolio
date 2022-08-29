@@ -417,7 +417,6 @@ query x {
     {
       title
       description
-      time
       application
       details
       technologies
