@@ -1,5 +1,5 @@
 {
-  "content_uuid": "7aae2bea-b174-43b3-a6f4-acae31ce39da",
+  "id": "7aae2bea-b174-43b3-a6f4-acae31ce39da",
   "profilePic": "https://i.imgur.com/fgzbMqg.jpg",
   "backgroundImage": "https://i.imgur.com/YNgwpkj.jpg",
   "fullName": "Adiul Alam Adil",
@@ -11,17 +11,19 @@
   "linkedin": "adiul-alam-adil-717b5a172",
   "github": "adiulalam",
   "description": "See my journey as a software engineer. I specialize in building web applications using technologies such as <strong>React.js</strong>, <strong>PHP</strong>, \n<strong>Python</strong>, <strong>Node.js</strong>, and <strong>Docker</strong>. I’ve been involved in multiple software projects which required proficiency in languages such as <strong>C#</strong>, <strong>JavaScript</strong>, and <strong>Java</strong>. Unless explicitly stated otherwise, <strong> all project back-end and front-end parts were completely done by me. </strong>",
-  "shortAboutMe": {
-    "shortaboutme_uuid": "568418ac-7568-4a99-b13b-3b412c4ead1e",
-    "base": "a developer specialized in ",
-    "loop": ["back-end technologies.", "front-end technologies.", "API integration.", "networking."]
-  },
+  "base": "a developer specialized in ",
+  "loop": [
+    "back-end technologies.",
+    "front-end technologies.",
+    "API integration.",
+    "networking."
+  ],
   "projects": [
     {
-      "project_uuid": "ec1ae32b-df69-4eb1-9d3c-2ea724c253b2",
+      "id": "ec1ae32b-df69-4eb1-9d3c-2ea724c253b2",
       "title": "Filder",
       "description": "A full-stack form builder that can be used for creating and sharing forms. The application also includes authentication, authorization, and a dashboard for comprehensive information visualization.",
-      "projectdate": "2024-06-22",
+      "projectDate": "2024-06-22",
       "application": "https://form.adiulalamadil.me/",
       "repo": "https://github.com/adiulalam/form-builder",
       "details": [
@@ -30,39 +32,42 @@
         "Infinite Scrolling",
         "Dynamic Skeleton"
       ],
-      "technologies": ["React", "Next JS", "TypeScript", "MUI", "Tailwind CSS", "MySQL"],
+      "technologies": [
+        "React",
+        "Next JS",
+        "TypeScript",
+        "MUI",
+        "Tailwind CSS",
+        "MySQL"
+      ],
       "media": [
         {
-          "media_uuid": "95852f6c-368a-4eb9-bf17-7f5a67a123a0",
-          "type": "image",
-          "src": "https://i.imgur.com/FBPUgXA.png",
-          "thumbnail": ""
+          "id": "95852f6c-368a-4eb9-bf17-7f5a67a123a0",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/FBPUgXA.png"
         },
         {
-          "media_uuid": "9e03ab56-e4c8-49fc-a54f-f9697954744b",
-          "type": "image",
-          "src": "https://i.imgur.com/ZlwO5Yw.png",
-          "thumbnail": ""
+          "id": "9e03ab56-e4c8-49fc-a54f-f9697954744b",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/ZlwO5Yw.png"
         },
         {
-          "media_uuid": "780c48a3-173c-450d-9e15-fa215396ecb4",
-          "type": "image",
-          "src": "https://i.imgur.com/chhwCqw.png",
-          "thumbnail": ""
+          "id": "780c48a3-173c-450d-9e15-fa215396ecb4",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/chhwCqw.png"
         },
         {
-          "media_uuid": "b297a48d-9f33-459b-a0e3-3768ae75be6d",
-          "type": "image",
-          "src": "https://i.imgur.com/evf45OC.png",
-          "thumbnail": ""
+          "id": "b297a48d-9f33-459b-a0e3-3768ae75be6d",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/evf45OC.png"
         }
       ]
     },
     {
-      "project_uuid": "56f75580-4440-4b5d-bfa5-21a9a452628b",
+      "id": "56f75580-4440-4b5d-bfa5-21a9a452628b",
       "title": "AniFlix",
       "description": "A website for seeing all the anime, manga, and their respective characters, info, related media and recommended media provided by the official anilist.co API.",
-      "projectdate": "2023-02-23",
+      "projectDate": "2023-02-23",
       "application": "https://anime.adiulalamadil.me/",
       "repo": "https://github.com/adiulalam/anime",
       "details": [
@@ -72,45 +77,47 @@
         "Visual Animation",
         "Dynamic Skeleton"
       ],
-      "technologies": ["React", "Next JS", "JavaScript", "Tailwind CSS", "Docker", "NGINX"],
+      "technologies": [
+        "React",
+        "Next JS",
+        "JavaScript",
+        "Tailwind CSS",
+        "Docker",
+        "NGINX"
+      ],
       "media": [
         {
-          "media_uuid": "6923da04-d5e4-4928-8644-de53094cbd67",
-          "type": "image",
-          "src": "https://i.imgur.com/P9jVY8P.png",
-          "thumbnail": ""
+          "id": "6923da04-d5e4-4928-8644-de53094cbd67",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/P9jVY8P.png"
         },
         {
-          "media_uuid": "97305c7d-82a7-4a27-8868-e1926158f8b7",
-          "type": "image",
-          "src": "https://i.imgur.com/ZSYdXCz.png",
-          "thumbnail": ""
+          "id": "97305c7d-82a7-4a27-8868-e1926158f8b7",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/ZSYdXCz.png"
         },
         {
-          "media_uuid": "1ee3ed9c-0f40-46ce-8ce4-56edea3d5b4d",
-          "type": "image",
-          "src": "https://i.imgur.com/G959c1O.png",
-          "thumbnail": ""
+          "id": "1ee3ed9c-0f40-46ce-8ce4-56edea3d5b4d",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/G959c1O.png"
         },
         {
-          "media_uuid": "be38bc85-b45b-4646-a12e-e742afca966a",
-          "type": "image",
-          "src": "https://i.imgur.com/hLC86pi.png",
-          "thumbnail": ""
+          "id": "be38bc85-b45b-4646-a12e-e742afca966a",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/hLC86pi.png"
         },
         {
-          "media_uuid": "100b3ba5-9c30-40cc-bae5-2b49d68d5b11",
-          "type": "image",
-          "src": "https://i.imgur.com/8KPKiqM.png",
-          "thumbnail": ""
+          "id": "100b3ba5-9c30-40cc-bae5-2b49d68d5b11",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/8KPKiqM.png"
         }
       ]
     },
     {
-      "project_uuid": "53aa9048-5776-4e2a-a77f-de5c340069f1",
+      "id": "53aa9048-5776-4e2a-a77f-de5c340069f1",
       "title": "Rick and Morty",
       "description": "Rick and Morty website which utilizes the official GraphQL Rick and Morty API. This website contains all the characters, status, origin, and last known location provided by the official GraphQL Rick and Morty API.",
-      "projectdate": "2023-01-14",
+      "projectDate": "2023-01-14",
       "application": "https://rnm.adiulalamadil.me/",
       "repo": "https://github.com/adiulalam/rick-and-morty",
       "details": [
@@ -120,39 +127,42 @@
         "Modern Animation",
         "Smart Skeleton"
       ],
-      "technologies": ["React", "Vite", "JavaScript", "Tailwind CSS", "NGINX", "Docker"],
+      "technologies": [
+        "React",
+        "Vite",
+        "JavaScript",
+        "Tailwind CSS",
+        "NGINX",
+        "Docker"
+      ],
       "media": [
         {
-          "media_uuid": "82c3ac01-5463-4165-9440-33fda1a36780",
-          "type": "image",
-          "src": "https://i.imgur.com/25gVcjf.png",
-          "thumbnail": ""
+          "id": "82c3ac01-5463-4165-9440-33fda1a36780",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/25gVcjf.png"
         },
         {
-          "media_uuid": "0d9f4a0f-a6a2-4eaf-8fe5-6846c0def951",
-          "type": "image",
-          "src": "https://i.imgur.com/FFhot78.png",
-          "thumbnail": ""
+          "id": "0d9f4a0f-a6a2-4eaf-8fe5-6846c0def951",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/FFhot78.png"
         },
         {
-          "media_uuid": "5c71a081-b41e-4222-a577-c6bb1cb9124e",
-          "type": "image",
-          "src": "https://i.imgur.com/JqMZkNP.png",
-          "thumbnail": ""
+          "id": "5c71a081-b41e-4222-a577-c6bb1cb9124e",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/JqMZkNP.png"
         },
         {
-          "media_uuid": "6a9ebde2-4500-4945-b70c-4211c88723fc",
-          "type": "image",
-          "src": "https://i.imgur.com/Isi9cMM.gif",
-          "thumbnail": ""
+          "id": "6a9ebde2-4500-4945-b70c-4211c88723fc",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/Isi9cMM.gif"
         }
       ]
     },
     {
-      "project_uuid": "ae7001bf-f951-481e-85f9-c1bb1a5296fb",
+      "id": "ae7001bf-f951-481e-85f9-c1bb1a5296fb",
       "title": "Overwatch",
       "description": "This is an app and a website which has been created using React Native for web, Android and iOS.\nThe website has two main pages, the first being heroes page which has a list of all of the heroes along side with their weapons, abilities and ultimates. While the second page consists of maps from Overwatch which has been categorized by the game modes.",
-      "projectdate": "2022-12-21",
+      "projectDate": "2022-12-21",
       "application": "https://overwatch.adiulalamadil.me/",
       "repo": "https://github.com/adiulalam/overwatch",
       "details": [
@@ -173,48 +183,42 @@
       ],
       "media": [
         {
-          "media_uuid": "bdad1975-09b6-4d3d-bb24-25b550d0408c",
-          "type": "image",
-          "src": "https://i.imgur.com/0FDh7Wg.png",
-          "thumbnail": ""
+          "id": "bdad1975-09b6-4d3d-bb24-25b550d0408c",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/0FDh7Wg.png"
         },
         {
-          "media_uuid": "73356726-0aff-413b-8a6a-d7a5b33afdf5",
-          "type": "image",
-          "src": "https://i.imgur.com/ykzBaEd.png",
-          "thumbnail": ""
+          "id": "73356726-0aff-413b-8a6a-d7a5b33afdf5",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/ykzBaEd.png"
         },
         {
-          "media_uuid": "ef7d5b40-8284-4605-89be-cf2c53b3fbaf",
-          "type": "image",
-          "src": "https://i.imgur.com/OLKF4QA.png",
-          "thumbnail": ""
+          "id": "ef7d5b40-8284-4605-89be-cf2c53b3fbaf",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/OLKF4QA.png"
         },
         {
-          "media_uuid": "b00c1c2e-f5b4-4553-9486-cb9506e84946",
-          "type": "image",
-          "src": "https://i.imgur.com/cMojbjs.png",
-          "thumbnail": ""
+          "id": "b00c1c2e-f5b4-4553-9486-cb9506e84946",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/cMojbjs.png"
         },
         {
-          "media_uuid": "51e5d39b-ee2e-4597-9915-37eb305a045d",
-          "type": "image",
-          "src": "https://i.imgur.com/6PjKvZg.png",
-          "thumbnail": ""
+          "id": "51e5d39b-ee2e-4597-9915-37eb305a045d",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/6PjKvZg.png"
         },
         {
-          "media_uuid": "9e73ddb4-cbe7-4494-b0f7-db408220e5c5",
-          "type": "image",
-          "src": "https://i.imgur.com/XQlBbXu.png",
-          "thumbnail": ""
+          "id": "9e73ddb4-cbe7-4494-b0f7-db408220e5c5",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/XQlBbXu.png"
         }
       ]
     },
     {
-      "project_uuid": "641b4c44-9b30-4aa5-a0e9-37de5096ebad",
+      "id": "641b4c44-9b30-4aa5-a0e9-37de5096ebad",
       "title": "React Space-X",
       "description": "Space-X website which utilizes the official GraphQL Space-X API. This website contains all the launches, missions and ships which were launched by Space-X. ",
-      "projectdate": "2022-11-10",
+      "projectDate": "2022-11-10",
       "application": "https://spacex.adiulalamadil.me/",
       "repo": "https://github.com/adiulalam/react-space-x",
       "details": [
@@ -237,36 +241,32 @@
       ],
       "media": [
         {
-          "media_uuid": "5c4980f8-dfa7-47df-bf37-55264d2b8953",
-          "type": "image",
-          "src": "https://i.imgur.com/xiDuK5E.png",
-          "thumbnail": ""
+          "id": "5c4980f8-dfa7-47df-bf37-55264d2b8953",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/xiDuK5E.png"
         },
         {
-          "media_uuid": "03d9db79-c251-4b6c-b0dd-2af9879e289c",
-          "type": "image",
-          "src": "https://i.imgur.com/LkfnJHC.png",
-          "thumbnail": ""
+          "id": "03d9db79-c251-4b6c-b0dd-2af9879e289c",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/LkfnJHC.png"
         },
         {
-          "media_uuid": "371c7b4e-99b0-4af2-aca0-8414e8b9c7ba",
-          "type": "image",
-          "src": "https://i.imgur.com/w1Ft9on.png",
-          "thumbnail": ""
+          "id": "371c7b4e-99b0-4af2-aca0-8414e8b9c7ba",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/w1Ft9on.png"
         },
         {
-          "media_uuid": "f4e13693-eecf-4d2b-951a-399580034f98",
-          "type": "image",
-          "src": "https://i.imgur.com/5Ad8Wjm.gif",
-          "thumbnail": ""
+          "id": "f4e13693-eecf-4d2b-951a-399580034f98",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/5Ad8Wjm.gif"
         }
       ]
     },
     {
-      "project_uuid": "f4f761f6-e0d5-4a77-a671-029327b48b83",
+      "id": "f4f761f6-e0d5-4a77-a671-029327b48b83",
       "title": "Mad Property Pal",
       "description": "The app can store multiple properties and has multiple fields such as the property name, value, size, etc. The properties also can be updated or deleted. Furthermore, the properties have offer prices, viewing date and expiry date for end clients.",
-      "projectdate": "2021-07-01",
+      "projectDate": "2021-07-01",
       "application": "",
       "repo": "https://github.com/adiulalam/mad-property-pal",
       "details": [
@@ -278,36 +278,32 @@
       "technologies": ["Java", "Android Studio", "SQLite"],
       "media": [
         {
-          "media_uuid": "9865ef20-844c-4113-b1d5-2dbb2dcd4b91",
-          "type": "image",
-          "src": "https://i.imgur.com/SSZYiNe.png",
-          "thumbnail": ""
+          "id": "9865ef20-844c-4113-b1d5-2dbb2dcd4b91",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/SSZYiNe.png"
         },
         {
-          "media_uuid": "4c60eb45-7066-4770-be00-536f8caf53b8",
-          "type": "image",
-          "src": "https://i.imgur.com/Ns1r4yg.png",
-          "thumbnail": ""
+          "id": "4c60eb45-7066-4770-be00-536f8caf53b8",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/Ns1r4yg.png"
         },
         {
-          "media_uuid": "bc4a3b55-2339-4b21-b3f7-1fae46e809e8",
-          "type": "image",
-          "src": "https://i.imgur.com/nCBOaJa.png",
-          "thumbnail": ""
+          "id": "bc4a3b55-2339-4b21-b3f7-1fae46e809e8",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/nCBOaJa.png"
         },
         {
-          "media_uuid": "d5431263-0365-4a7c-a59e-99ac29177fae",
-          "type": "image",
-          "src": "https://i.imgur.com/1XL6Lkc.png",
-          "thumbnail": ""
+          "id": "d5431263-0365-4a7c-a59e-99ac29177fae",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/1XL6Lkc.png"
         }
       ]
     },
     {
-      "project_uuid": "7f12b7a0-bff6-4d54-abb5-eca11bbbadab",
+      "id": "7f12b7a0-bff6-4d54-abb5-eca11bbbadab",
       "title": "GDPR Visualization",
       "description": "A website for which shows a visual representation of how much data the big companies has hold on us and what sort of data do these companies collect. Many smart devices were tested to find out the amount of data which gets collected. The devices include smart home assistant, smart lights, smart security camera and more.",
-      "projectdate": "2021-07-01",
+      "projectDate": "2021-07-01",
       "application": "https://gdpr.adiulalamadil.me/",
       "repo": "https://github.com/adiulalam/gdpr-visualization",
       "details": [
@@ -328,42 +324,37 @@
       ],
       "media": [
         {
-          "media_uuid": "0000c810-f158-4607-aeb3-e3468df5b4a7",
-          "type": "image",
-          "src": "https://i.imgur.com/LL4R6os.png",
-          "thumbnail": ""
+          "id": "0000c810-f158-4607-aeb3-e3468df5b4a7",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/LL4R6os.png"
         },
         {
-          "media_uuid": "fb984d61-18c4-4be4-bb05-23f7e611c154",
-          "type": "image",
-          "src": "https://i.imgur.com/atKuIMT.png",
-          "thumbnail": ""
+          "id": "fb984d61-18c4-4be4-bb05-23f7e611c154",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/atKuIMT.png"
         },
         {
-          "media_uuid": "c513737e-bffb-44fa-9e43-2d1ca3a568ef",
-          "type": "image",
-          "src": "https://i.imgur.com/ZmhDwOT.png",
-          "thumbnail": ""
+          "id": "c513737e-bffb-44fa-9e43-2d1ca3a568ef",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/ZmhDwOT.png"
         },
         {
-          "media_uuid": "25a16456-b58d-414e-b289-214c26a189d4",
-          "type": "image",
-          "src": "https://i.imgur.com/xto0klA.png",
-          "thumbnail": ""
+          "id": "25a16456-b58d-414e-b289-214c26a189d4",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/xto0klA.png"
         },
         {
-          "media_uuid": "583bfee2-9acb-48a8-9cc1-39d9f776168d",
-          "type": "image",
-          "src": "https://i.imgur.com/pxl8Z4Y.png",
-          "thumbnail": ""
+          "id": "583bfee2-9acb-48a8-9cc1-39d9f776168d",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/pxl8Z4Y.png"
         }
       ]
     },
     {
-      "project_uuid": "285559b2-4d17-4ba7-b614-3d72d198ce60",
+      "id": "285559b2-4d17-4ba7-b614-3d72d198ce60",
       "title": "Ideal Ideas",
       "description": "Ideal Ideas is a Reddit style website for creating and managing ideas. This is a website where users can post their own ideas and user can interact with other ideas by upvoting, downvoting, and commenting.",
-      "projectdate": "2020-04-05",
+      "projectDate": "2020-04-05",
       "application": "https://ideas.adiulalamadil.me/",
       "repo": "https://github.com/adiulalam/ideas-website",
       "details": [
@@ -386,58 +377,57 @@
       ],
       "media": [
         {
-          "media_uuid": "190737b2-22cc-4c06-9af2-1f99780356a2",
-          "type": "image",
+          "id": "190737b2-22cc-4c06-9af2-1f99780356a2",
+          "alt": "image of project",
           "src": "https://i.imgur.com/8SjjDm5h.png",
           "thumbnail": null
         },
         {
-          "media_uuid": "9b363bf0-b7a0-4997-9917-d8a2f81ba815",
-          "type": "image",
-          "src": "https://i.imgur.com/0U2F1WJ.png",
-          "thumbnail": ""
+          "id": "9b363bf0-b7a0-4997-9917-d8a2f81ba815",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/0U2F1WJ.png"
         },
         {
-          "media_uuid": "34c6ceea-c9fc-4fe9-95c4-5b52210ab57e",
-          "type": "image",
-          "src": "https://i.imgur.com/epWIl11.png",
-          "thumbnail": ""
+          "id": "34c6ceea-c9fc-4fe9-95c4-5b52210ab57e",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/epWIl11.png"
         }
       ]
     },
     {
-      "project_uuid": "afabd569-82f4-445b-b5c7-60969b6950b3",
+      "id": "afabd569-82f4-445b-b5c7-60969b6950b3",
       "title": "Matching Card Game",
       "description": "A memory matching game which requires the user to match the name of the sport with the image of the sport.\nThere is also an incremental score counter for each correct guess and decremental score when you fail to guess correctly. The game also can be replayed as many times as the user wishes.",
-      "projectdate": "2019-10-01",
+      "projectDate": "2019-10-01",
       "application": "",
       "repo": "https://github.com/adiulalam/matching-card-game",
-      "details": ["Memory Game", "Microsoft Visual Studio", "Scoring Board", "Know Your Sports"],
+      "details": [
+        "Memory Game",
+        "Microsoft Visual Studio",
+        "Scoring Board",
+        "Know Your Sports"
+      ],
       "technologies": ["C#", ".NET", "Windows"],
       "media": [
         {
-          "media_uuid": "8bd68e9b-0531-4d1f-a77a-ef58991d1ad1",
-          "type": "image",
-          "src": "https://i.imgur.com/34e0836.png",
-          "thumbnail": ""
+          "id": "8bd68e9b-0531-4d1f-a77a-ef58991d1ad1",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/34e0836.png"
         },
         {
-          "media_uuid": "2163b5a7-685c-4e3a-b71b-5577aab0ebd2",
-          "type": "image",
-          "src": "https://i.imgur.com/JXYdpGh.png",
-          "thumbnail": ""
+          "id": "2163b5a7-685c-4e3a-b71b-5577aab0ebd2",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/JXYdpGh.png"
         },
         {
-          "media_uuid": "7e29d763-fc14-4d6d-b373-ff5ed858f82a",
-          "type": "image",
-          "src": "https://i.imgur.com/X65p82s.png",
-          "thumbnail": ""
+          "id": "7e29d763-fc14-4d6d-b373-ff5ed858f82a",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/X65p82s.png"
         },
         {
-          "media_uuid": "44b11830-4048-4e2f-bc4d-1301f967eff6",
-          "type": "image",
-          "src": "https://i.imgur.com/PlYvGI1.png",
-          "thumbnail": ""
+          "id": "44b11830-4048-4e2f-bc4d-1301f967eff6",
+          "alt": "image of project",
+          "src": "https://i.imgur.com/PlYvGI1.png"
         }
       ]
     }
