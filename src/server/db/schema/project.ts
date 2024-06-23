@@ -18,9 +18,9 @@ export const projects = pgTable(
     profileId: uuid("profileId")
       .notNull()
       .references(() => profiles.id, { onDelete: "cascade" }),
-    title: varchar("title", { length: 256 }),
-    description: varchar("description", { length: 512 }),
-    projectDate: date("projectDate"),
+    title: varchar("title", { length: 256 }).notNull(),
+    description: varchar("description", { length: 512 }).notNull(),
+    projectDate: date("projectDate").notNull(),
     application: varchar("application", { length: 256 }),
     repo: varchar("repo", { length: 256 }),
     details: json("details").$type<string[]>().default([]).notNull(),

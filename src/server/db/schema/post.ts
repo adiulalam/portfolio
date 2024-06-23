@@ -16,7 +16,7 @@ export const posts = pgTable(
       .$onUpdate(() => new Date()),
   },
   (post) => ({
-    userIdIdx: index("userId_idx").on(post.userId),
+    userIdIdx: index("post_userId_idx").on(post.userId),
     nameIndex: index("name_idx").on(post.name),
   })
 );
