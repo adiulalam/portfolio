@@ -1,11 +1,10 @@
 import { z } from "zod";
-
 import {
   createTRPCRouter,
   protectedProcedure,
   publicProcedure,
 } from "@/server/api/trpc";
-import { posts } from "@/server/db/schema";
+import { posts } from "@/server/db/schema/post";
 
 export const postRouter = createTRPCRouter({
   hello: publicProcedure
@@ -24,7 +23,7 @@ export const postRouter = createTRPCRouter({
 
       await ctx.db.insert(posts).values({
         name: input.name,
-        createdById: ctx.session.user.id,
+        userId: ctx.session.user.id,
       });
     }),
 
