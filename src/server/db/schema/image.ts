@@ -10,6 +10,7 @@ export const images = pgTable(
       .notNull()
       .references(() => projects.id, { onDelete: "cascade" }),
     src: varchar("src", { length: 256 }),
+    internalSrc: varchar("internalSrc", { length: 256 }),
     alt: varchar("alt", { length: 256 }),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
     updatedAt: timestamp("updatedAt")
