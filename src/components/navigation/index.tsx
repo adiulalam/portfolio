@@ -1,8 +1,8 @@
 import { NavBar } from "./NavBar";
-import { NavBarContacts } from "./NavBarContacts";
-import { NavBarLink } from "./NavBarLink";
-import { NavBarMenu } from "./NavBarMenu";
-import { NavBarProfile } from "./NavBarProfile";
+import { NavMenuContacts } from "./NavMenuContacts";
+import { NavMenuLink } from "./NavMenuLink";
+import { NavMenu } from "./NavMenu";
+import { NavMenuProfile } from "./NavMenuProfile";
 import { NavEnd } from "./NavEnd";
 import { NavSide } from "./NavSide";
 import { NavStart } from "./NavStart";
@@ -14,8 +14,8 @@ export {
   NavBar,
   NavEnd,
   NavTop,
-  NavBarProfile,
-  NavBarLink,
-  NavBarMenu,
-  NavBarContacts,
+  NavMenuProfile,
+  NavMenuLink,
+  NavMenu,
+  NavMenuContacts,
 };

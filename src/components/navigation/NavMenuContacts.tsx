@@ -5,7 +5,7 @@ import {
 } from "@mui/icons-material";
 import { Box, useTheme } from "@mui/material";
 
-export const NavBarContacts = () => {
+export const NavMenuContacts = () => {
   const theme = useTheme();
 
   const linkedin = "a";
@@ -22,7 +22,7 @@ export const NavBarContacts = () => {
       <a href={`mailto: ${email}`} target="_blank" rel="noopener noreferrer">
         <EmailIcon
           sx={{
-            margin: theme.spacing(0.5, 1),
+            margin: theme.spacing(0, 1),
             color: "white",
           }}
         />
@@ -35,7 +35,7 @@ export const NavBarContacts = () => {
       >
         <GitHubIcon
           sx={{
-            margin: theme.spacing(0.5, 1),
+            margin: theme.spacing(0, 1),
             color: "white",
           }}
         />
@@ -48,7 +48,7 @@ export const NavBarContacts = () => {
       >
         <LinkedInIcon
           sx={{
-            margin: theme.spacing(0.5, 1),
+            margin: theme.spacing(0, 1),
             color: "white",
           }}
         />

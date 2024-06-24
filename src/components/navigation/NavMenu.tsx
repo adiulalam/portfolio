@@ -1,12 +1,9 @@
-import { NavBarProfile, NavBarLink, NavBarContacts } from ".";
+import { useDrawer } from "@/hooks";
+import { NavMenuProfile, NavMenuLink, NavMenuContacts } from ".";
 import { List, useTheme, useMediaQuery, Box } from "@mui/material";
-import type { Dispatch, SetStateAction } from "react";
 
-export const NavBarMenu = ({
-  setIsDrawerOpen,
-}: {
-  setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
-}) => {
+export const NavMenu = () => {
+  const { setIsDrawerOpen } = useDrawer();
   const theme = useTheme();
   const isMinScreenMd = useMediaQuery(theme.breakpoints.up("md"));
   const handleItemClick = () => {
@@ -23,7 +20,7 @@ export const NavBarMenu = ({
         flexDirection: "column",
       }}
     >
-      <NavBarProfile />
+      <NavMenuProfile />
       <Box
         sx={{
           height: "30%",
@@ -32,8 +29,8 @@ export const NavBarMenu = ({
           justifyContent: "center",
         }}
       >
-        <NavBarLink to="home" title="Home" onClickHandler={handleItemClick} />
-        <NavBarLink
+        <NavMenuLink to="home" title="Home" onClickHandler={handleItemClick} />
+        <NavMenuLink
           to="portfolio"
           title="Portfolio"
           onClickHandler={handleItemClick}
@@ -51,7 +48,7 @@ export const NavBarMenu = ({
           alignSelf: "center",
         }}
       >
-        <NavBarContacts />
+        <NavMenuContacts />
       </Box>
     </List>
   );

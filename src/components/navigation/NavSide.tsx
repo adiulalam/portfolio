@@ -1,19 +1,11 @@
-import { Drawer, useMediaQuery, useTheme } from "@mui/material";
-import type { Dispatch, SetStateAction } from "react";
-
-type NavSideProps = {
-  isDrawerOpen: boolean;
-  setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
-  children: React.ReactNode;
-};
+import { useDrawer } from "@/hooks";
+import { Box, Drawer, useMediaQuery, useTheme } from "@mui/material";
+import { NavMenu, NavStart } from ".";
 
 const drawerWidth = 300;
 
-export const NavSide = ({
-  children,
-  isDrawerOpen,
-  setIsDrawerOpen,
-}: NavSideProps) => {
+export const NavSide = () => {
+  const { isDrawerOpen, setIsDrawerOpen } = useDrawer();
   const theme = useTheme();
   const isMaxScreenMd = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -52,7 +44,10 @@ export const NavSide = ({
         },
       ]}
     >
-      {children}
+      <Box sx={{ ...theme.mixins.toolbar }}>
+        {isMaxScreenMd && <NavStart />}
+      </Box>
+      <NavMenu />
     </Drawer>
   );
 };

@@ -1,7 +1,13 @@
-import { AppBar, useTheme } from "@mui/material";
+import { AppBar, Box, useMediaQuery, useTheme } from "@mui/material";
+import { NavEnd, NavStart } from ".";
+import { useDrawer } from "@/hooks";
 
-export const NavTop = ({ children }: { children: React.ReactNode }) => {
+export const NavTop = () => {
   const theme = useTheme();
+  const isMaxScreenMd = useMediaQuery(theme.breakpoints.down("md"));
+  const { isDrawerOpen } = useDrawer();
+
+  if (!isMaxScreenMd && isDrawerOpen) return null;
 
   return (
     <AppBar
@@ -18,7 +24,13 @@ export const NavTop = ({ children }: { children: React.ReactNode }) => {
         }),
       }}
     >
-      {children}
+      <NavStart />
+      <Box
+        sx={{
+          flexGrow: 1,
+        }}
+      />
+      {!isDrawerOpen && <NavEnd />}
     </AppBar>
   );
 };

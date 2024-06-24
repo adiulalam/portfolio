@@ -1,13 +1,17 @@
 import { Link } from "react-scroll";
 import { ListItem, ListItemText } from "@mui/material";
 
-type NavBarLinkProps = {
+type NavMenuLinkProps = {
   to: string;
   title: string;
   onClickHandler: () => void;
 };
 
-export const NavBarLink = ({ to, title, onClickHandler }: NavBarLinkProps) => {
+export const NavMenuLink = ({
+  to,
+  title,
+  onClickHandler,
+}: NavMenuLinkProps) => {
   return (
     <Link to={to} smooth={true} duration={1000}>
       <ListItem

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Box, useTheme, Typography } from "@mui/material";
 
-export const NavBarProfile = () => {
+export const NavMenuProfile = () => {
   const theme = useTheme();
   const name = "NAME";
   const career = "CARRER";

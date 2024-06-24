@@ -1,11 +1,11 @@
 import React from "react";
 import { Toolbar } from "@mui/material";
-import { NavBarContacts } from ".";
+import { NavMenuContacts } from ".";
 
 export const NavEnd = () => {
   return (
     <Toolbar>
-      <NavBarContacts />
+      <NavMenuContacts />
     </Toolbar>
   );
 };

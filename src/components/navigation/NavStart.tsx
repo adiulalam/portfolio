@@ -1,13 +1,10 @@
 import { Toolbar, IconButton } from "@mui/material";
 import { Menu as MenuIcon, Cancel as CancelIcon } from "@mui/icons-material";
-import type { Dispatch, SetStateAction } from "react";
+import { useDrawer } from "@/hooks";
 
-type NavStartProps = {
-  isDrawerOpen: boolean;
-  setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
-};
+export const NavStart = () => {
+  const { isDrawerOpen, setIsDrawerOpen } = useDrawer();
 
-export const NavStart = ({ isDrawerOpen, setIsDrawerOpen }: NavStartProps) => {
   return (
     <Toolbar>
       <IconButton
