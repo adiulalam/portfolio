@@ -10,6 +10,11 @@ export const NavMenuContacts = () => {
   const { linkedin, email, github } = useProfile();
   const theme = useTheme();
 
+  const iconStyle = {
+    margin: theme.spacing(0, 1),
+    color: "white",
+  };
+
   return (
     <Box
       sx={{
@@ -18,12 +23,7 @@ export const NavMenuContacts = () => {
       }}
     >
       <a href={`mailto: ${email}`} target="_blank" rel="noopener noreferrer">
-        <EmailIcon
-          sx={{
-            margin: theme.spacing(0, 1),
-            color: "white",
-          }}
-        />
+        <EmailIcon sx={iconStyle} />
       </a>
 
       <a
@@ -31,12 +31,7 @@ export const NavMenuContacts = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <GitHubIcon
-          sx={{
-            margin: theme.spacing(0, 1),
-            color: "white",
-          }}
-        />
+        <GitHubIcon sx={iconStyle} />
       </a>
 
       <a
@@ -44,12 +39,7 @@ export const NavMenuContacts = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <LinkedInIcon
-          sx={{
-            margin: theme.spacing(0, 1),
-            color: "white",
-          }}
-        />
+        <LinkedInIcon sx={iconStyle} />
       </a>
     </Box>
   );
