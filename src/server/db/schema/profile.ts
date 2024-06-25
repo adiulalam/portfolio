@@ -44,3 +44,5 @@ export const profilesRelations = relations(profiles, ({ one, many }) => ({
   user: one(users, { fields: [profiles.userId], references: [users.id] }),
   projects: many(projects),
 }));
+
+export type Profile = typeof profiles.$inferSelect;

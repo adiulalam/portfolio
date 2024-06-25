@@ -10,7 +10,7 @@ export const useDrawerContext = () => {
 export const useDrawer = () => {
   const context = useContext(DrawerContext);
   if (!context) {
-    throw new Error("useDrawerContext must be used within a DrawerProvider");
+    throw new Error("useDrawer must be used within a DrawerProvider");
   }
   return context;
 };

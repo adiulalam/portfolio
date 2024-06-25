@@ -36,3 +36,5 @@ export const imagesRelations = relations(images, ({ one }) => ({
     references: [projects.id],
   }),
 }));
+
+export type Image = typeof images.$inferSelect;
