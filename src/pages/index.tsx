@@ -3,7 +3,7 @@ import { api } from "@/utils/api";
 import { NavBar } from "@/components/navigation";
 import { ProfileProvider } from "@/provider";
 import { Loading } from "@/components/ui";
-import { LandingHome } from "@/components/Landing";
+import { LandingHome } from "@/components/landing";
 
 const Home = () => {
   const { data, isLoading, isError, error } = api.profile.getProfile.useQuery();
