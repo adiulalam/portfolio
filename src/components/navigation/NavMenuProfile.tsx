@@ -1,11 +1,13 @@
 import Image from "next/image";
 import { Box, useTheme, Typography } from "@mui/material";
+import { useProfile } from "@/hooks";
+
+const blurDataURL =
+  "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNU+g8AAUkBI5mqlHIAAAAASUVORK5CYII=";
 
 export const NavMenuProfile = () => {
+  const { fullName, career, profilePic } = useProfile();
   const theme = useTheme();
-  const name = "NAME";
-  const career = "CARRER";
-  const src = "https://i.imgur.com/fgzbMqg.jpg";
 
   return (
     <Box
@@ -16,7 +18,7 @@ export const NavMenuProfile = () => {
       }}
     >
       <Image
-        alt="profile"
+        alt="profile picture"
         height={100}
         width={100}
         style={{
@@ -24,7 +26,9 @@ export const NavMenuProfile = () => {
           height: 110,
           borderRadius: "50%",
         }}
-        src={src}
+        blurDataURL={blurDataURL}
+        placeholder="blur"
+        src={profilePic}
       />
       <Typography
         variant="h5"
@@ -34,7 +38,7 @@ export const NavMenuProfile = () => {
           lineHeight: "1em",
         }}
       >
-        {name}
+        {fullName}
       </Typography>
       <Typography
         variant="button"

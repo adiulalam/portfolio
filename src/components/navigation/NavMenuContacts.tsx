@@ -1,3 +1,4 @@
+import { useProfile } from "@/hooks";
 import {
   LinkedIn as LinkedInIcon,
   Email as EmailIcon,
@@ -6,11 +7,8 @@ import {
 import { Box, useTheme } from "@mui/material";
 
 export const NavMenuContacts = () => {
+  const { linkedin, email, github } = useProfile();
   const theme = useTheme();
-
-  const linkedin = "a";
-  const email = "a";
-  const github = "a";
 
   return (
     <Box
