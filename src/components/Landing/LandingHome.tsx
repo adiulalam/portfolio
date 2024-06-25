@@ -1,7 +1,6 @@
 import { Typography, useTheme, useMediaQuery, Box } from "@mui/material";
 import { useProfile } from "@/hooks";
-import { LandingAboutMe, LandingInfo } from ".";
-// import Portfolio from "./Portfolio";
+import { LandingAboutMe, LandingDescription, LandingInfo } from ".";
 
 export const LandingHome = () => {
   const theme = useTheme();
@@ -69,7 +68,8 @@ export const LandingHome = () => {
       >
         <LandingInfo />
       </Box>
-      {/* <Portfolio /> */}
+
+      <LandingDescription />
     </Box>
   );
 };
