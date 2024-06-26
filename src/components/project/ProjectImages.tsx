@@ -9,10 +9,14 @@ export const ProjectImages = () => {
   const { images } = useProject();
   const [startIndex, setStartIndex] = useState(0);
 
-  const media = images!.map(({ src }) => ({
+  const media = images?.map(({ src }) => ({
     original: src,
     thumbnail: src,
   }));
+
+  if (!media) {
+    return null;
+  }
 
   return (
     <Grid item xs={12} lg={4}>
