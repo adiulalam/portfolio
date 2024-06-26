@@ -27,19 +27,19 @@ export const LandingInfo = () => {
         display: "flex",
         flexDirection: "column",
         color: "white",
-        padding: 2,
+        padding: 1,
         gap: 1,
-        backgroundColor: theme.palette.grey[900],
+        alignItems: "center",
+        backgroundColor: "black",
         [theme.breakpoints.up("sm")]: {
           width: 300,
-          backgroundColor: "black",
         },
         borderRadius: 2,
       }}
     >
       <Typography sx={style.title}>{career}</Typography>
 
-      <div>
+      <Box>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <EmailIcon sx={style.icon} />
           <Typography variant="caption" sx={style.title}>
@@ -60,7 +60,7 @@ export const LandingInfo = () => {
             {location}
           </Typography>
         </Box>
-      </div>
+      </Box>
 
       <Box
         sx={{

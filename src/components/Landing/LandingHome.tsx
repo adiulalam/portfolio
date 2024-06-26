@@ -57,7 +57,7 @@ export const LandingHome = () => {
                 padding: theme.spacing(4),
                 display: "flex",
                 justifyContent: "center",
-                backgroundColor: theme.palette.grey[500],
+                backgroundColor: theme.palette.grey[800],
               }
             : {
                 position: "absolute",

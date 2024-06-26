@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { useProfile } from "@/hooks";
-// import Experiences from "../Experiences";
+import { ProjectTimeline } from "../project";
 
 export const LandingDescription = () => {
   const theme = useTheme();
@@ -37,11 +37,11 @@ export const LandingDescription = () => {
         }}
       >
         <Typography
-          variant="body1"
+          variant="body2"
           dangerouslySetInnerHTML={{ __html: description }}
         />
       </Box>
-      {/* <Experiences /> */}
+      <ProjectTimeline />
     </Box>
   );
 };
