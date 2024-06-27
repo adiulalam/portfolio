@@ -48,6 +48,7 @@ fi
 
 docker run -d \
   --name $DB_CONTAINER_NAME \
+  --restart=unless-stopped \
   -e POSTGRES_USER="postgres" \
   -e POSTGRES_PASSWORD="$DB_PASSWORD" \
   -e POSTGRES_DB=portfolio \
