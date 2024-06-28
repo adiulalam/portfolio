@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Paper, Typography, useTheme } from "@mui/material";
 import { useProfile } from "@/hooks";
 import { ProjectTimeline } from "../project";
 
@@ -7,7 +7,7 @@ export const LandingDescription = () => {
   const { description } = useProfile();
 
   return (
-    <Box
+    <Paper
       id="portfolio"
       sx={{
         display: "flex",
@@ -16,7 +16,6 @@ export const LandingDescription = () => {
         [theme.breakpoints.down("xs")]: {
           padding: theme.spacing(2),
         },
-        backgroundColor: theme.palette.grey[100],
       }}
     >
       <Typography
@@ -42,6 +41,6 @@ export const LandingDescription = () => {
         />
       </Box>
       <ProjectTimeline />
-    </Box>
+    </Paper>
   );
 };

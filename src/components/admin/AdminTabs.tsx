@@ -8,31 +8,22 @@ import {
 } from "@mui/icons-material";
 
 type AdminTabsProps = {
+  defaultValue?: string;
   deleteCallback?: (tab: string) => void;
   addCallback?: () => void;
   tabLists: { label: string; value: string; component: JSX.Element }[];
 };
 
 export const AdminTabs = ({
+  defaultValue,
   deleteCallback,
   addCallback,
   tabLists,
 }: AdminTabsProps) => {
-  const [value, setValue] = useState(tabLists[0]?.value ?? "0");
+  const [value, setValue] = useState(defaultValue ?? tabLists[0]?.value ?? "0");
 
-  const handleChange = (event: SyntheticEvent, newValue: string) => {
+  const handleChange = (_: SyntheticEvent, newValue: string) => {
     setValue(newValue);
-  };
-
-  const handleDelete = (id: string) => {
-    console.log("🚀 ~ handleDelete ~ tab:", id);
-    console.log("deleted");
-    deleteCallback && deleteCallback(id);
-  };
-
-  const handleAdd = () => {
-    console.log("added");
-    addCallback && addCallback();
   };
 
   return (
@@ -41,20 +32,25 @@ export const AdminTabs = ({
         <Box
           sx={{
             borderBottom: 1,
-            borderColor: "white",
           }}
         >
-          <TabList onChange={handleChange} centered>
+          <TabList
+            sx={{
+              ".MuiTabs-flexContainer": { flexWrap: "wrap" },
+            }}
+            onChange={handleChange}
+            centered
+          >
             {tabLists.map((tab) => (
               <Tab
                 key={tab.value}
                 label={tab.label}
                 value={tab.value}
-                sx={{ color: "white", minHeight: 0 }}
+                sx={{ minHeight: 0 }}
                 icon={
                   deleteCallback ? (
                     <CloseIcon
-                      onClick={() => handleDelete(tab.value)}
+                      onClick={() => deleteCallback(tab.value)}
                       sx={{
                         "&:hover": {
                           color: "red",
@@ -68,9 +64,10 @@ export const AdminTabs = ({
                 iconPosition="end"
               />
             ))}
+
             {addCallback && (
               <IconButton
-                onClick={handleAdd}
+                onClick={addCallback}
                 sx={{
                   "&:hover": {
                     color: "green",

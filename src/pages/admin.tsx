@@ -3,32 +3,27 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/server/auth";
 import { signOut } from "next-auth/react";
 import { Box, Button } from "@mui/material";
-import { AdminTabs } from "@/components/admin";
-import { useState } from "react";
+import { AdminIntro, AdminProjectsTabs, AdminTabs } from "@/components/admin";
+import { api } from "@/utils/api";
+import { Loading } from "@/components/ui";
+import { ProfileProvider } from "@/provider";
 
 const Admin = () => {
-  const tabs = [
-    { label: "Intro", value: "0", component: <div>hello</div> },
-    { label: "Projects", value: "1", component: <div>world</div> },
+  const { data, isLoading, isError, error } = api.profile.getProfile.useQuery();
+
+  const tabLists = [
+    { label: "Intro", value: "0", component: <AdminIntro /> },
+    { label: "Projects", value: "1", component: <AdminProjectsTabs /> },
   ];
 
-  const [tablists, setTablists] = useState(tabs);
+  if (isLoading) {
+    return <Loading />;
+  }
 
-  const addCallback = () => {
-    setTablists((prev) => [
-      ...prev,
-      {
-        label: `New Tab ${prev.length + 1}`,
-        value: prev.length.toString(),
-        component: <div>new tab {prev.length + 1}</div>,
-      },
-    ]);
-  };
-
-  const deleteCallback = (id: string) => {
-    const filteredTab = tablists.filter((tab) => tab.value !== id);
-    setTablists([...filteredTab]);
-  };
+  if (isError) {
+    console.error("Error", error);
+    return <Loading />;
+  }
 
   return (
     <Box
@@ -47,11 +42,9 @@ const Admin = () => {
       >
         Sign out
       </Button>
-      <AdminTabs
-        tabLists={tablists}
-        addCallback={addCallback}
-        deleteCallback={deleteCallback}
-      />
+      <ProfileProvider profile={data}>
+        <AdminTabs tabLists={tabLists} />
+      </ProfileProvider>
     </Box>
   );
 };
