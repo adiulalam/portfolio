@@ -1,4 +1,4 @@
-import { Typography, useTheme, useMediaQuery, Box } from "@mui/material";
+import { Typography, useTheme, useMediaQuery, Box, Paper } from "@mui/material";
 import { useProfile } from "@/hooks";
 import { LandingAboutMe, LandingDescription, LandingInfo } from ".";
 
@@ -50,24 +50,25 @@ export const LandingHome = () => {
           <LandingAboutMe />
         </Box>
       </Box>
-      <Box
+      <Paper
         sx={[
           isSmallScreen || inLandScapeMode
             ? {
                 padding: theme.spacing(4),
                 display: "flex",
                 justifyContent: "center",
-                backgroundColor: theme.palette.grey[800],
               }
             : {
                 position: "absolute",
                 bottom: theme.spacing(4),
                 right: theme.spacing(4),
+                backgroundColor: "black",
+                backgroundImage: "none",
               },
         ]}
       >
         <LandingInfo />
-      </Box>
+      </Paper>
 
       <LandingDescription />
     </Box>

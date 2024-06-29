@@ -18,6 +18,7 @@ export const NavSide = () => {
         {
           "& .MuiDrawer-paper": {
             backgroundColor: "black",
+            backgroundImage: "none",
             color: "white",
             width: drawerWidth,
             flexShrink: 0,

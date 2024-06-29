@@ -1,11 +1,5 @@
 import { DrawerContext } from "@/provider";
-import { useState, useContext } from "react";
-
-export const useDrawerContext = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-  return { isDrawerOpen, setIsDrawerOpen };
-};
+import { useContext } from "react";
 
 export const useDrawer = () => {
   const context = useContext(DrawerContext);
