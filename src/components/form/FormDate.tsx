@@ -18,10 +18,11 @@ export const FormDate = ({ controllerProps, label }: FormDateType) => {
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
           <DatePicker
+            sx={{ width: "100%" }}
             format="DD/MM/YYYY"
             label={label}
-            value={typeof value === "string" ? dayjs(value) : undefined}
-            onChange={onChange}
+            value={dayjs(value as string)}
+            onChange={(value) => onChange(dayjs(value).toDate())}
             slotProps={{
               textField: {
                 error: !!error,
