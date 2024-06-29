@@ -1,12 +1,14 @@
 import type { FormType } from "@/types/AdminTypes";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
-import { useProfile } from "@/hooks";
+import { useProfile, useSnackbar } from "@/hooks";
 import { AdminButtonSave, AdminFieldArray, AdminFieldText } from ".";
 
 export const AdminIntro = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { projects, ...profile } = useProfile();
+
+  const { setConfig } = useSnackbar();
 
   const {
     control,
@@ -20,6 +22,7 @@ export const AdminIntro = () => {
 
   const onSubmit: SubmitHandler<FormType> = (data) => {
     console.log(data);
+    setConfig({ isOpen: true, message: "Test", severity: "success" });
   };
 
   const disabledFields: (keyof typeof profile)[] = ["id", "userId"];

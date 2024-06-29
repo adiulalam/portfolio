@@ -29,58 +29,53 @@ export const CustomTab = ({
   return (
     <Box sx={{ width: "100%" }}>
       <TabContext value={value}>
-        <Box
+        <TabList
           sx={{
+            ".MuiTabs-flexContainer": { flexWrap: "wrap" },
             borderBottom: 1,
           }}
+          onChange={handleChange}
+          centered
         >
-          <TabList
-            sx={{
-              ".MuiTabs-flexContainer": { flexWrap: "wrap" },
-            }}
-            onChange={handleChange}
-            centered
-          >
-            {tabLists.map((tab) => (
-              <Tab
-                key={tab.value}
-                label={tab.label}
-                value={tab.value}
-                sx={{ minHeight: 0 }}
-                icon={
-                  deleteCallback ? (
-                    <CloseIcon
-                      onClick={() => deleteCallback(tab.value)}
-                      sx={{
-                        "&:hover": {
-                          color: "red",
-                          background: "rgba(255, 255, 255, 0.5)",
-                          borderRadius: "50%",
-                        },
-                      }}
-                    />
-                  ) : undefined
-                }
-                iconPosition="end"
-              />
-            ))}
+          {tabLists.map((tab) => (
+            <Tab
+              key={tab.value}
+              label={tab.label}
+              value={tab.value}
+              sx={{ minHeight: 0 }}
+              icon={
+                deleteCallback ? (
+                  <CloseIcon
+                    onClick={() => deleteCallback(tab.value)}
+                    sx={{
+                      "&:hover": {
+                        color: "red",
+                        background: "rgba(255, 255, 255, 0.5)",
+                        borderRadius: "50%",
+                      },
+                    }}
+                  />
+                ) : undefined
+              }
+              iconPosition="end"
+            />
+          ))}
 
-            {addCallback && (
-              <IconButton
-                onClick={addCallback}
-                sx={{
-                  "&:hover": {
-                    color: "green",
-                    background: "rgba(255, 255, 255, 0.5)",
-                    borderRadius: "50%",
-                  },
-                }}
-              >
-                <AddCircleOutlineIcon sx={{ color: "white" }} />
-              </IconButton>
-            )}
-          </TabList>
-        </Box>
+          {addCallback && (
+            <IconButton
+              onClick={addCallback}
+              sx={{
+                "&:hover": {
+                  color: "green",
+                  background: "rgba(255, 255, 255, 0.5)",
+                  borderRadius: "50%",
+                },
+              }}
+            >
+              <AddCircleOutlineIcon sx={{ color: "white" }} />
+            </IconButton>
+          )}
+        </TabList>
         {tabLists.map(({ component, value }) => (
           <TabPanel key={value} value={value} sx={{ color: "white" }}>
             {component}

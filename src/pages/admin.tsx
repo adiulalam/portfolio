@@ -5,8 +5,8 @@ import { signOut } from "next-auth/react";
 import { Box, Button } from "@mui/material";
 import { AdminIntro, AdminProjectsTabs } from "@/components/admin";
 import { api } from "@/utils/api";
-import { CustomTab, Loading } from "@/components/ui";
-import { ProfileProvider } from "@/provider";
+import { CustomTab, Loading, SnackbarToast } from "@/components/ui";
+import { ProfileProvider, SnackbarProvider } from "@/provider";
 
 const Admin = () => {
   const { data, isLoading, isError, error } = api.profile.getProfile.useQuery();
@@ -26,26 +26,29 @@ const Admin = () => {
   }
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        padding: 2,
-        backgroundColor: "black",
-        minHeight: "100vh",
-      }}
-    >
-      <Button
-        sx={{ marginLeft: "auto", marginRight: 0 }}
-        variant="contained"
-        onClick={() => void signOut({ callbackUrl: "/" })}
+    <SnackbarProvider>
+      <SnackbarToast />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          padding: 2,
+          backgroundColor: "black",
+          minHeight: "100vh",
+        }}
       >
-        Sign out
-      </Button>
-      <ProfileProvider profile={data}>
-        <CustomTab tabLists={tabLists} />
-      </ProfileProvider>
-    </Box>
+        <Button
+          sx={{ marginLeft: "auto", marginRight: 0 }}
+          variant="contained"
+          onClick={() => void signOut({ callbackUrl: "/" })}
+        >
+          Sign out
+        </Button>
+        <ProfileProvider profile={data}>
+          <CustomTab tabLists={tabLists} />
+        </ProfileProvider>
+      </Box>
+    </SnackbarProvider>
   );
 };
 

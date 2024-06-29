@@ -2,6 +2,7 @@ import { DrawerContext, DrawerProvider } from "./DrawerProvider";
 import { ImageContext, ImageProvider } from "./ImageProvider";
 import { ProjectContext, ProjectProvider } from "./ProjectProvider";
 import { ProfileContext, ProfileProvider } from "./ProfileProvider";
+import { SnackbarContext, SnackbarProvider } from "./SnackbarProvider";
 
 export {
   DrawerProvider,
@@ -12,4 +13,6 @@ export {
   ProjectProvider,
   ProfileContext,
   ProfileProvider,
+  SnackbarContext,
+  SnackbarProvider,
 };
