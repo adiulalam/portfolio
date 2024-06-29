@@ -7,6 +7,7 @@ import { AdminIntro, AdminProjectsTabs } from "@/components/admin";
 import { api } from "@/utils/api";
 import { CustomTab, Loading, SnackbarToast } from "@/components/ui";
 import { ProfileProvider, SnackbarProvider } from "@/provider";
+import Head from "next/head";
 
 const Admin = () => {
   const { data, isLoading, isError, error } = api.profile.getProfile.useQuery();
@@ -26,29 +27,37 @@ const Admin = () => {
   }
 
   return (
-    <SnackbarProvider>
-      <SnackbarToast />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          padding: 2,
-          backgroundColor: "black",
-          minHeight: "100vh",
-        }}
-      >
-        <Button
-          sx={{ marginLeft: "auto", marginRight: 0 }}
-          variant="contained"
-          onClick={() => void signOut({ callbackUrl: "/" })}
+    <>
+      <Head>
+        <title>Portfolio - Admin</title>
+        <meta name="description" content="Portoflio by Adiul Alam Adil" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <SnackbarProvider>
+        <SnackbarToast />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            padding: 2,
+            backgroundColor: "black",
+            minHeight: "100vh",
+          }}
         >
-          Sign out
-        </Button>
-        <ProfileProvider profile={data}>
-          <CustomTab tabLists={tabLists} />
-        </ProfileProvider>
-      </Box>
-    </SnackbarProvider>
+          <Button
+            sx={{ marginLeft: "auto", marginRight: 0 }}
+            variant="contained"
+            onClick={() => void signOut({ callbackUrl: "/" })}
+          >
+            Sign out
+          </Button>
+          <ProfileProvider profile={data}>
+            <CustomTab tabLists={tabLists} />
+          </ProfileProvider>
+        </Box>
+      </SnackbarProvider>
+    </>
   );
 };
 
