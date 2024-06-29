@@ -2,7 +2,7 @@ import type { FormType } from "@/types/AdminTypes";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { useProfile } from "@/hooks";
-import { AdminSaveButton, AdminFieldArray, AdminFieldText } from ".";
+import { AdminButtonSave, AdminFieldArray, AdminFieldText } from ".";
 
 export const AdminIntro = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -48,7 +48,7 @@ export const AdminIntro = () => {
           />
         ) : null
       )}
-      <AdminSaveButton isDirty={isDirty} isLoading={false} />
+      <AdminButtonSave isDirty={isDirty} isLoading={false} />
     </form>
   );
 };

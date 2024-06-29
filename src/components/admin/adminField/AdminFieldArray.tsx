@@ -1,10 +1,10 @@
 import type { FormKeyType, FormType } from "@/types/AdminTypes";
 import { useFieldArray } from "react-hook-form";
 import type { Control, UseFormResetField } from "react-hook-form";
-import { FormTextField } from "../form";
+import { FormTextField } from "../../form";
 import { startCase } from "lodash";
 import { Box, Divider } from "@mui/material";
-import { AdminFormButtons } from ".";
+import { AdminButtonsField } from "..";
 
 type AdminFieldArrayType = {
   control: Control<FormType>;
@@ -41,7 +41,7 @@ export const AdminFieldArray = ({
               required: true,
             }}
           />
-          <AdminFormButtons
+          <AdminButtonsField
             resetFieldName={`${name}.${index}` as FormKeyType}
             resetField={resetField}
             remove={remove}

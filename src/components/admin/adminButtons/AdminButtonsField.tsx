@@ -21,16 +21,16 @@ type AddFieldType = {
   isLastElement?: boolean;
 };
 
-type AdminFormButtonsType = ResetFieldType & AddFieldType & RemoveFieldType;
+type AdminButtonsFieldType = ResetFieldType & AddFieldType & RemoveFieldType;
 
-export const AdminFormButtons = ({
+export const AdminButtonsField = ({
   resetFieldName,
   resetField,
   remove,
   append,
   isLastElement,
   index,
-}: AdminFormButtonsType) => {
+}: AdminButtonsFieldType) => {
   return (
     <Box sx={{ display: "flex", gap: "1rem" }}>
       {resetField && (

@@ -1,9 +1,9 @@
 import type { FormKeyType, FormType } from "@/types/AdminTypes";
 import type { Control, UseFormResetField } from "react-hook-form";
-import { FormDate } from "../form";
+import { FormDate } from "../../form";
 import { startCase } from "lodash";
 import { Box } from "@mui/material";
-import { AdminFormButtons } from ".";
+import { AdminButtonsField } from "..";
 
 type AdminFieldDateType = {
   control: Control<FormType>;
@@ -28,7 +28,7 @@ export const AdminFieldDate = ({
         }}
         label={startCase(name)}
       />
-      <AdminFormButtons resetFieldName={name} resetField={resetField} />
+      <AdminButtonsField resetFieldName={name} resetField={resetField} />
     </Box>
   );
 };

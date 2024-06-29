@@ -1,20 +1,18 @@
-import { AdminFieldArray } from "./AdminFieldArray";
-import { AdminFieldDate } from "./AdminFieldDate";
-import { AdminFieldText } from "./AdminFieldText";
-import { AdminFormButtons } from "./AdminFormButtons";
+import { AdminFieldArray } from "./adminField/AdminFieldArray";
+import { AdminFieldDate } from "./adminField/AdminFieldDate";
+import { AdminFieldText } from "./adminField/AdminFieldText";
+import { AdminButtonsField } from "./adminButtons/AdminButtonsField";
 import { AdminImages } from "./AdminImages";
 import { AdminImagesTabs } from "./AdminImagesTabs";
 import { AdminIntro } from "./AdminIntro";
 import { AdminProjects } from "./AdminProjects";
 import { AdminProjectsTabs } from "./AdminProjectsTabs";
-import { AdminSaveButton } from "./AdminSaveButton";
-import { AdminTabs } from "./AdminTabs";
+import { AdminButtonSave } from "./adminButtons/AdminButtonSave";
 
 export {
-  AdminTabs,
   AdminIntro,
-  AdminSaveButton,
-  AdminFormButtons,
+  AdminButtonSave,
+  AdminButtonsField,
   AdminProjectsTabs,
   AdminProjects,
   AdminFieldArray,

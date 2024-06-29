@@ -1,9 +1,9 @@
 import type { FormKeyType, FormType } from "@/types/AdminTypes";
 import type { Control, UseFormResetField } from "react-hook-form";
-import { FormTextField } from "../form";
+import { FormTextField } from "../../form";
 import { startCase } from "lodash";
 import { Box } from "@mui/material";
-import { AdminFormButtons } from ".";
+import { AdminButtonsField } from "..";
 
 type AdminFieldTextType = {
   control: Control<FormType>;
@@ -38,7 +38,7 @@ export const AdminFieldText = ({
           multiline: name === "description",
         }}
       />
-      <AdminFormButtons resetFieldName={name} resetField={resetField} />
+      <AdminButtonsField resetFieldName={name} resetField={resetField} />
     </Box>
   );
 };

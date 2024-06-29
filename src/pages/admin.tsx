@@ -3,9 +3,9 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/server/auth";
 import { signOut } from "next-auth/react";
 import { Box, Button } from "@mui/material";
-import { AdminIntro, AdminProjectsTabs, AdminTabs } from "@/components/admin";
+import { AdminIntro, AdminProjectsTabs } from "@/components/admin";
 import { api } from "@/utils/api";
-import { Loading } from "@/components/ui";
+import { CustomTab, Loading } from "@/components/ui";
 import { ProfileProvider } from "@/provider";
 
 const Admin = () => {
@@ -43,7 +43,7 @@ const Admin = () => {
         Sign out
       </Button>
       <ProfileProvider profile={data}>
-        <AdminTabs tabLists={tabLists} />
+        <CustomTab tabLists={tabLists} />
       </ProfileProvider>
     </Box>
   );

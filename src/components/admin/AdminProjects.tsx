@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { useProject } from "@/hooks";
 import {
-  AdminSaveButton,
+  AdminButtonSave,
   AdminFieldArray,
   AdminFieldText,
   AdminFieldDate,
@@ -61,7 +61,7 @@ export const AdminProjects = () => {
           />
         ) : null
       )}
-      <AdminSaveButton isDirty={isDirty} isLoading={false} />
+      <AdminButtonSave isDirty={isDirty} isLoading={false} />
     </form>
   );
 };

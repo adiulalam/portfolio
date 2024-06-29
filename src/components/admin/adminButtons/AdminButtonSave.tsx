@@ -1,7 +1,7 @@
 import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
 
-export const AdminSaveButton = ({
+export const AdminButtonSave = ({
   isDirty,
   isLoading,
 }: {

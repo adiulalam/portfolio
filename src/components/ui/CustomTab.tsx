@@ -7,19 +7,19 @@ import {
   AddCircleOutline as AddCircleOutlineIcon,
 } from "@mui/icons-material";
 
-type AdminTabsProps = {
+type CustomTabProps = {
   defaultValue?: string;
   deleteCallback?: (tab: string) => void;
   addCallback?: () => void;
   tabLists: { label: string; value: string; component: JSX.Element }[];
 };
 
-export const AdminTabs = ({
+export const CustomTab = ({
   defaultValue,
   deleteCallback,
   addCallback,
   tabLists,
-}: AdminTabsProps) => {
+}: CustomTabProps) => {
   const [value, setValue] = useState(defaultValue ?? tabLists[0]?.value ?? "0");
 
   const handleChange = (_: SyntheticEvent, newValue: string) => {

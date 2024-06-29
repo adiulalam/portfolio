@@ -1,5 +1,6 @@
 import { useProfile } from "@/hooks";
-import { AdminProjects, AdminTabs } from ".";
+import { AdminProjects } from ".";
+import { CustomTab } from "../ui";
 import { ProjectProvider } from "@/provider";
 import { AdminImagesTabs } from ".";
 import { Box } from "@mui/material";
@@ -29,7 +30,7 @@ export const AdminProjectsTabs = () => {
   };
 
   return (
-    <AdminTabs
+    <CustomTab
       tabLists={tabLists}
       addCallback={addCallback}
       deleteCallback={deleteCallback}

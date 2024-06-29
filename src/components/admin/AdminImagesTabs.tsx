@@ -1,6 +1,7 @@
 import { useProject } from "@/hooks";
-import { AdminImages, AdminTabs } from ".";
+import { AdminImages } from ".";
 import { ImageProvider } from "@/provider";
+import { CustomTab } from "../ui";
 
 export const AdminImagesTabs = () => {
   const { images } = useProject();
@@ -24,7 +25,7 @@ export const AdminImagesTabs = () => {
   };
 
   return (
-    <AdminTabs
+    <CustomTab
       defaultValue="-1"
       tabLists={tabLists}
       addCallback={addCallback}

@@ -2,7 +2,7 @@ import type { FormType } from "@/types/AdminTypes";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { useImage } from "@/hooks";
-import { AdminSaveButton, AdminFieldArray, AdminFieldText } from ".";
+import { AdminButtonSave, AdminFieldArray, AdminFieldText } from ".";
 import { Divider } from "@mui/material";
 
 export const AdminImages = () => {
@@ -49,7 +49,7 @@ export const AdminImages = () => {
           />
         ) : null
       )}
-      <AdminSaveButton isDirty={isDirty} isLoading={false} />
+      <AdminButtonSave isDirty={isDirty} isLoading={false} />
       <Divider />
     </form>
   );
