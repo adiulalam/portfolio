@@ -1,3 +1,6 @@
+import { useDeleteImage } from "./image/useDeleteImage";
+import { useInsertImage } from "./image/useInsertImage";
+import { useUpdateImage } from "./image/useUpdateImage";
 import { useUpdateProfile } from "./profile/useUpdateProfile";
 import { useDeleteProject } from "./project/useDeleteProject";
 import { useInsertProject } from "./project/useInsertProject";
@@ -18,4 +21,7 @@ export {
   useUpdateProject,
   useInsertProject,
   useDeleteProject,
+  useUpdateImage,
+  useInsertImage,
+  useDeleteImage,
 };

@@ -1,51 +1,13 @@
-import { useProject, useSnackbar } from "@/hooks";
+import { useDeleteImage, useInsertImage, useProject } from "@/hooks";
 import { AdminImages } from ".";
 import { ImageProvider } from "@/provider";
 import { CustomTab } from "../ui";
-import { api } from "@/utils/api";
 
 export const AdminImagesTabs = () => {
-  const { id, images } = useProject();
+  const { images } = useProject();
 
-  const { setConfig } = useSnackbar();
-
-  const {
-    profile: { getProfile },
-  } = api.useUtils();
-
-  const { mutate: insertMutate } = api.image.insertImage.useMutation({
-    onSuccess: async () => {
-      await getProfile.invalidate();
-      setConfig({
-        isOpen: true,
-        message: "Inserted successfully",
-        severity: "success",
-      });
-    },
-    onError: () =>
-      setConfig({
-        isOpen: true,
-        message: "Could not Insert",
-        severity: "error",
-      }),
-  });
-
-  const { mutate: deleteMutate } = api.image.deleteImage.useMutation({
-    onSuccess: async () => {
-      await getProfile.invalidate();
-      setConfig({
-        isOpen: true,
-        message: "Deleted successfully",
-        severity: "success",
-      });
-    },
-    onError: () =>
-      setConfig({
-        isOpen: true,
-        message: "Could not Delete",
-        severity: "error",
-      }),
-  });
+  const { onInsert } = useInsertImage();
+  const { onDelete } = useDeleteImage();
 
   const tabLists = images!.map((image, index) => ({
     label: `Image ${index}`,
@@ -57,30 +19,12 @@ export const AdminImagesTabs = () => {
     ),
   }));
 
-  const addCallback = () => {
-    console.log("addCallback");
-    const body = {
-      alt: "Alt tag",
-      internalSrc: "internalSrc",
-      order: 1,
-      projectId: id,
-      src: "src",
-    };
-
-    insertMutate(body);
-  };
-
-  const deleteCallback = (id: string) => {
-    console.log("deleteCallback", id);
-    deleteMutate({ id });
-  };
-
   return (
     <CustomTab
       defaultValue="-1"
       tabLists={tabLists}
-      addCallback={addCallback}
-      deleteCallback={deleteCallback}
+      addCallback={onInsert}
+      deleteCallback={onDelete}
     />
   );
 };

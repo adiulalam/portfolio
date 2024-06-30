@@ -1,37 +1,13 @@
 import type { FormType } from "@/types/AdminTypes";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
-import { useImage, useSnackbar } from "@/hooks";
+import { useImage, useUpdateImage } from "@/hooks";
 import { AdminButtonSave, AdminFieldArray, AdminFieldText } from ".";
 import { Divider } from "@mui/material";
-import type { Image } from "@/server/db/schema/image";
-import { api } from "@/utils/api";
 
 export const AdminImages = () => {
   const image = useImage();
-
-  const { setConfig } = useSnackbar();
-
-  const {
-    profile: { getProfile },
-  } = api.useUtils();
-
-  const { mutate, isPending } = api.image.updateImage.useMutation({
-    onSuccess: async () => {
-      await getProfile.invalidate();
-      setConfig({
-        isOpen: true,
-        message: "Updated successfully",
-        severity: "success",
-      });
-    },
-    onError: () =>
-      setConfig({
-        isOpen: true,
-        message: "Could not update",
-        severity: "error",
-      }),
-  });
+  const { onUpdate, isPending } = useUpdateImage();
 
   const {
     control,
@@ -43,29 +19,12 @@ export const AdminImages = () => {
     values: image,
   });
 
-  const onSubmit = (data: Image) => {
-    console.log(data);
-
-    const params = { id: data.id };
-    const body = {
-      alt: data.alt,
-      internalSrc: data.internalSrc,
-      order: Number(data.order),
-      src: data.src,
-    };
-
-    mutate({
-      params,
-      body,
-    });
-  };
-
   const disabledFields: (keyof typeof image)[] = ["id", "projectId"];
   const notRequiredFields: (keyof typeof image)[] = ["internalSrc"];
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit as SubmitHandler<FormType>)}
+      onSubmit={handleSubmit(onUpdate as SubmitHandler<FormType>)}
       style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
     >
       {Object.entries(image).map(([key, value]) =>
