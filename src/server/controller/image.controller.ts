@@ -8,7 +8,7 @@ import type {
   InsertImageServiceInput,
 } from "../services/image.service";
 import { profiles } from "../db/schema/profile";
-import { users } from "../db/schema/user";
+import { projects } from "../db/schema/project";
 
 export const insertImageHandler = async ({
   input,
@@ -20,12 +20,16 @@ export const insertImageHandler = async ({
   try {
     const userId = session.user.id;
 
-    const image = await db.query.images.findFirst({
-      where: eq(users.id, userId),
-    });
+    const project = await db
+      .select()
+      .from(projects)
+      .leftJoin(profiles, eq(profiles.id, projects.profileId))
+      .where(
+        and(eq(profiles.userId, userId), eq(projects.id, input.projectId))
+      );
 
-    if (!image) {
-      throw new Error("Image with userId not found");
+    if (!project.length) {
+      throw new Error("Project with id, userId not found");
     }
 
     const result = await db.insert(images).values(input);
@@ -49,10 +53,18 @@ export const updateImageHandler = async ({
     const userId = session.user.id;
     const { id } = params;
 
-    const result = await db
-      .update(images)
-      .set(input)
-      .where(and(eq(images.id, id), eq(profiles.userId, userId)));
+    const image = await db
+      .select()
+      .from(images)
+      .leftJoin(projects, eq(projects.id, images.projectId))
+      .leftJoin(profiles, eq(profiles.id, projects.profileId))
+      .where(and(eq(profiles.userId, userId), eq(images.id, id)));
+
+    if (!image.length) {
+      throw new Error("Project with id, userId not found");
+    }
+
+    const result = await db.update(images).set(input).where(eq(images.id, id));
 
     return result;
   } catch (err) {
@@ -71,9 +83,18 @@ export const deleteImageHandler = async ({
     const userId = session.user.id;
     const { id } = params;
 
-    const result = await db
-      .delete(images)
-      .where(and(eq(images.id, id), eq(profiles.userId, userId)));
+    const image = await db
+      .select()
+      .from(images)
+      .leftJoin(projects, eq(projects.id, images.projectId))
+      .leftJoin(profiles, eq(profiles.id, projects.profileId))
+      .where(and(eq(profiles.userId, userId), eq(images.id, id)));
+
+    if (!image.length) {
+      throw new Error("Project with id, userId not found");
+    }
+
+    const result = await db.delete(images).where(eq(images.id, id));
 
     return result;
   } catch (err) {

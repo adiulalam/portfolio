@@ -10,6 +10,7 @@ type AdminFieldTextType = {
   name: FormKeyType;
   required?: boolean;
   disabled?: boolean;
+  isNumberType?: boolean;
   resetField: UseFormResetField<FormType>;
 };
 
@@ -18,6 +19,7 @@ export const AdminFieldText = ({
   name,
   required,
   disabled,
+  isNumberType,
   resetField,
 }: AdminFieldTextType) => {
   return (
@@ -33,6 +35,7 @@ export const AdminFieldText = ({
         fieldProps={{
           required,
           disabled,
+          type: isNumberType ? "number" : "text",
           label: startCase(name),
           rows: name === "description" ? 8 : 1,
           multiline: name === "description",
