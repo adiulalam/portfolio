@@ -1,4 +1,7 @@
 import { useUpdateProfile } from "./profile/useUpdateProfile";
+import { useDeleteProject } from "./project/useDeleteProject";
+import { useInsertProject } from "./project/useInsertProject";
+import { useUpdateProject } from "./project/useUpdateProject";
 import { useDrawer } from "./useDrawer";
 import { useImage } from "./useImage";
 import { useProfile } from "./useProfile";
@@ -12,4 +15,7 @@ export {
   useProfile,
   useSnackbar,
   useUpdateProfile,
+  useUpdateProject,
+  useInsertProject,
+  useDeleteProject,
 };
