@@ -3,12 +3,12 @@ import type { TypeOf } from "zod";
 import { profiles } from "../db/schema/profile";
 import { createSelectSchema } from "drizzle-zod";
 
-const insertUserSchema = createSelectSchema(profiles, {
+const profileSelectSchema = createSelectSchema(profiles, {
   loop: z.string().array(),
 });
 
-export const params = insertUserSchema.pick({ id: true });
-export const body = insertUserSchema.pick({
+export const params = profileSelectSchema.pick({ id: true });
+export const body = profileSelectSchema.pick({
   backgroundImage: true,
   base: true,
   career: true,

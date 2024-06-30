@@ -6,14 +6,15 @@ import { AdminButtonSave, AdminFieldArray, AdminFieldText } from ".";
 import { api } from "@/utils/api";
 import type { Profile } from "@/server/db/schema/profile";
 
-export const AdminIntro = () => {
+export const AdminProfile = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { projects, ...profile } = useProfile();
+  const { setConfig } = useSnackbar();
+
   const {
     profile: { getProfile },
   } = api.useUtils();
 
-  const { setConfig } = useSnackbar();
   const { mutate, isPending } = api.profile.updateProfile.useMutation({
     onSuccess: async () => {
       await getProfile.invalidate();

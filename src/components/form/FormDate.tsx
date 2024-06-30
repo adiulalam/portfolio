@@ -22,7 +22,7 @@ export const FormDate = ({ controllerProps, label }: FormDateType) => {
             format="DD/MM/YYYY"
             label={label}
             value={dayjs(value as string)}
-            onChange={(value) => onChange(dayjs(value).toDate())}
+            onChange={onChange}
             slotProps={{
               textField: {
                 error: !!error,

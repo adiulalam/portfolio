@@ -1,17 +1,43 @@
 import type { FormType } from "@/types/AdminTypes";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
-import { useProject } from "@/hooks";
+import { useProject, useSnackbar } from "@/hooks";
 import {
   AdminButtonSave,
   AdminFieldArray,
   AdminFieldText,
   AdminFieldDate,
 } from ".";
+import { api } from "@/utils/api";
+import type { Project } from "@/server/db/schema/project";
+import dayjs from "dayjs";
 
 export const AdminProjects = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { images, ...project } = useProject();
+
+  const { setConfig } = useSnackbar();
+
+  const {
+    profile: { getProfile },
+  } = api.useUtils();
+
+  const { mutate, isPending } = api.project.updateProject.useMutation({
+    onSuccess: async () => {
+      await getProfile.invalidate();
+      setConfig({
+        isOpen: true,
+        message: "Updated successfully",
+        severity: "success",
+      });
+    },
+    onError: () =>
+      setConfig({
+        isOpen: true,
+        message: "Could not update",
+        severity: "error",
+      }),
+  });
 
   const {
     control,
@@ -23,8 +49,23 @@ export const AdminProjects = () => {
     values: project,
   });
 
-  const onSubmit: SubmitHandler<FormType> = (data) => {
+  const onSubmit = (data: Project) => {
     console.log(data);
+    const params = { id: data.id };
+    const body = {
+      application: data.application,
+      description: data.description,
+      details: data.details,
+      projectDate: dayjs(data.projectDate).format("YYYY-MM-DD"),
+      repo: data.repo,
+      technologies: data.technologies,
+      title: data.title,
+    };
+
+    mutate({
+      params,
+      body,
+    });
   };
 
   const disabledFields: (keyof typeof project)[] = ["id", "profileId"];
@@ -32,7 +73,7 @@ export const AdminProjects = () => {
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit as SubmitHandler<FormType>)}
       style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
     >
       {Object.entries(project).map(([key, value]) =>
@@ -61,7 +102,7 @@ export const AdminProjects = () => {
           />
         ) : null
       )}
-      <AdminButtonSave isDirty={isDirty} isLoading={false} />
+      <AdminButtonSave isDirty={isDirty} isLoading={isPending} />
     </form>
   );
 };

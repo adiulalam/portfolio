@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/server/auth";
 import { signOut } from "next-auth/react";
 import { Box, Button } from "@mui/material";
-import { AdminIntro, AdminProjectsTabs } from "@/components/admin";
+import { AdminProfile, AdminProjectsTabs } from "@/components/admin";
 import { api } from "@/utils/api";
 import { CustomTab, Loading, SnackbarToast } from "@/components/ui";
 import { ProfileProvider, SnackbarProvider } from "@/provider";
@@ -13,7 +13,7 @@ const Admin = () => {
   const { data, isLoading, isError, error } = api.profile.getProfile.useQuery();
 
   const tabLists = [
-    { label: "Intro", value: "0", component: <AdminIntro /> },
+    { label: "Profile", value: "0", component: <AdminProfile /> },
     { label: "Projects", value: "1", component: <AdminProjectsTabs /> },
   ];
 
