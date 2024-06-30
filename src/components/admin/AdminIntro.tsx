@@ -3,12 +3,33 @@ import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { useProfile, useSnackbar } from "@/hooks";
 import { AdminButtonSave, AdminFieldArray, AdminFieldText } from ".";
+import { api } from "@/utils/api";
+import type { Profile } from "@/server/db/schema/profile";
 
 export const AdminIntro = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { projects, ...profile } = useProfile();
+  const {
+    profile: { getProfile },
+  } = api.useUtils();
 
   const { setConfig } = useSnackbar();
+  const { mutate, isPending } = api.profile.updateProfile.useMutation({
+    onSuccess: async () => {
+      await getProfile.invalidate();
+      setConfig({
+        isOpen: true,
+        message: "Updated successfully",
+        severity: "success",
+      });
+    },
+    onError: () =>
+      setConfig({
+        isOpen: true,
+        message: "Could not update",
+        severity: "error",
+      }),
+  });
 
   const {
     control,
@@ -20,16 +41,33 @@ export const AdminIntro = () => {
     values: profile,
   });
 
-  const onSubmit: SubmitHandler<FormType> = (data) => {
+  const onSubmit = (data: Profile) => {
     console.log(data);
-    setConfig({ isOpen: true, message: "Test", severity: "success" });
+    const params = { id: data.id };
+    const body = {
+      backgroundImage: data.backgroundImage,
+      base: data.base,
+      career: data.career,
+      description: data.description,
+      education: data.education,
+      email: data.email,
+      fullName: data.fullName,
+      github: data.github,
+      linkedin: data.linkedin,
+      location: data.location,
+      profilePic: data.profilePic,
+      resume: data.resume,
+      loop: data.loop,
+    };
+
+    mutate({ params, body });
   };
 
   const disabledFields: (keyof typeof profile)[] = ["id", "userId"];
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit as SubmitHandler<FormType>)}
       style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
     >
       {Object.entries(profile).map(([key, value]) =>
@@ -51,7 +89,7 @@ export const AdminIntro = () => {
           />
         ) : null
       )}
-      <AdminButtonSave isDirty={isDirty} isLoading={false} />
+      <AdminButtonSave isDirty={isDirty} isLoading={isPending} />
     </form>
   );
 };
