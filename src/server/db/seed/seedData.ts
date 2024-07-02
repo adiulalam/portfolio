@@ -1,23 +1,21 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-// import { drizzle } from "drizzle-orm/node-postgres";
-// import postgres from "postgres";
 import data from "./data.json";
 import { profiles } from "../schema/profile";
 import { projects } from "../schema/project";
-// import schema from "../schema";
 import { images } from "../schema/image";
-import { db } from "..";
+import { eq } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/postgres-js";
+import postgres from "postgres";
+import schema from "../schema";
 
-// if (!process.env.DATABASE_DIRECT_URL) {
-//   throw new Error("DATABASE_URL not found on .env");
-// }
+const conn = postgres({
+  user: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DB,
+  port: Number(process.env.POSTGRES_PORT),
+  host: process.env.POSTGRES_HOST,
+});
 
-// const queryClient = postgres(process.env.DATABASE_DIRECT_URL);
-
-// const db = drizzle(queryClient, {
-//   schema,
-//   logger: true,
-// });
+const db = drizzle(conn, { schema });
 
 const insertProfile = async (userId: string) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -59,6 +57,9 @@ const main = async () => {
   });
 
   if (!user) throw new Error("User not found");
+
+  // Delete Profile, Projects, Images
+  await db.delete(profiles).where(eq(profiles.userId, user.id));
 
   // Profile
   await insertProfile(user.id);

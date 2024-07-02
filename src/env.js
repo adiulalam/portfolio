@@ -7,7 +7,12 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    DATABASE_URL: z.string().url(),
+    DATABASE_URL: z.string(),
+    POSTGRES_USER: z.string(),
+    POSTGRES_PASSWORD: z.string(),
+    POSTGRES_DB: z.string(),
+    POSTGRES_PORT: z.string(),
+    POSTGRES_HOST: z.string(),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
@@ -42,6 +47,11 @@ export const env = createEnv({
    */
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
+    POSTGRES_USER: process.env.POSTGRES_USER,
+    POSTGRES_PASSWORD: process.env.POSTGRES_PASSWORD,
+    POSTGRES_DB: process.env.POSTGRES_DB,
+    POSTGRES_PORT: process.env.POSTGRES_PORT,
+    POSTGRES_HOST: process.env.POSTGRES_HOST,
     NODE_ENV: process.env.NODE_ENV,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,

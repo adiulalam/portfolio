@@ -16,7 +16,7 @@ export const profiles = pgTable(
     id: uuid("id").defaultRandom().primaryKey().notNull(),
     userId: uuid("userId")
       .notNull()
-      .references(() => users.id, { onDelete: "restrict" }),
+      .references(() => users.id, { onDelete: "cascade" }),
     profilePic: varchar("profilePic", { length: 256 }).notNull(),
     backgroundImage: varchar("backgroundImage", { length: 256 }).notNull(),
     fullName: varchar("fullName", { length: 256 }).notNull(),
