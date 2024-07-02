@@ -20,7 +20,12 @@ const config = {
   },
   transpilePackages: ["geist"],
   images: {
-    domains: ["i.imgur.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.imgur.com",
+      },
+    ],
   },
 };
 
