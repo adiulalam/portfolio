@@ -1,20 +1,32 @@
-name: Portfolio Deployment
+name: Form Builder Deployment
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - name: executing remote ssh commands using ssh key
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.DOCKER_HOST }}
-        username: ${{ secrets.DOCKER_USERNAME }}
-        key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
-        script: |
-          cd portfolio-content/
-          ./deploy-portfolio.sh
+      - name: Execute remote SSH commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DOCKER_HOST }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
+          script: |
+            set -e # Exit immediately if a command exits with a non-zero status
+
+            cd portfolio/
+            echo 'Inside portfolio directory'
+
+            # Pull latest changes
+            git fetch origin
+            git reset --hard origin/main
+            echo 'Pulled latest changes from main branch'
+
+            # Build and run the Docker container
+            npm run docker
+            echo 'Container up and running'
