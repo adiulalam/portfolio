@@ -1,9 +1,5 @@
-import Image from "next/image";
 import { Box, useTheme, Typography } from "@mui/material";
 import { useProfile } from "@/hooks";
-
-const blurDataURL =
-  "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNU+g8AAUkBI5mqlHIAAAAASUVORK5CYII=";
 
 export const NavMenuProfile = () => {
   const { fullName, career, profilePic } = useProfile();
@@ -17,7 +13,8 @@ export const NavMenuProfile = () => {
         alignItems: "center",
       }}
     >
-      <Image
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         alt="profile picture"
         height={100}
         width={100}
@@ -26,8 +23,6 @@ export const NavMenuProfile = () => {
           height: 110,
           borderRadius: "50%",
         }}
-        blurDataURL={blurDataURL}
-        placeholder="blur"
         src={profilePic}
       />
       <Typography
