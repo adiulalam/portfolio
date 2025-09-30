@@ -1,7 +1,7 @@
 {
   "id": "7aae2bea-b174-43b3-a6f4-acae31ce39da",
-  "profilePic": "https://i.imgur.com/fgzbMqg.jpg",
-  "backgroundImage": "https://i.imgur.com/YNgwpkj.jpg",
+  "profilePic": "/profile-pic.jpg",
+  "backgroundImage": "/background.jpg",
   "fullName": "Adiul Alam Adil",
   "career": "Software Engineer (Full-Stack)",
   "resume": "https://drive.google.com/uc?export=download&id=1kxyFblmPl8WAwQ9bFeGxMvq19DmHpRlB",
@@ -19,6 +19,53 @@
     "networking."
   ],
   "projects": [
+    {
+      "id": "c46b6cf7-3ac6-40bb-9fa7-1f45534f384e",
+      "title": "Quizeroo",
+      "description": "A full-stack quiz web-app that can be used for creating and sharing quiz. The application includes AI quiz generation, authentication, and a dashboard for comprehensive information visualization.",
+      "projectDate": "2025-01-01",
+      "application": "https://quiz.adiulalamadil.me/",
+      "repo": "https://github.com/adiulalam/quizeroo",
+      "details": ["AI Assisted", "Modern Technologies", "Quiz Application"],
+      "technologies": [
+        "Next JS",
+        "React",
+        "TypeScript",
+        "PostgreSQL",
+        "Shadcn UI",
+        "Tailwind CSS"
+      ],
+      "media": [
+        {
+          "id": "5a186b59-2c5d-4cf3-91be-ee009991ef8b",
+          "internalSrc": null,
+          "src": "https://i.imgur.com/csMbXBH.png",
+          "order": 1,
+          "alt": "image of project"
+        },
+        {
+          "id": "66d47204-3c12-4719-bae3-98a31f9c80ab",
+          "internalSrc": null,
+          "src": "https://i.imgur.com/6JSDTpw.png",
+          "order": 2,
+          "alt": "image of project"
+        },
+        {
+          "id": "91bb9cfe-907d-4344-b84f-bf3e11042b54",
+          "internalSrc": null,
+          "src": "https://i.imgur.com/h6c7ezz.png",
+          "order": 3,
+          "alt": "image of project"
+        },
+        {
+          "id": "4339ace2-082e-425a-995f-805b823eefdd",
+          "internalSrc": null,
+          "src": "https://i.imgur.com/gsgh1hh.png",
+          "order": 4,
+          "alt": "image of project"
+        }
+      ]
+    },
     {
       "id": "ec1ae32b-df69-4eb1-9d3c-2ea724c253b2",
       "title": "Filder",
