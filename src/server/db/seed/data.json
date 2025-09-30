@@ -39,28 +39,28 @@
         {
           "id": "5a186b59-2c5d-4cf3-91be-ee009991ef8b",
           "internalSrc": null,
-          "src": "https://i.imgur.com/csMbXBH.png",
+          "src": "/quizeroo/1.png",
           "order": 1,
           "alt": "image of project"
         },
         {
           "id": "66d47204-3c12-4719-bae3-98a31f9c80ab",
           "internalSrc": null,
-          "src": "https://i.imgur.com/6JSDTpw.png",
+          "src": "/quizeroo/2.png",
           "order": 2,
           "alt": "image of project"
         },
         {
           "id": "91bb9cfe-907d-4344-b84f-bf3e11042b54",
           "internalSrc": null,
-          "src": "https://i.imgur.com/h6c7ezz.png",
+          "src": "/quizeroo/3.png",
           "order": 3,
           "alt": "image of project"
         },
         {
           "id": "4339ace2-082e-425a-995f-805b823eefdd",
           "internalSrc": null,
-          "src": "https://i.imgur.com/gsgh1hh.png",
+          "src": "/quizeroo/4.png",
           "order": 4,
           "alt": "image of project"
         }
@@ -93,28 +93,28 @@
           "alt": "image of project",
           "internalSrc": null,
           "order": 1,
-          "src": "https://i.imgur.com/FBPUgXA.png"
+          "src": "/filder/1.png"
         },
         {
           "id": "9e03ab56-e4c8-49fc-a54f-f9697954744b",
           "alt": "image of project",
           "internalSrc": null,
           "order": 2,
-          "src": "https://i.imgur.com/ZlwO5Yw.png"
+          "src": "/filder/2.png"
         },
         {
           "id": "780c48a3-173c-450d-9e15-fa215396ecb4",
           "alt": "image of project",
           "internalSrc": null,
           "order": 3,
-          "src": "https://i.imgur.com/chhwCqw.png"
+          "src": "/filder/3.png"
         },
         {
           "id": "b297a48d-9f33-459b-a0e3-3768ae75be6d",
           "alt": "image of project",
           "internalSrc": null,
           "order": 4,
-          "src": "https://i.imgur.com/evf45OC.png"
+          "src": "/filder/4.png"
         }
       ]
     },
@@ -146,35 +146,35 @@
           "alt": "image of project",
           "internalSrc": null,
           "order": 1,
-          "src": "https://i.imgur.com/P9jVY8P.png"
+          "src": "/aniflix/1.png"
         },
         {
           "id": "97305c7d-82a7-4a27-8868-e1926158f8b7",
           "alt": "image of project",
           "internalSrc": null,
           "order": 2,
-          "src": "https://i.imgur.com/ZSYdXCz.png"
+          "src": "/aniflix/2.png"
         },
         {
           "id": "1ee3ed9c-0f40-46ce-8ce4-56edea3d5b4d",
           "alt": "image of project",
           "internalSrc": null,
           "order": 3,
-          "src": "https://i.imgur.com/G959c1O.png"
+          "src": "/aniflix/3.png"
         },
         {
           "id": "be38bc85-b45b-4646-a12e-e742afca966a",
           "alt": "image of project",
           "internalSrc": null,
           "order": 4,
-          "src": "https://i.imgur.com/hLC86pi.png"
+          "src": "/aniflix/4.png"
         },
         {
           "id": "100b3ba5-9c30-40cc-bae5-2b49d68d5b11",
           "alt": "image of project",
           "internalSrc": null,
           "order": 5,
-          "src": "https://i.imgur.com/8KPKiqM.png"
+          "src": "/aniflix/5.png"
         }
       ]
     },
@@ -206,28 +206,28 @@
           "alt": "image of project",
           "internalSrc": null,
           "order": 1,
-          "src": "https://i.imgur.com/25gVcjf.png"
+          "src": "/rick-and-morty/1.png"
         },
         {
           "id": "0d9f4a0f-a6a2-4eaf-8fe5-6846c0def951",
           "alt": "image of project",
           "internalSrc": null,
           "order": 2,
-          "src": "https://i.imgur.com/FFhot78.png"
+          "src": "/rick-and-morty/2.png"
         },
         {
           "id": "5c71a081-b41e-4222-a577-c6bb1cb9124e",
           "alt": "image of project",
           "internalSrc": null,
           "order": 3,
-          "src": "https://i.imgur.com/JqMZkNP.png"
+          "src": "/rick-and-morty/3.png"
         },
         {
           "id": "6a9ebde2-4500-4945-b70c-4211c88723fc",
           "alt": "image of project",
           "internalSrc": null,
           "order": 4,
-          "src": "https://i.imgur.com/Isi9cMM.gif"
+          "src": "/rick-and-morty/4.gif"
         }
       ]
     },
@@ -260,42 +260,42 @@
           "alt": "image of project",
           "internalSrc": null,
           "order": 1,
-          "src": "https://i.imgur.com/0FDh7Wg.png"
+          "src": "/overwatch/1.png"
         },
         {
           "id": "73356726-0aff-413b-8a6a-d7a5b33afdf5",
           "alt": "image of project",
           "internalSrc": null,
           "order": 2,
-          "src": "https://i.imgur.com/ykzBaEd.png"
+          "src": "/overwatch/2.png"
         },
         {
           "id": "ef7d5b40-8284-4605-89be-cf2c53b3fbaf",
           "alt": "image of project",
           "internalSrc": null,
           "order": 3,
-          "src": "https://i.imgur.com/OLKF4QA.png"
+          "src": "/overwatch/3.png"
         },
         {
           "id": "b00c1c2e-f5b4-4553-9486-cb9506e84946",
           "alt": "image of project",
           "internalSrc": null,
           "order": 4,
-          "src": "https://i.imgur.com/cMojbjs.png"
+          "src": "/overwatch/4.png"
         },
         {
           "id": "51e5d39b-ee2e-4597-9915-37eb305a045d",
           "alt": "image of project",
           "internalSrc": null,
           "order": 5,
-          "src": "https://i.imgur.com/6PjKvZg.png"
+          "src": "/overwatch/5.png"
         },
         {
           "id": "9e73ddb4-cbe7-4494-b0f7-db408220e5c5",
           "alt": "image of project",
           "internalSrc": null,
           "order": 6,
-          "src": "https://i.imgur.com/XQlBbXu.png"
+          "src": "/overwatch/6.png"
         }
       ]
     },
@@ -330,28 +330,28 @@
           "alt": "image of project",
           "internalSrc": null,
           "order": 1,
-          "src": "https://i.imgur.com/xiDuK5E.png"
+          "src": "/react-space-x/1.png"
         },
         {
           "id": "03d9db79-c251-4b6c-b0dd-2af9879e289c",
           "alt": "image of project",
           "internalSrc": null,
           "order": 2,
-          "src": "https://i.imgur.com/LkfnJHC.png"
+          "src": "/react-space-x/2.png"
         },
         {
           "id": "371c7b4e-99b0-4af2-aca0-8414e8b9c7ba",
           "alt": "image of project",
           "internalSrc": null,
           "order": 3,
-          "src": "https://i.imgur.com/w1Ft9on.png"
+          "src": "/react-space-x/3.png"
         },
         {
           "id": "f4e13693-eecf-4d2b-951a-399580034f98",
           "alt": "image of project",
           "internalSrc": null,
-          "order": 5,
-          "src": "https://i.imgur.com/5Ad8Wjm.gif"
+          "order": 4,
+          "src": "/react-space-x/4.gif"
         }
       ]
     },
@@ -375,28 +375,28 @@
           "alt": "image of project",
           "internalSrc": null,
           "order": 1,
-          "src": "https://i.imgur.com/SSZYiNe.png"
+          "src": "/mad-property-pal/1.png"
         },
         {
           "id": "4c60eb45-7066-4770-be00-536f8caf53b8",
           "alt": "image of project",
           "internalSrc": null,
           "order": 2,
-          "src": "https://i.imgur.com/Ns1r4yg.png"
+          "src": "/mad-property-pal/2.png"
         },
         {
           "id": "bc4a3b55-2339-4b21-b3f7-1fae46e809e8",
           "alt": "image of project",
           "internalSrc": null,
           "order": 3,
-          "src": "https://i.imgur.com/nCBOaJa.png"
+          "src": "/mad-property-pal/3.png"
         },
         {
           "id": "d5431263-0365-4a7c-a59e-99ac29177fae",
           "alt": "image of project",
           "internalSrc": null,
           "order": 4,
-          "src": "https://i.imgur.com/1XL6Lkc.png"
+          "src": "/mad-property-pal/4.png"
         }
       ]
     },
@@ -429,35 +429,35 @@
           "alt": "image of project",
           "internalSrc": null,
           "order": 1,
-          "src": "https://i.imgur.com/LL4R6os.png"
+          "src": "/gdpr-visualization/1.png"
         },
         {
           "id": "fb984d61-18c4-4be4-bb05-23f7e611c154",
           "alt": "image of project",
           "internalSrc": null,
           "order": 2,
-          "src": "https://i.imgur.com/atKuIMT.png"
+          "src": "/gdpr-visualization/2.png"
         },
         {
           "id": "c513737e-bffb-44fa-9e43-2d1ca3a568ef",
           "alt": "image of project",
           "internalSrc": null,
           "order": 3,
-          "src": "https://i.imgur.com/ZmhDwOT.png"
+          "src": "/gdpr-visualization/3.png"
         },
         {
           "id": "25a16456-b58d-414e-b289-214c26a189d4",
           "alt": "image of project",
           "internalSrc": null,
           "order": 4,
-          "src": "https://i.imgur.com/xto0klA.png"
+          "src": "/gdpr-visualization/4.png"
         },
         {
           "id": "583bfee2-9acb-48a8-9cc1-39d9f776168d",
           "alt": "image of project",
           "internalSrc": null,
           "order": 5,
-          "src": "https://i.imgur.com/pxl8Z4Y.png"
+          "src": "/gdpr-visualization/5.png"
         }
       ]
     },
@@ -492,7 +492,7 @@
           "alt": "image of project",
           "internalSrc": null,
           "order": 1,
-          "src": "https://i.imgur.com/8SjjDm5h.png",
+          "src": "/ideal-ideas/1.png",
           "thumbnail": null
         },
         {
@@ -500,14 +500,14 @@
           "alt": "image of project",
           "internalSrc": null,
           "order": 2,
-          "src": "https://i.imgur.com/0U2F1WJ.png"
+          "src": "/ideal-ideas/2.png"
         },
         {
           "id": "34c6ceea-c9fc-4fe9-95c4-5b52210ab57e",
           "alt": "image of project",
           "internalSrc": null,
           "order": 3,
-          "src": "https://i.imgur.com/epWIl11.png"
+          "src": "/ideal-ideas/3.png"
         }
       ]
     },
@@ -531,28 +531,28 @@
           "alt": "image of project",
           "internalSrc": null,
           "order": 1,
-          "src": "https://i.imgur.com/34e0836.png"
+          "src": "/matching-card-game/1.png"
         },
         {
           "id": "2163b5a7-685c-4e3a-b71b-5577aab0ebd2",
           "alt": "image of project",
           "internalSrc": null,
           "order": 2,
-          "src": "https://i.imgur.com/JXYdpGh.png"
+          "src": "/matching-card-game/2.png"
         },
         {
           "id": "7e29d763-fc14-4d6d-b373-ff5ed858f82a",
           "alt": "image of project",
           "internalSrc": null,
           "order": 3,
-          "src": "https://i.imgur.com/X65p82s.png"
+          "src": "/matching-card-game/3.png"
         },
         {
           "id": "44b11830-4048-4e2f-bc4d-1301f967eff6",
           "alt": "image of project",
           "internalSrc": null,
           "order": 4,
-          "src": "https://i.imgur.com/PlYvGI1.png"
+          "src": "/matching-card-game/4.png"
         }
       ]
     }
