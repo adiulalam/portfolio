@@ -8,6 +8,7 @@ else
 fi
 
 # This is the internal port
+# On Prod seed you need to export it again for the `npm run db:seed:prod` to work
 export POSTGRES_PORT="5432"
 echo "Exporting POSTGRES_PORT to $POSTGRES_PORT"
 
