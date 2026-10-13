@@ -20,6 +20,67 @@
   ],
   "projects": [
     {
+      "id": "3554d9de-38c6-40fc-8b1d-09953b88b345",
+      "title": "React Local AI Apps",
+      "description": "A unified platform featuring multiple fully local AI applications running entirely in-browser using WebGPU and Transformers.js, ensuring 100% privacy and zero API costs.",
+      "projectDate": "2026-09-26",
+      "application": "https://ai.adiulalamadil.me/",
+      "repo": "https://github.com/adiulalam/react-local-ai-apps",
+      "details": [
+        "100% Client-Side Privacy",
+        "WebGPU & Transformers.js",
+        "Multi-Modal AI Suite",
+        "Zero Server API Costs"
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "Shadcn UI",
+        "Transformers.js",
+        "WebGPU",
+        "Docker"
+      ],
+      "media": [
+        {
+          "id": "c932730b-2a33-4800-a9ce-6d641c4714ad",
+          "internalSrc": null,
+          "src": "/react-local-ai-apps/1.png",
+          "order": 1,
+          "alt": "image of project"
+        },
+        {
+          "id": "5120e6c9-e816-4454-a1b2-0bc76966e611",
+          "internalSrc": null,
+          "src": "/react-local-ai-apps/2.png",
+          "order": 2,
+          "alt": "image of project"
+        },
+        {
+          "id": "d056a2ba-4b43-4753-9f9c-63df08c0020c",
+          "internalSrc": null,
+          "src": "/react-local-ai-apps/3.png",
+          "order": 3,
+          "alt": "image of project"
+        },
+        {
+          "id": "f9ba15b0-3c46-4ec3-af36-eebff0632d25",
+          "internalSrc": null,
+          "src": "/react-local-ai-apps/4.png",
+          "order": 4,
+          "alt": "image of project"
+        },
+        {
+          "id": "1e18e2ce-247c-4140-bebb-3b982a2ec397",
+          "internalSrc": null,
+          "src": "/react-local-ai-apps/5.png",
+          "order": 5,
+          "alt": "image of project"
+        }
+      ]
+    },
+    {
       "id": "c46b6cf7-3ac6-40bb-9fa7-1f45534f384e",
       "title": "Quizeroo",
       "description": "A full-stack quiz web-app that can be used for creating and sharing quiz. The application includes AI quiz generation, authentication, and a dashboard for comprehensive information visualization.",
