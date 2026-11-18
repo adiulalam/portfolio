@@ -17,12 +17,11 @@ export POSTGRES_HOST="portfolio-db"
 echo "Exporting POSTGRES_HOST to $POSTGRES_HOST"
 
 export DATABASE_URL="postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:$POSTGRES_PORT/$POSTGRES_DB"
-echo "Exporting DATABASE_URL to $DATABASE_URL"
 
 export PORT=${PORT:-3000}
 echo "Exporting PORT to $PORT"
 
-echo "Waiting for `$POSTGRES_HOST` to come up..."
+echo "Waiting for $POSTGRES_HOST to come up..."
 until nc -z $POSTGRES_HOST 5432; do
     echo "Waiting for database connection..."
     sleep 1
